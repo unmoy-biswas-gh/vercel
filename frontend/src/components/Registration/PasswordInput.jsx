@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
-const PasswordInput = () => {
+const PasswordInput = ({ value, onChange, error, helperText }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -20,6 +20,30 @@ const PasswordInput = () => {
             variant="outlined"
             fullWidth
             required
+            value={value}
+            onChange={onChange}
+            error={error}
+            helperText={helperText}
+            sx={{
+                '& .MuiOutlinedInput-root': {
+                    '&.Mui-focused fieldset': {
+                        borderColor: '#369D9C',
+                    },
+                },
+                '& .MuiInputLabel-root.Mui-focused': {
+                    color: '#369D9C',
+                    fontFamily: "Inter"
+                },
+                '& .MuiInputLabel-root': {
+                    fontFamily: 'Inter',
+                },
+                '& .MuiFormHelperText-root': {
+                    color: 'red', // Custom helper text color
+                },
+                '& .MuiInputBase-input': {
+                    fontFamily: 'Inter',
+                },
+            }}
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">

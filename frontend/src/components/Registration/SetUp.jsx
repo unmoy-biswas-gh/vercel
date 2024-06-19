@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import pic from '../../assets/gesh.png';
 import windmill from '../../assets/windmill.jpg';
 
-const RegisterAccount = () => {
+const SetUp = () => {
     const navigate = useNavigate();
 
     const currencies = [
@@ -103,8 +103,49 @@ const RegisterAccount = () => {
                                 fullWidth
                                 label="Company Name"
                                 variant="outlined"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}
                             />
-                            <FormControl style={{ width: '49%', marginTop: '1rem' }}>
+                            <FormControl style={{ width: '49%', marginTop: '1rem' }} sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}>
                                 <InputLabel id="demo-simple-select-label">Company Size</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -113,13 +154,33 @@ const RegisterAccount = () => {
                                     value={employee}
                                     onChange={handleEmployeeChange}
                                 >
-                                    <MenuItem value={2 - 10}>2-10</MenuItem>
-                                    <MenuItem value={11 - 50}>11-50</MenuItem>
-                                    <MenuItem value={51 - 200}>51-200</MenuItem>
-                                    <MenuItem value={201 - 500}>201-500</MenuItem>
+                                    <MenuItem value={2 - 10} sx={{fontFamily: "Inter"}}>2-10</MenuItem>
+                                    <MenuItem value={11 - 50} sx={{fontFamily: "Inter"}}>11-50</MenuItem>
+                                    <MenuItem value={51 - 200} sx={{fontFamily: "Inter"}}>51-200</MenuItem>
+                                    <MenuItem value={201 - 500} sx={{fontFamily: "Inter"}}>201-500</MenuItem>
                                 </Select>
                             </FormControl>
-                            <FormControl style={{ width: '49%', marginTo: '1rem', marginLeft: '1%', marginTop: '1rem' }}>
+                            <FormControl style={{ width: '49%', marginTo: '1rem', marginLeft: '1%', marginTop: '1rem' }} sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}>
                                 <InputLabel id="demo-simple-select-label">Country</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -128,9 +189,9 @@ const RegisterAccount = () => {
                                     value={country}
                                     onChange={handleCountryChange}
                                 >
-                                    <MenuItem value={1}>IND</MenuItem>
-                                    <MenuItem value={2}>USA</MenuItem>
-                                    <MenuItem value={3}>UK</MenuItem>
+                                    <MenuItem value={1} sx={{fontFamily: "Inter"}}>IND</MenuItem>
+                                    <MenuItem value={2} sx={{fontFamily: "Inter"}}>USA</MenuItem>
+                                    <MenuItem value={3} sx={{fontFamily: "Inter"}}>UK</MenuItem>
                                 </Select>
                             </FormControl>
                             <TextField
@@ -139,6 +200,28 @@ const RegisterAccount = () => {
                                 value={amount}
                                 onChange={handleAmountChange}
                                 fullWidth
+                                type="number"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
@@ -147,10 +230,27 @@ const RegisterAccount = () => {
                                                 value={currency}
                                                 onChange={handleCurrencyChange}
                                                 variant="standard"
-                                                style={{ width: 80 }}
+                                                style={{ width: 80, fontWeight: 'bold' }}
+                                                InputProps={{disableUnderline: true,}}
+                                                SelectProps={{
+                                                    MenuProps: {
+                                                      PaperProps: {
+                                                        sx: {
+                                                          '& .MuiMenuItem-root': {
+                                                            fontWeight: 'bold',
+                                                            fontFamily: 'Inter',
+                                                          },
+                                                        },
+                                                      },
+                                                    },
+                                                  }}
                                             >
                                                 {currencies.map((option) => (
-                                                    <MenuItem key={option.value} value={option.value}>
+                                                    <MenuItem
+                                                        key={option.value}
+                                                        value={option.value}
+                                                        sx={{fontWeight: 'bold', fontFamily: "Inter"}}
+                                                    >
                                                         {option.label}
                                                     </MenuItem>
                                                 ))}
@@ -158,10 +258,30 @@ const RegisterAccount = () => {
                                         </InputAdornment>
                                     ),
                                 }}
-                                style={{ marginTop: 16, marginBottom: 20, }}
+                                style={{ marginTop: 16, marginBottom: 20, color: "red" }}
                             />
                             <hr style={{ border: 'none', borderTop: '1px solid #e0e0e0', }} />
-                            <FormControl fullWidth style={{ marginTop: '1rem' }}>
+                            <FormControl fullWidth style={{ marginTop: '1rem' }} sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}>
                                 <InputLabel id="demo-simple-select-label">Sector</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -170,12 +290,32 @@ const RegisterAccount = () => {
                                     value={sector}
                                     onChange={handleSectorChange}
                                 >
-                                    <MenuItem value={1}>Primary</MenuItem>
-                                    <MenuItem value={2}>Secondary</MenuItem>
-                                    <MenuItem value={3}>Tertiary</MenuItem>
+                                    <MenuItem value={1} sx={{fontFamily: "Inter"}}>Primary</MenuItem>
+                                    <MenuItem value={2} sx={{fontFamily: "Inter"}}>Secondary</MenuItem>
+                                    <MenuItem value={3} sx={{fontFamily: "Inter"}}>Tertiary</MenuItem>
                                 </Select>
                             </FormControl>
-                            <FormControl fullWidth style={{ marginTop: '1rem' }}>
+                            <FormControl fullWidth style={{ marginTop: '1rem' }} sx={{
+                                    '& .MuiOutlinedInput-root': {
+
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#369D9C',
+
+                                        },
+                                    },
+                                    '& .MuiInputLabel-root.Mui-focused': {
+                                        color: '#369D9C', // Focused label color
+                                    },
+                                    '& .MuiFormHelperText-root': {
+                                        color: 'red', // Custom helper text color
+                                    },
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Inter',
+                                    },
+                                    '& .MuiInputLabel-root': {
+                                        fontFamily: 'Inter',
+                                    },
+                                }}>
                                 <InputLabel id="demo-simple-select-label">Industry</InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -184,9 +324,9 @@ const RegisterAccount = () => {
                                     value={industry}
                                     onChange={handleIndustryChange}
                                 >
-                                    <MenuItem value={1}>Technology</MenuItem>
-                                    <MenuItem value={2}>Textile</MenuItem>
-                                    <MenuItem value={3}>Media</MenuItem>
+                                    <MenuItem value={1} sx={{fontFamily: "Inter"}}>Technology</MenuItem>
+                                    <MenuItem value={2} sx={{fontFamily: "Inter"}}>Textile</MenuItem>
+                                    <MenuItem value={3} sx={{fontFamily: "Inter"}}>Media</MenuItem>
                                 </Select>
                             </FormControl>
                             <button
@@ -219,4 +359,4 @@ const RegisterAccount = () => {
     );
 };
 
-export default RegisterAccount;
+export default SetUp;
