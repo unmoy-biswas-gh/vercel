@@ -10,8 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.5",
+    "@mui/material": "^5.16.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-easy-crop": "^5.0.8",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.25.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
