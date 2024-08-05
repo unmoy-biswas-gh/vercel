@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import CustomField from "../common/CustomField";
 import CustomSelect from "../common/CustomSelect";
 import bannerImg from "../../assets/images/banner.png";
+import UploadFilesModal from "../common/UploadModal";
 
 const yearOptions = [
   { value: 2022, name: "2022" },
@@ -41,6 +42,12 @@ const mdInputStyle = {
 
 function CreateReport({ closeView }) {
   const [showUpload, setShowUpload] = useState(false);
+  const [showUploadDoc, setShowUploadDoc] = useState(false);
+  const [reportName, setReportName] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [licenseNumb, setLicenseNumb] = useState("");
+  const [siteArea, setSiteArea] = useState("");
+  const [unitProd, setUnitProd] = useState("");
 
   return (
     <Box
@@ -97,8 +104,8 @@ function CreateReport({ closeView }) {
         <Box sx={{ mt: "1rem", mb: "2rem" }}>
           <CustomField
             label={"Report Name"}
-            value={""}
-            onChange={() => {}}
+            value={reportName}
+            onChange={(e) => setReportName(e.target.value)}
             sx={{ marginRight: "1rem", width: "20rem" }}
           />
           <CustomSelect
@@ -124,26 +131,26 @@ function CreateReport({ closeView }) {
         <Box sx={{ mt: "1rem", width: "70%" }}>
           <CustomField
             label={"Company Name"}
-            value={""}
-            onChange={() => {}}
+            value={companyName}
+            onChange={(e) => setCompanyName(e.target.value)}
             sx={mdInputStyle}
           />
           <CustomField
             label={"License Number"}
-            value={""}
-            onChange={() => {}}
+            value={licenseNumb}
+            onChange={(e) => setLicenseNumb(e.target.value)}
             sx={mdInputStyle}
           />
           <CustomField
             label={"Total site area in m2"}
-            value={""}
-            onChange={() => {}}
+            value={siteArea}
+            onChange={(e) => setSiteArea(e.target.value)}
             sx={mdInputStyle}
           />
           <CustomField
             label={"Units Produced in Report Period"}
-            value={""}
-            onChange={() => {}}
+            value={unitProd}
+            onChange={(e) => setUnitProd(e.target.value)}
             sx={mdInputStyle}
           />
           <CustomSelect
@@ -283,6 +290,7 @@ function CreateReport({ closeView }) {
               Choose how you want to generate the report?
             </Typography>
             <Box
+              onClick={() => setShowUploadDoc(true)}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -487,6 +495,10 @@ function CreateReport({ closeView }) {
           </Box>
         </DialogContent>
       </Dialog>
+      <UploadFilesModal
+        open={showUploadDoc}
+        onClose={() => setShowUploadDoc(false)}
+      />
     </Box>
   );
 }
