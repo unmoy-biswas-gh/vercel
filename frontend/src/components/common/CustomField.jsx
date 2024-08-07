@@ -35,6 +35,7 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
         },
         "& .MuiInputBase-input": {
           fontFamily: "Inter",
+          padding: "14px",
         },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",

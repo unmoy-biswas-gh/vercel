@@ -11,6 +11,7 @@ import CustomField from "../common/CustomField";
 import CustomSelect from "../common/CustomSelect";
 import bannerImg from "../../assets/images/banner.png";
 import UploadFilesModal from "../common/UploadModal";
+import BookCall from "./BookCall";
 
 const yearOptions = [
   { value: 2022, name: "2022" },
@@ -48,6 +49,8 @@ function CreateReport({ closeView }) {
   const [licenseNumb, setLicenseNumb] = useState("");
   const [siteArea, setSiteArea] = useState("");
   const [unitProd, setUnitProd] = useState("");
+  const [rawMatarial, setRawMatarial] = useState("");
+  const [bookCall, setBookCall] = useState(false);
 
   return (
     <Box
@@ -93,7 +96,7 @@ function CreateReport({ closeView }) {
           padding: "1rem",
           borderRadius: "14px",
           position: "relative",
-          mt: "2rem",
+          mt: "1rem",
         }}
       >
         <Typography
@@ -101,7 +104,7 @@ function CreateReport({ closeView }) {
         >
           Add name and select year
         </Typography>
-        <Box sx={{ mt: "1rem", mb: "2rem" }}>
+        <Box sx={{ mt: "1rem", mb: ".5rem" }}>
           <CustomField
             label={"Report Name"}
             value={reportName}
@@ -113,14 +116,14 @@ function CreateReport({ closeView }) {
             label={"Select reporting Segment"}
             value={""}
             // onChange={() => {}}
-            sx={{ marginRight: "1rem", width: "15rem" }}
+            sx={{ marginRight: "1rem", width: "15rem", marginBottom: "15px" }}
           />
           <CustomSelect
             options={yearOptions}
             label={"Year"}
             value={""}
             // onChange={() => {}}
-            sx={{ marginRight: "1rem", width: "6rem" }}
+            sx={{ marginRight: "1rem", width: "6rem", marginBottom: "15px" }}
           />
         </Box>
         <Typography
@@ -158,14 +161,13 @@ function CreateReport({ closeView }) {
             label={"Unit"}
             value={""}
             // onChange={() => {}}
-            sx={mdInputStyle}
+            sx={{ ...mdInputStyle, marginBottom: "15px" }}
           />
           <br />
-          <CustomSelect
-            options={matarialOptions}
+          <CustomField
             label={"Raw material Consumption"}
-            value={""}
-            // onChange={() => {}}
+            value={rawMatarial}
+            onChange={(e) => setRawMatarial(e.target.value)}
             sx={mdInputStyle}
           />
           <CustomSelect
@@ -173,7 +175,7 @@ function CreateReport({ closeView }) {
             label={"Unit"}
             value={""}
             // onChange={() => {}}
-            sx={mdInputStyle}
+            sx={{ ...mdInputStyle, marginBottom: "15px" }}
           />
         </Box>
         <Button
@@ -204,8 +206,8 @@ function CreateReport({ closeView }) {
       <Box
         sx={{
           width: "100%",
-          mt: "4rem",
-          height: "200px",
+          mt: "3rem",
+          height: "170px",
           borderRadius: "8px",
           background: "linear-gradient(271deg, #FAFAFA -1.18%, #F4FFFF 52.58%)",
           display: "flex",
@@ -213,14 +215,13 @@ function CreateReport({ closeView }) {
           alignItems: "center",
         }}
       >
-        {/* <img src={bannerImg} alt="banner" style={{ height: "100%" }} /> */}
         <Box
           sx={{
             height: "100%",
             background: `url(${bannerImg})`,
             backgroundSize: "100% 100%",
             backgroundRepeat: "no-repeat",
-            width: "325px",
+            width: "270px",
           }}
         ></Box>
         <Box
@@ -237,6 +238,7 @@ function CreateReport({ closeView }) {
             Book a call with a Senior Consultant.
           </Typography>
           <Button
+            onClick={() => setBookCall(true)}
             variant="outlined"
             sx={{
               // color: " #005468",
@@ -271,13 +273,16 @@ function CreateReport({ closeView }) {
             background: "rgba(0, 0, 0, 0.80)",
             backdropFilter: "blur(6px)",
           },
+          ".MuiPaper-root": {
+            borderRadius: "15px",
+          },
         }}
       >
         <DialogContent style={{ width: "550px" }}>
           <Box
             style={{
               // textAlign: "center",
-              padding: "1rem",
+              padding: "1.5rem",
               borderRadius: "10px",
               backgroundColor: "#FFF",
               cursor: "pointer",
@@ -290,7 +295,10 @@ function CreateReport({ closeView }) {
               Choose how you want to generate the report?
             </Typography>
             <Box
-              onClick={() => setShowUploadDoc(true)}
+              onClick={() => {
+                setShowUploadDoc(true);
+                setShowUpload(false);
+              }}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -354,6 +362,7 @@ function CreateReport({ closeView }) {
                     display: "flex",
                     alignItems: "center",
                     gap: "5px",
+                    fontSize: "18px",
                   }}
                 >
                   Enter data using
@@ -362,6 +371,7 @@ function CreateReport({ closeView }) {
                     sx={{
                       fontWeight: "500",
                       fontFamily: "Inter",
+                      fontSize: "18px",
                       background:
                         "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
                       backgroundClip: "text",
@@ -474,6 +484,7 @@ function CreateReport({ closeView }) {
                     fontFamily: "Inter",
                     display: "flex",
                     alignItems: "center",
+                    fontSize: "18px",
                     gap: "5px",
                   }}
                 >
@@ -497,8 +508,12 @@ function CreateReport({ closeView }) {
       </Dialog>
       <UploadFilesModal
         open={showUploadDoc}
-        onClose={() => setShowUploadDoc(false)}
+        onClose={() => {
+          setShowUpload(false);
+          setShowUploadDoc(false);
+        }}
       />
+      <BookCall open={bookCall} onClose={() => setBookCall(false)} />
     </Box>
   );
 }

@@ -6,12 +6,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { AppBar, Avatar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Avatar, Button, Typography } from "@mui/material";
 import logo from "../../assets/images/logo.png";
 import globe from "../../assets/images/globe.png";
 import chat from "../../assets/images/ChatsCircle.png";
 import bell from "../../assets/images/Bell.png";
 import topUser from "../../assets/images/topUser.png";
+import BookCall from "./BookCall";
 
 const navItems = [
   {
@@ -165,6 +166,7 @@ function DashboardNav({ children }) {
   const navContainer = useRef(null);
   const drawerWidth = 260;
   const [activeTab, setActiveTab] = useState("Dashboard");
+  const [bookCall, setBookCall] = useState(false);
 
   const DrawerList = (
     <Box
@@ -274,6 +276,7 @@ function DashboardNav({ children }) {
 
                   path: {
                     // fill: obj.name === activeTab ? "white" : "#96CDCC",
+                    // stroke: obj.name === activeTab ? "#96CDCC" : "white",
                   },
                 }}
               >
@@ -335,6 +338,7 @@ function DashboardNav({ children }) {
           Book a call with a Senior Consultant.
         </Typography>
         <Button
+          onClick={() => setBookCall(true)}
           variant="outlined"
           sx={{
             color: " #005468",
@@ -468,7 +472,7 @@ function DashboardNav({ children }) {
                   gap: "0.5rem",
                   alignItems: "center",
                   color: "black",
-                  fontWeight: "500",
+                  fontWeight: "400",
                   fontFamily: "Inter",
                 }}
               >
@@ -525,6 +529,7 @@ function DashboardNav({ children }) {
           {children}
         </Box>
       </Box>
+      <BookCall open={bookCall} onClose={() => setBookCall(false)} />
     </Box>
   );
 }

@@ -60,7 +60,7 @@ function PersonalInfo() {
     const isProfileSet = imageApi;
 
     setIsFormValid(isFullNameValid && isProfileSet);
-  }, [fullName]);
+  }, [fullName, imageApi]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -97,7 +97,7 @@ function PersonalInfo() {
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             position: "relative",
             height: "100%",
             overflow: "hidden",

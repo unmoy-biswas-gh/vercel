@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Grid, Box, Typography, Button } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UploadLogo from "./UploadLogo";
 import pic from "../../assets/gesh.png";
-import jungle from "../../assets/jungle.jpg";
 import bgPattern from "../../assets/images/login/bg.svg";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
@@ -36,7 +35,7 @@ const OwnerSetupOrg = () => {
             // backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             position: "relative",
             height: "100%",
             overflow: "hidden",
@@ -52,7 +51,7 @@ const OwnerSetupOrg = () => {
             display: "flex",
             alignItems: "flex-start",
             justifyContent: "center",
-            marginTop: "5rem",
+            marginTop: "2rem",
           }}
         >
           <img
@@ -143,7 +142,6 @@ const OwnerSetupOrg = () => {
                 margin: "auto",
                 marginTop: "1rem",
                 cursor: "pointer",
-                fontSize: "14px",
                 fontFamily: "Inter",
                 fontWeight: 500,
                 background: "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",

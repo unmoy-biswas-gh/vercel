@@ -1,32 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   Box,
   Typography,
   TextField,
-  Button,
   Checkbox,
   FormControlLabel,
-  Avatar,
 } from "@mui/material";
 import PasswordInput from "../Registration/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
-import nursery from "../../assets/nursery.jpg";
-import defaultUser from "../../assets/images/login/defaultUser.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const OwnerLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const imageInput = useRef();
-  const [userProfile, setUserProfile] = useState();
-  const profileAvatarInput = useRef();
-
-  const [defaultuserProfile, setDefaultUserProfile] = useState(defaultUser);
-
-  useEffect(() => console.log(userProfile), [userProfile]);
 
   const [error, setError] = useState({
     email: false,
@@ -46,17 +35,17 @@ const OwnerLogin = () => {
     return re.test(email);
   };
 
-  const clickInput = () => {
-    imageInput.current && imageInput.current.click();
-  };
+  // const clickInput = () => {
+  //   imageInput.current && imageInput.current.click();
+  // };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setUserProfile(imageURL);
-    }
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const imageURL = URL.createObjectURL(file);
+  //     setUserProfile(imageURL);
+  //   }
+  // };
 
   useEffect(() => {
     const isEmailValid = email.trim() !== "" && validateEmail(email);
@@ -110,7 +99,7 @@ const OwnerLogin = () => {
             // backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             position: "relative",
             height: "100%",
             overflow: "hidden",

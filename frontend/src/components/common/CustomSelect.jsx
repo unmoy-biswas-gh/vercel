@@ -3,11 +3,11 @@ import React, { useState } from "react";
 
 function CustomSelect({ label, onChange, value, options, sx }) {
   const [selectValue, setValue] = useState("");
+
   return (
     <FormControl
       sx={{
         backgroundColor: "white",
-
         fontSize: "14px",
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
@@ -20,18 +20,15 @@ function CustomSelect({ label, onChange, value, options, sx }) {
         "& .MuiFormHelperText-root": {
           color: "red", // Custom helper text color
         },
-        "& .MuiInputBase-input": {
-          fontFamily: "Inter",
-        },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",
           fontSize: "14px",
         },
-        input: {
-          fontSize: "14px",
-        },
         ".MuiSelect-select": {
-          fontSize: "14px",
+          padding: "14px !important",
+        },
+        "& MuiInputBase-root .MuiOutlinedInput-input": {
+          padding: "14px !important",
         },
         ...sx,
       }}
@@ -44,16 +41,21 @@ function CustomSelect({ label, onChange, value, options, sx }) {
         id="demo-simple-select"
         label={label}
         value={selectValue}
-        sx={{ fontSize: "14px" }}
+        sx={{
+          fontSize: "14px",
+          fontFamily: "Inter",
+          // padding: "14px !important",
+          "& MuiInputBase-root .MuiOutlinedInput-input": {
+            padding: "14px !important",
+          },
+        }}
         onChange={onChange ? onChange : (e) => setValue(e.target.value)}
       >
-        {options.map((item) => {
-          return (
-            <MenuItem value={item.value} sx={{ fontFamily: "Inter" }}>
-              {item.name}
-            </MenuItem>
-          );
-        })}
+        {options.map((item) => (
+          <MenuItem value={item.value} sx={{ fontFamily: "Inter" }}>
+            {item.name}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

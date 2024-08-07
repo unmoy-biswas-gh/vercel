@@ -5,8 +5,6 @@ import {
   Typography,
   TextField,
   Button,
-  Checkbox,
-  FormControlLabel,
   FormControl,
   Select,
   MenuItem,
@@ -17,7 +15,6 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
-import windmill from "../../assets/windmill.jpg";
 import bgPattern from "../../assets/images/login/bg.svg";
 import OnboardingCompleteSVG from "../../assets/Onboarding.svg";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
@@ -130,7 +127,7 @@ const OwnerSetUp = () => {
             // backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             position: "relative",
             height: "100%",
             overflow: "hidden",
@@ -144,7 +141,7 @@ const OwnerSetUp = () => {
           md={6}
           style={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
           }}
         >
@@ -589,6 +586,9 @@ const OwnerSetUp = () => {
                   background: "rgba(0, 0, 0, 0.80)",
                   backdropFilter: "blur(6px)",
                 },
+                ".MuiPaper-root": {
+                  borderRadius: "10px",
+                },
               }}
             >
               <DialogContent style={{ width: "550px" }}>
@@ -622,9 +622,10 @@ const OwnerSetUp = () => {
                     }}
                     variant="outlined"
                     style={{
-                      marginTop: "2rem",
+                      marginTop: "1.5rem",
                       width: "max-content",
-                      padding: "14px 24px",
+                      padding: "8px 24px",
+                      textTransform: "none",
 
                       borderRadius: 6,
                       backgroundImage:
