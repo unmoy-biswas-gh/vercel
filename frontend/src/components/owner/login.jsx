@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import api from "../../utlils/api";
 
 const OwnerLogin = () => {
   const [email, setEmail] = useState("");
@@ -35,23 +36,28 @@ const OwnerLogin = () => {
     return re.test(email);
   };
 
-  // const clickInput = () => {
-  //   imageInput.current && imageInput.current.click();
-  // };
-
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     const imageURL = URL.createObjectURL(file);
-  //     setUserProfile(imageURL);
-  //   }
-  // };
+  const callApi = async () => {
+    await api("/sector", "GET", null).then((res) => {
+      // console.log(res.data);
+      return res;
+    });
+  };
 
   useEffect(() => {
+    const fetchData = async () => {
+      console.log(await callApi());
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+
     const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = password.trim() !== "";
+    const isPasswordValid = passwordRegex.test(password);
     const isAgreedValid = agreed;
-    console.log(isEmailValid, isPasswordValid, isAgreedValid);
 
     setIsFormValid(isEmailValid && isPasswordValid && isAgreedValid);
   }, [email, password, agreed]);
@@ -75,6 +81,10 @@ const OwnerLogin = () => {
 
     if (isEmailValid && isPasswordValid && isAgreedValid) {
       console.log(isEmailValid, isPasswordValid, isAgreedValid);
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({ user_name: email, user_password: password })
+      );
       navigate("/owner/personal-info");
     }
   };

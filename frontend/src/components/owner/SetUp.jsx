@@ -18,6 +18,7 @@ import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import OnboardingCompleteSVG from "../../assets/Onboarding.svg";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import api from "../../utlils/api";
 
 const OwnerSetUp = () => {
   const navigate = useNavigate();
@@ -81,6 +82,12 @@ const OwnerSetUp = () => {
     setOpen(false);
   };
 
+  const getSectors = async () => {
+    await api("/sector", "GET").then((res) => {
+      console.log(res.data);
+    });
+  };
+  getSectors();
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
