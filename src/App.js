@@ -9,6 +9,7 @@ import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
 import DashBoard from "./components/owner/DashBoard";
+import { TeamMembers } from "./components/owner/teamMembers";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="setup" element={<OwnerSetUp />} />
           <Route path="setuporg" element={<OwnerSetupOrg />} />
           <Route path="dashboard" element={<DashBoard />} />
+          <Route path="team-members" element={<TeamMembers />} />
         </Route>
         <Route path="/setupprofile" element={<SetupOrg />} />
         <Route path="/setup" element={<SetUp />} />

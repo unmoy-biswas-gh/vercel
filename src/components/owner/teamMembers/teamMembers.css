@@ -1,0 +1,173 @@
+:root {
+  --gradient: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
+}
+
+.team-members_container {
+  padding: 32px;
+  height: 100%;
+  max-width: 100%;
+}
+
+.tab-panel {
+  width: 100%;
+}
+
+.tab-panel_child {
+  width: 100%;
+  padding: 24px;
+}
+
+.back-button {
+  height: 16px;
+  width: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.team-members_heading_container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.team-members_heading_container h1 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.team-members-input_container {
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.team-members-input .MuiOutlinedInput-input {
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 320px;
+}
+
+.team-members-add_member {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gradient);
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* MODAL */
+.team-members_modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 3px 0;
+}
+
+.team-members_modal-header h2 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.team-members_modal-seats {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+  background-color: #f7f7f7;
+  padding: 0 10px;
+}
+
+.team-members_modal-seats span {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19.5px;
+}
+
+.email-container {
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.success_image {
+  height: 103px;
+  width: 118px;
+  object-fit: cover;
+}
+
+.invite_sent {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 33px;
+  margin: 18px 0 45px 0;
+}
+
+/* TABLE CLASSES START */
+
+.table-container {
+  /* max-width: 100%; */
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* min-width: 600px; */
+  max-width: 100%;
+  overflow: auto;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ede5e5;
+  border-radius: 8px; /* Rounded corners for each row */
+  height: 54px;
+}
+
+.table-header {
+  font-weight: 500;
+  color: #8a8686cc;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 16px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+  white-space: nowrap;
+  min-width: 150px;
+}
+
+.table-cell:last-child {
+  max-width: 130px;
+  text-align: center;
+  font-weight: 500;
+  padding: 0;
+}
+
+/* TABLE CLASSES END */
