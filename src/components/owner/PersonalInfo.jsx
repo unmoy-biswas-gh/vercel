@@ -234,7 +234,7 @@ function PersonalInfo() {
             </Box>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullWidth
+                fullwidth
                 label="Your Full name"
                 variant="outlined"
                 required
@@ -279,7 +279,7 @@ function PersonalInfo() {
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                fullwidth
                 disabled={!isFormValid}
                 style={{
                   marginTop: "2rem",

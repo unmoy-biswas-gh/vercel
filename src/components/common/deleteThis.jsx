@@ -297,7 +297,7 @@ const DoctorDetails = () => {
                 id="outlined-controlled"
                 variant="outlined"
                 size="small"
-                fullWidth
+                fullwidth
                 label="Name"
                 name="name"
                 value={name}
@@ -310,7 +310,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 label="Email"
                 name="email"
                 size="small"
@@ -323,7 +323,7 @@ const DoctorDetails = () => {
             <div className="docDetailstextInput">
               <TextField
                 id="outlined-basic"
-                fullWidth
+                fullwidth
                 size="small"
                 label="Phone Number"
                 name="phone"
@@ -338,7 +338,7 @@ const DoctorDetails = () => {
                 id="outlined-controlled"
                 variant="outlined"
                 size="small"
-                fullWidth
+                fullwidth
                 label="Education"
                 name="education"
                 InputProps={{ sx: { borderRadius: 2, fontSize: "14px" } }}
@@ -352,7 +352,7 @@ const DoctorDetails = () => {
             <div className="docDetailstextInput">
               <Autocomplete
                 size="small"
-                fullWidth
+                fullwidth
                 disableClearable={true}
                 popupIcon={
                   <svg width="12" height="12" viewBox="0 0 11 6" fill="none">
@@ -426,7 +426,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 size="small"
                 label="Registration Number"
                 name="registrationNumber"
@@ -440,7 +440,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 label="Work experience"
                 name="experience"
                 size="small"
@@ -453,7 +453,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 label="Board Name"
                 name="boardName"
                 size="small"
@@ -467,7 +467,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 label="HFR ID"
                 name="hfr"
                 size="small"
@@ -480,7 +480,7 @@ const DoctorDetails = () => {
               <TextField
                 id="outlined-controlled"
                 variant="outlined"
-                fullWidth
+                fullwidth
                 label="HIP ID"
                 name="hip"
                 size="small"
@@ -494,7 +494,7 @@ const DoctorDetails = () => {
             <TextField
               id="outlined-controlled"
               variant="outlined"
-              fullWidth
+              fullwidth
               label="Bio"
               name="bio"
               size="small"
@@ -510,9 +510,9 @@ const DoctorDetails = () => {
             <div className="buttons_signup">
               <button
                 className="cancel_btn_DocDetails"
-                onClick={() => {
-                  location.reload();
-                }}
+                // onClick={() => {
+                //   location.reload();
+                // }}
               >
                 Cancel
               </button>

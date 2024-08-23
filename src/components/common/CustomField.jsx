@@ -2,9 +2,10 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 function CustomField({ sx, fullWidth, label, value, onChange, required }) {
+  console.log("fullWidth", fullWidth);
   return (
     <TextField
-      fullWidth={fullWidth}
+      fullwidth={fullWidth}
       label={label}
       variant="outlined"
       required={required}

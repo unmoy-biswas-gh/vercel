@@ -18,16 +18,13 @@ const PasswordInput = ({ value, onChange, error, helperText }) => {
       type={showPassword ? "text" : "password"}
       label="Create Password"
       variant="outlined"
-      fullWidth
+      fullwidth
       required
       value={value}
       onChange={onChange}
       error={error}
       helperText={helperText}
       sx={{
-        fontSize: "14px",
-        backgroundColor: "white",
-
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
             borderColor: "#369D9C",
@@ -37,18 +34,14 @@ const PasswordInput = ({ value, onChange, error, helperText }) => {
           color: "rgba(0, 0, 0, 0.60)",
           fontFamily: "Inter",
         },
+        "& .MuiInputLabel-root": {
+          fontFamily: "Inter",
+        },
         "& .MuiFormHelperText-root": {
           color: "red", // Custom helper text color
         },
         "& .MuiInputBase-input": {
           fontFamily: "Inter",
-        },
-        "& .MuiInputLabel-root": {
-          fontFamily: "Inter",
-          fontSize: "14px",
-        },
-        input: {
-          fontSize: "14px",
         },
       }}
       InputProps={{

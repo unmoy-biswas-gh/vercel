@@ -93,7 +93,7 @@ const RegisterAccount = () => {
                         </Typography>
                         <form onSubmit={handleSubmit}>
                             <TextField
-                                fullWidth
+                                fullwidth
                                 label="Your Full name"
                                 variant="outlined"
                                 required
@@ -127,7 +127,7 @@ const RegisterAccount = () => {
                                 }}
                             />
                             <TextField
-                                fullWidth
+                                fullwidth
                                 label="Email Address"
                                 variant="outlined"
                                 required
@@ -192,7 +192,7 @@ const RegisterAccount = () => {
                                 type="submit"
                                 variant="contained"
                                 color="primary"
-                                fullWidth
+                                fullwidth
                                 disabled={!isFormValid}
                                 style={{
                                     marginTop: '16px',

@@ -4,25 +4,26 @@ import {
   Box,
   Typography,
   TextField,
+  Button,
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import PasswordInput from "../Registration/PasswordInput";
+import PasswordInput from "./PasswordInput";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
-import bgPattern from "../../assets/images/login/bg.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import api from "../../utlils/api";
+import nursery from "../../assets/nursery.jpg";
 
-const OwnerLogin = () => {
+const RegisterAccount = () => {
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState({
+    fullName: false,
     email: false,
     password: false,
   });
   const [helperText, setHelperText] = useState({
+    fullName: "",
     email: "",
     password: "",
   });
@@ -36,56 +37,39 @@ const OwnerLogin = () => {
     return re.test(email);
   };
 
-  const callApi = async () => {
-    await api("/sector", "GET", null).then((res) => {
-      // console.log(res.data);
-      return res;
-    });
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      console.log(await callApi());
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-
+    const isFullNameValid = fullName.trim() !== "";
     const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = passwordRegex.test(password);
+    const isPasswordValid = password.trim() !== "";
     const isAgreedValid = agreed;
 
-    setIsFormValid(isEmailValid && isPasswordValid && isAgreedValid);
-  }, [email, password, agreed]);
+    setIsFormValid(
+      isFullNameValid && isEmailValid && isPasswordValid && isAgreedValid
+    );
+  }, [fullName, email, password, agreed]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const isFullNameValid = fullName.trim() !== "";
     const isEmailValid = email.trim() !== "" && validateEmail(email);
     const isPasswordValid = password.trim() !== "";
     const isAgreedValid = agreed;
 
     setError({
+      fullName: !isFullNameValid,
       email: !isEmailValid,
       password: !isPasswordValid,
     });
 
     setHelperText({
+      fullName: !isFullNameValid ? "Full Name is required" : "",
       email: !isEmailValid ? "Please enter a valid email address" : "",
       password: !isPasswordValid ? "Password is required" : "",
     });
 
-    if (isEmailValid && isPasswordValid && isAgreedValid) {
-      console.log(isEmailValid, isPasswordValid, isAgreedValid);
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({ user_name: email, user_password: password })
-      );
-      navigate("/owner/personal-info");
+    if (isFullNameValid && isEmailValid && isPasswordValid && isAgreedValid) {
+      navigate("/owner/setupprofile");
     }
   };
 
@@ -104,18 +88,42 @@ const OwnerLogin = () => {
           xs={12}
           md={6}
           style={{
-            // backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${nursery})`,
-            // backgroundSize: "cover",
-            // backgroundPosition: "center",
+            backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${nursery})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             position: "relative",
-            height: "100%",
-            overflow: "hidden",
           }}
         >
-          <VideoPlayer />
+          <Box
+            style={{
+              background:
+                "linear-gradient(145deg, rgba(255, 255, 255, 0.36) 3.9%, rgba(255, 255, 255, 0.00) 100.68%)",
+              padding: "45px 40px 61px",
+              borderRadius: "18px",
+              maxWidth: "80%",
+              textAlign: "center",
+              color: "white",
+              width: "50%",
+              backgroundFilter: "blur(2px)",
+            }}
+          >
+            <Typography
+              variant="h4"
+              style={{
+                fontWeight: 400,
+                fontSize: 28,
+                fontFamily: "Inter",
+                textAlign: "left",
+              }}
+            >
+              <span style={{ fontWeight: 700 }}>Empowering</span> Your Business
+              with Comprehensive{" "}
+              <span style={{ fontWeight: 700 }}>Sustainability Insights</span>
+            </Typography>
+          </Box>
         </Grid>
         <Grid
           item
@@ -123,41 +131,20 @@ const OwnerLogin = () => {
           md={6}
           style={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
-            marginTop: "5rem",
           }}
         >
-          <img
-            src={bgPattern}
-            alt=""
-            style={{
-              position: "absolute",
-              bottom: "0",
-              right: "0",
-              zIndex: "1",
-              width: "400px",
-              height: "400px",
-            }}
-          />
-          <Box
-            style={{
-              maxWidth: "420px",
-              width: "100%",
-              padding: "20px",
-              position: "relative",
-              zIndex: "2",
-            }}
-          >
+          <Box style={{ maxWidth: "400px", width: "100%", padding: "20px" }}>
             <img
               src={pic}
               alt="Logo"
-              style={{ width: "90px", marginBottom: "15px" }}
+              style={{ width: "100px", marginBottom: "20px" }}
             />
             <Typography
               variant="h1"
               gutterBottom
-              style={{ fontFamily: "Inter", fontSize: "29px", fontWeight: 500 }}
+              style={{ fontFamily: "Inter", fontSize: "36px", fontWeight: 700 }}
             >
               Register Account!
             </Typography>
@@ -165,42 +152,37 @@ const OwnerLogin = () => {
               variant="body1"
               style={{
                 marginTop: "16px",
-                marginBottom: "2rem",
+                marginBottom: "3rem",
                 fontFamily: "Inter",
                 fontWeight: 400,
-                fontSize: 15,
+                fontSize: "36",
                 color: "#8692A6",
               }}
             >
-              Join us to access sustainability reports and track your progress
-              towards a greener future.
+              For the purpose of industry regulation, your details are required.
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullWidth
-                label="Email Address"
+                fullwidth
+                label="Your Full name"
                 variant="outlined"
                 required
-                size="medium"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                error={error.email}
-                helperText={helperText.email}
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                error={error.fullName}
+                helperText={helperText.fullName}
                 style={{
-                  marginBottom: 15,
+                  marginBottom: 20,
                   borderRadius: "10px",
-                  backgroundColor: "white",
                 }}
                 sx={{
-                  fontSize: "14px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
                     },
                   },
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "rgba(0, 0, 0, 0.60)",
+                    color: "#369D9C",
                     fontFamily: "Inter",
                   },
                   "& .MuiFormHelperText-root": {
@@ -211,10 +193,38 @@ const OwnerLogin = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
                   },
-                  input: {
-                    fontSize: "14px",
+                }}
+              />
+              <TextField
+                fullwidth
+                label="Email Address"
+                variant="outlined"
+                required
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                error={error.email}
+                helperText={helperText.email}
+                style={{
+                  marginBottom: 20,
+                  borderRadius: "10px",
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    "&.Mui-focused fieldset": {
+                      borderColor: "#369D9C",
+                    },
+                  },
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "#369D9C",
+                    fontFamily: "Inter",
+                  },
+                  "& .MuiInputBase-input": {
+                    fontFamily: "Inter",
+                  },
+                  "& .MuiInputLabel-root": {
+                    fontFamily: "Inter",
                   },
                 }}
               />
@@ -231,30 +241,20 @@ const OwnerLogin = () => {
                     onChange={(e) => setAgreed(e.target.checked)}
                     sx={{
                       color: "primary",
-
                       "&.Mui-checked": {
                         color: "#43BAB9",
-                      },
-                      svg: {
-                        fill: "#43BAB9",
                       },
                     }}
                   />
                 }
                 label="I agree to terms & conditions"
                 sx={{
-                  marginTop: "2rem",
+                  marginTop: "2.5rem",
                   fontFamily: "Inter",
                   fontWeight: 500,
                   color: "#696F79",
                   "& .MuiFormControlLabel-label": {
                     fontFamily: "Inter, Arial, sans-serif",
-                  },
-                  span: {
-                    fontWeight: "500",
-                  },
-                  ".MuiFormControlLabel-label": {
-                    fontSize: "14px",
                   },
                 }}
               />
@@ -262,21 +262,20 @@ const OwnerLogin = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                fullwidth
                 disabled={!isFormValid}
                 style={{
-                  marginTop: "8px",
+                  marginTop: "16px",
                   width: "100%",
-                  padding: "14px 24px",
+                  padding: "16px 24px",
                   borderRadius: 6,
-                  background: !isFormValid ? "#E8E8E8" : "",
                   backgroundImage: isFormValid
                     ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
-                    : "",
-                  fontWeight: 500,
-                  fontSize: "15px",
+                    : "linear-gradient(102deg, #EBEBEB 0%, #EBEBEB 100%)",
+                  fontWeight: 900,
+                  fontSize: "16px",
                   fontFamily: "Inter",
-                  color: !isFormValid ? "#A2A2A2" : "#FFF",
+                  color: isFormValid ? "#FFF" : "#9E9E9E",
                   border: "1px solid #DDD",
                   letterSpacing: "0.5px",
                   cursor: "pointer",
@@ -292,4 +291,4 @@ const OwnerLogin = () => {
   );
 };
 
-export default OwnerLogin;
+export default RegisterAccount;

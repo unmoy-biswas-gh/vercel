@@ -325,7 +325,7 @@ const InviteTeam = () => {
                     </MenuItem>
                     <MenuItem sx={{ fontFamily: "Inter" }} disabled>
                       <hr
-                        fullWidth
+                        fullwidth
                         style={{ width: "100%", margin: "8px 0" }}
                       />
                     </MenuItem>
@@ -371,7 +371,7 @@ const InviteTeam = () => {
               onClick={handleClickOpen}
               variant="contained"
               color="primary"
-              fullWidth
+              fullwidth
               style={{
                 position: "absolute",
                 bottom: "40px",

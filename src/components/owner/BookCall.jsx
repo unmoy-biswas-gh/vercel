@@ -152,7 +152,7 @@ function BookCall({ open, onClose }) {
               color="primary"
               onClick={() => setCurrentState("callConfirm")}
               disabled={!selectedDate}
-              fullWidth
+              fullwidth
               style={{
                 marginTop: "1.5rem",
                 width: "100%",
@@ -198,7 +198,7 @@ function BookCall({ open, onClose }) {
             <CustomField
               label="Name"
               value={"Aman upadhyay"}
-              fullWidth
+              fullWidth={true}
               sx={{
                 "&.MuiFormControl-root": {
                   mb: "2rem !important",
@@ -211,7 +211,7 @@ function BookCall({ open, onClose }) {
             <CustomField
               label="Email"
               value={"Aman@gmail.com"}
-              fullWidth
+              fullWidth={true}
               sx={{
                 "&.MuiFormControl-root": {
                   mb: "2rem !important",
@@ -355,7 +355,7 @@ function BookCall({ open, onClose }) {
               label="Mobile number"
               value={mobileNo}
               onChange={handleMobileNo}
-              fullWidth
+              fullWidth={true}
               sx={{
                 "&.MuiFormControl-root": {
                   mb: "2rem !important",
@@ -368,7 +368,7 @@ function BookCall({ open, onClose }) {
               color="primary"
               onClick={() => setCurrentState("confirmPopup")}
               disabled={!enableConfirm}
-              fullWidth
+              fullwidth
               style={{
                 marginTop: "1.5rem",
                 width: "max-content",
@@ -437,7 +437,7 @@ function BookCall({ open, onClose }) {
               variant="contained"
               color="primary"
               onClick={onClose}
-              fullWidth
+              fullwidth
               style={{
                 marginTop: "1.5rem",
                 width: "100%",

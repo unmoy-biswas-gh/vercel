@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Grid, Box, Typography } from "@mui/material";
+import { Grid, Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UploadLogo from "./UploadLogo";
 import pic from "../../assets/gesh.png";
+import jungle from "../../assets/jungle.jpg";
 import bgPattern from "../../assets/images/login/bg.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
-const OwnerSetupOrg = () => {
+const SetupOrg = () => {
   const navigate = useNavigate();
   const [LogoSet, setLogoSet] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate("/owner/setup");
+    navigate("/setup");
   };
 
   return (
@@ -30,18 +30,41 @@ const OwnerSetupOrg = () => {
           xs={12}
           md={6}
           style={{
-            // backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${nursery})`,
-            // backgroundSize: "cover",
-            // backgroundPosition: "center",
+            backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${jungle})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             position: "relative",
-            height: "100%",
-            overflow: "hidden",
           }}
         >
-          <VideoPlayer />
+          <Box
+            style={{
+              background:
+                "linear-gradient(145deg, rgba(255, 255, 255, 0.36) 3.9%, rgba(255, 255, 255, 0.00) 100.68%)",
+              padding: "45px 40px 61px",
+              borderRadius: "18px",
+              maxWidth: "80%",
+              textAlign: "center",
+              color: "white",
+              width: "50%",
+              backgroundFilter: "blur(2px)",
+            }}
+          >
+            <Typography
+              variant="h4"
+              style={{
+                fontWeight: 400,
+                fontSize: 28,
+                fontFamily: "Inter",
+                textAlign: "left",
+              }}
+            >
+              Step into the future of business—where sustainability meets
+              success
+            </Typography>
+          </Box>
         </Grid>
         <Grid
           item
@@ -49,9 +72,8 @@ const OwnerSetupOrg = () => {
           md={6}
           style={{
             display: "flex",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
-            marginTop: "2rem",
           }}
         >
           <img
@@ -62,13 +84,11 @@ const OwnerSetupOrg = () => {
               bottom: "0",
               right: "0",
               zIndex: "1",
-              width: "400px",
-              height: "400px",
             }}
           />
           <Box
             style={{
-              maxWidth: "420px",
+              maxWidth: "500px",
               width: "100%",
               padding: "20px",
               position: "relative",
@@ -78,16 +98,16 @@ const OwnerSetupOrg = () => {
             <img
               src={pic}
               alt="Logo"
-              style={{ width: "90px", marginBottom: "15px" }}
+              style={{ width: "100px", marginBottom: "20px" }}
             />
             <Typography
               variant="h4"
               gutterBottom
               style={{
                 fontFamily: "Inter",
-                fontSize: "29px",
+                fontSize: "34px",
                 fontWeight: 500,
-                marginBottom: "1rem",
+                marginBottom: "2rem",
               }}
             >
               Setup your Organization Profile!
@@ -99,7 +119,7 @@ const OwnerSetupOrg = () => {
                 marginBottom: "3rem",
                 fontFamily: "Inter",
                 fontWeight: 400,
-                fontSize: 15,
+                fontSize: 17,
                 color: "#8692A6",
               }}
             >
@@ -113,19 +133,18 @@ const OwnerSetupOrg = () => {
               disabled={!LogoSet}
               variant="contained"
               color="primary"
-              fullWidth
+              fullwidth
               style={{
-                marginTop: "3rem",
-                width: "100%",
-                padding: "14px 24px",
+                marginTop: "4rem",
+                width: 500,
+                padding: "16px 24px",
                 borderRadius: 6,
                 background: !LogoSet ? "#E8E8E8" : "",
                 backgroundImage: LogoSet
                   ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
                   : "",
                 fontWeight: 500,
-                fontSize: "15px",
-
+                fontSize: "18px",
                 fontFamily: "Inter",
                 color: !LogoSet ? "#A2A2A2" : "#FFF",
                 border: "1px solid #DDD",
@@ -142,13 +161,14 @@ const OwnerSetupOrg = () => {
                 margin: "auto",
                 marginTop: "1rem",
                 cursor: "pointer",
+                fontSize: "14px",
                 fontFamily: "Inter",
                 fontWeight: 500,
                 background: "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
                 backgroundClip: "text",
                 "-webkitBackgroundClip": "text",
                 "-webkitTextFillColor": "transparent",
-                fontSize: "15px",
+                fontSize: 18,
               }}
             >
               Skip
@@ -160,4 +180,4 @@ const OwnerSetupOrg = () => {
   );
 };
 
-export default OwnerSetupOrg;
+export default SetupOrg;

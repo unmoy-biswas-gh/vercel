@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   Grid,
   Box,
   Typography,
   TextField,
   Button,
+  Checkbox,
+  FormControlLabel,
   FormControl,
   Select,
   MenuItem,
   InputLabel,
   InputAdornment,
-  Dialog,
-  DialogContent,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
+import windmill from "../../assets/windmill.jpg";
 import bgPattern from "../../assets/images/login/bg.svg";
-import OnboardingCompleteSVG from "../../assets/Onboarding.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import api from "../../utlils/api";
 
-const OwnerSetUp = () => {
+const SetUp = () => {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
 
   const currencies = [
     {
@@ -59,8 +56,8 @@ const OwnerSetUp = () => {
   };
 
   const [employee, setEmployee] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [currency, setCurrency] = React.useState("");
+  const [country, setCountry] = React.useState("India");
+  const [currency, setCurrency] = React.useState("AED");
   const [amount, setAmount] = React.useState("");
   const [sector, setSector] = React.useState("");
   const [industry, setIndustry] = React.useState("");
@@ -78,16 +75,6 @@ const OwnerSetUp = () => {
     setEmployee(event.target.value);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const getSectors = async () => {
-    await api("/sector", "GET").then((res) => {
-      console.log(res.data);
-    });
-  };
-  getSectors();
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
@@ -110,8 +97,7 @@ const OwnerSetUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // navigate("/owner/invite");
-    setOpen(true);
+    navigate("/invite");
   };
 
   return (
@@ -129,18 +115,38 @@ const OwnerSetUp = () => {
           xs={12}
           md={6}
           style={{
-            // backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${nursery})`,
-            // backgroundSize: "cover",
-            // backgroundPosition: "center",
+            backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${windmill})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "flex-start",
+            justifyContent: "center",
             position: "relative",
-            height: "100%",
-            overflow: "hidden",
           }}
         >
-          <VideoPlayer />
+          <Box
+            style={{
+              backgroundColor: "rgba(18, 78, 57, 0.4)",
+              padding: "45px 40px 61px",
+              borderRadius: "18px",
+              maxWidth: "80%",
+              textAlign: "center",
+              color: "white",
+              width: "50%",
+            }}
+          >
+            <Typography
+              variant="h4"
+              style={{
+                fontWeight: 400,
+                fontSize: 28,
+                fontFamily: "Inter",
+                textAlign: "left",
+              }}
+            >
+              Make sustainability your competitive advantage—begin today
+            </Typography>
+          </Box>
         </Grid>
         <Grid
           item
@@ -160,13 +166,11 @@ const OwnerSetUp = () => {
               bottom: "0",
               right: "0",
               zIndex: "1",
-              width: "400px",
-              height: "400px",
             }}
           />
           <Box
             style={{
-              maxWidth: "450px",
+              maxWidth: "500px",
               width: "100%",
               padding: "20px",
               position: "relative",
@@ -176,19 +180,19 @@ const OwnerSetUp = () => {
             <img
               src={pic}
               alt="Logo"
-              style={{ width: "90px", marginBottom: "15px" }}
+              style={{ width: "100px", marginBottom: "20px" }}
             />
             <Typography
               variant="h4"
               gutterBottom
               style={{
                 fontFamily: "Inter",
-                fontSize: "28px",
+                fontSize: "34px",
                 fontWeight: 500,
-                marginBottom: ".75rem",
+                marginBottom: "1rem",
               }}
             >
-              Setup your Organization!
+              Setup Your Organization!
             </Typography>
             <Typography
               variant="body1"
@@ -196,7 +200,7 @@ const OwnerSetUp = () => {
                 marginBottom: "2rem",
                 fontFamily: "Inter",
                 fontWeight: 400,
-                fontSize: 15,
+                fontSize: 17,
                 color: "#8692A6",
               }}
             >
@@ -205,13 +209,10 @@ const OwnerSetUp = () => {
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullWidth
+                fullwidth
                 label="Company Name"
                 variant="outlined"
                 sx={{
-                  backgroundColor: "white",
-
-                  fontSize: "14px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -228,19 +229,12 @@ const OwnerSetUp = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
                   },
                 }}
               />
               <FormControl
                 style={{ width: "49%", marginTop: "1rem" }}
                 sx={{
-                  backgroundColor: "white",
-
-                  fontSize: "14px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -257,20 +251,10 @@ const OwnerSetUp = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
-                  },
-                  ".MuiSelect-select": {
-                    fontSize: "14px",
                   },
                 }}
               >
-                <InputLabel
-                  id="demo-simple-select-label"
-                  sx={{ fontSize: "14px" }}
-                >
+                <InputLabel id="demo-simple-select-label">
                   Company Size
                 </InputLabel>
                 <Select
@@ -295,15 +279,10 @@ const OwnerSetUp = () => {
                 style={{
                   width: "49%",
                   marginTo: "1rem",
-                  marginLeft: "2%",
+                  marginLeft: "1%",
                   marginTop: "1rem",
                 }}
                 sx={{
-                  backgroundColor: "white",
-                  ".MuiSelect-select": {
-                    fontSize: "14px",
-                  },
-                  fontSize: "14px",
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -320,10 +299,6 @@ const OwnerSetUp = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
                   },
                 }}
               >
@@ -358,12 +333,9 @@ const OwnerSetUp = () => {
                 variant="outlined"
                 value={amount}
                 onChange={handleAmountChange}
-                fullWidth
+                fullwidth
                 type="number"
                 sx={{
-                  fontSize: "14px",
-                  backgroundColor: "white",
-
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -380,10 +352,6 @@ const OwnerSetUp = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
                   },
                 }}
                 InputProps={{
@@ -398,16 +366,8 @@ const OwnerSetUp = () => {
                         style={{ width: 80, fontWeight: "bold" }}
                         InputProps={{ disableUnderline: true }}
                         sx={{
-                          backgroundColor: "white",
-
                           svg: {
                             display: "none",
-                          },
-                          ".MuiSelect-select": {
-                            paddingRight: "0 !important",
-                          },
-                          ".MuiInputBase-root": {
-                            width: "max-content",
                           },
                         }}
                         SelectProps={{
@@ -438,20 +398,11 @@ const OwnerSetUp = () => {
                 }}
                 style={{ marginTop: 16, marginBottom: 20, color: "red" }}
               />
-              <hr
-                style={{
-                  border: "none",
-                  borderTop: "1px solid #F7F7F7",
-                  margin: "0",
-                  backgroundColor: "white",
-                }}
-              />
+              <hr style={{ border: "none", borderTop: "1px solid #e0e0e0" }} />
               <FormControl
-                fullWidth
+                fullwidth
                 style={{ marginTop: "1rem" }}
                 sx={{
-                  backgroundColor: "white",
-
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -471,12 +422,7 @@ const OwnerSetUp = () => {
                   },
                 }}
               >
-                <InputLabel
-                  id="demo-simple-select-label"
-                  sx={{ fontSize: "14px" }}
-                >
-                  Sector
-                </InputLabel>
+                <InputLabel id="demo-simple-select-label">Sector</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -485,26 +431,14 @@ const OwnerSetUp = () => {
                   onChange={handleSectorChange}
                 >
                   <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Renewable energy
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Food industry
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Infrastructure
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Telecommunications
+                    Oil and gas Extraction
                   </MenuItem>
                 </Select>
               </FormControl>
               <FormControl
-                fullWidth
+                fullwidth
                 style={{ marginTop: "1rem" }}
                 sx={{
-                  fontSize: "14px",
-                  backgroundColor: "white",
-
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -521,19 +455,10 @@ const OwnerSetUp = () => {
                   },
                   "& .MuiInputLabel-root": {
                     fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
                   },
                 }}
               >
-                <InputLabel
-                  id="demo-simple-select-label"
-                  sx={{ fontSize: "14px" }}
-                >
-                  Industry
-                </InputLabel>
+                <InputLabel id="demo-simple-select-label">Industry</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -544,37 +469,24 @@ const OwnerSetUp = () => {
                   <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
                     Oil and gas Extraction
                   </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Optic Fiber
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Solar Energy
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Food Delivery
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Steel Industry
-                  </MenuItem>
                 </Select>
               </FormControl>
               <button
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullWidth
+                fullwidth
                 style={{
-                  marginTop: "2rem",
-                  width: "100%",
-                  padding: "14px 24px",
-
+                  marginTop: "4rem",
+                  width: 500,
+                  padding: "16px 24px",
                   borderRadius: 6,
                   background: !isFormValid ? "#E8E8E8" : "",
                   backgroundImage: isFormValid
                     ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
                     : "",
                   fontWeight: 500,
-                  fontSize: "15px",
+                  fontSize: "18px",
                   fontFamily: "Inter",
                   color: !isFormValid ? "#A2A2A2" : "#FFF",
                   border: "1px solid #DDD",
@@ -585,73 +497,6 @@ const OwnerSetUp = () => {
                 Next
               </button>
             </form>
-            <Dialog
-              open={open}
-              onClose={handleClose}
-              sx={{
-                ".MuiBackdrop-root": {
-                  background: "rgba(0, 0, 0, 0.80)",
-                  backdropFilter: "blur(6px)",
-                },
-                ".MuiPaper-root": {
-                  borderRadius: "10px",
-                },
-              }}
-            >
-              <DialogContent style={{ width: "550px" }}>
-                <Box
-                  style={{
-                    textAlign: "center",
-                    padding: "2rem 4rem 3rem 4rem",
-                    borderRadius: "10px",
-                    backgroundColor: "#FFF",
-                  }}
-                >
-                  <img
-                    src={OnboardingCompleteSVG}
-                    alt="Onboarding Complete"
-                    width="234"
-                    height="179"
-                  />
-                  <Typography
-                    variant="h6"
-                    style={{
-                      fontWeight: 600,
-                      fontFamily: "Inter",
-                      marginTop: "1.5rem",
-                    }}
-                  >
-                    Onboarding Complete
-                  </Typography>
-                  <Button
-                    onClick={() => {
-                      navigate("/owner/dashboard");
-                    }}
-                    variant="outlined"
-                    style={{
-                      marginTop: "1.5rem",
-                      width: "max-content",
-                      padding: "8px 24px",
-                      textTransform: "none",
-
-                      borderRadius: 6,
-                      backgroundImage:
-                        "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
-                      fontWeight: 500,
-                      fontSize: "15px",
-
-                      fontFamily: "Inter",
-                      color: "#FFF",
-                      border: "1px solid #DDD",
-                      letterSpacing: "0.5px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Go to Dashboard
-                  </Button>
-                </Box>
-              </DialogContent>
-            </Dialog>
           </Box>
         </Grid>
       </Grid>
@@ -659,4 +504,4 @@ const OwnerSetUp = () => {
   );
 };
 
-export default OwnerSetUp;
+export default SetUp;
