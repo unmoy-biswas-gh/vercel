@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/Font/Inter.ttf") format("truetype");
+  font-weight: 100 500 600 900;
+}
+body fieldset {
+  border-color: #c5d2cb !important;
+}
+body {
+  font-family: "Inter", Arial, sans-serif;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+  font-family: "Inter" Arial, sans-serif;
+}
