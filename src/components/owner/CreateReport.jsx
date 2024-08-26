@@ -278,27 +278,33 @@ function CreateReport({ closeView }) {
           },
         }}
       >
-        <DialogContent style={{ width: "550px" }}>
+        <DialogContent
+          style={{ width: "550px" }}
+          sx={{
+            padding: 0,
+          }}
+        >
           <Box
             style={{
               // textAlign: "center",
-              padding: "1.5rem",
+              // padding: "1rem",
               borderRadius: "10px",
               backgroundColor: "#FFF",
               cursor: "pointer",
+              padding: "56px",
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: "500", fontFamily: "Inter", mb: "1rem" }}
+              sx={{ fontWeight: "400", fontFamily: "Inter", mb: "32px" }}
             >
               Choose how you want to generate the report?
             </Typography>
             <Box
-              onClick={() => {
-                setShowUploadDoc(true);
-                setShowUpload(false);
-              }}
+              // onClick={() => {
+              //   setShowUploadDoc(true);
+              //   setShowUpload(false);
+              // }}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -308,7 +314,7 @@ function CreateReport({ closeView }) {
                 display: "flex",
                 flexDirection: "row",
                 gap: "2rem",
-                mt: ".5rem",
+                // mt: ".5rem",
                 cursor: "pointer",
                 ":hover": {
                   backgroundColor: "#F6FFF7",
@@ -396,6 +402,10 @@ function CreateReport({ closeView }) {
               </Box>
             </Box>
             <Box
+              onClick={() => {
+                setShowUploadDoc(true);
+                setShowUpload(false);
+              }}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -405,7 +415,7 @@ function CreateReport({ closeView }) {
                 display: "flex",
                 flexDirection: "row",
                 gap: "2rem",
-                mt: ".5rem",
+                mt: "21px",
                 cursor: "pointer",
 
                 ":hover": {
@@ -499,7 +509,7 @@ function CreateReport({ closeView }) {
                     color: "#9B9B9B",
                   }}
                 >
-                  Enter your data directly using our manual upload for55
+                  Enter your data directly using our manual upload form
                 </Typography>
               </Box>
             </Box>

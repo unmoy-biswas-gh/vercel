@@ -10,6 +10,7 @@ import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
 import DashBoard from "./components/owner/DashBoard";
 import { TeamMembers } from "./components/owner/teamMembers";
+import { Reports } from "./components/owner/reports";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="setuporg" element={<OwnerSetupOrg />} />
           <Route path="dashboard" element={<DashBoard />} />
           <Route path="team-members" element={<TeamMembers />} />
+          <Route path="reports" element={<Reports />} />
         </Route>
         <Route path="/setupprofile" element={<SetupOrg />} />
         <Route path="/setup" element={<SetUp />} />
