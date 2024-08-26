@@ -6,10 +6,13 @@
   padding: 32px;
   height: 100%;
   max-width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 .tab-panel {
   width: 100%;
+  flex-grow: 1;
 }
 
 .tab-panel_child {

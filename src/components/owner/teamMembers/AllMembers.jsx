@@ -38,8 +38,15 @@ const AllMembers = () => {
     },
     {
       id: 4,
-      name: "Item 3",
-      description: "Description 3",
+      name: "Item 4",
+      description: "Description 4",
+      price: "$30",
+      owner: false,
+    },
+    {
+      id: 5,
+      name: "Item 5",
+      description: "Description 5",
       price: "$30",
       owner: false,
     },
