@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SetupOrg from "./components/Registration/SetupOrg";
 import SetUp from "./components/Registration/SetUp";
 import InviteTeam from "./components/Registration/InviteTeam";
-import Login from "./components/owner/Login";
+import Login from "./components/owner/login";
 import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
