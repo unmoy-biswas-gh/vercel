@@ -86,7 +86,7 @@ function CreateReport({ closeView }) {
           fontSize: "18px",
           fontWeight: "500",
           fontFamily: "Inter",
-          padding: "12px 52px",
+          padding: "12px 40px",
         }}
         onClick={closeView}
       >
@@ -112,14 +112,14 @@ function CreateReport({ closeView }) {
           padding: "1rem",
           borderRadius: "10px",
           backgroundColor: "#fafafa",
-          paddingInline: "30px",
+          paddingInline: "25px",
           // position: "relative",
           // mt: "16px",
         }}
       >
         <Box
           sx={{
-            paddingInline: "22px",
+            paddingInline: "20px",
             backgroundColor: "white",
           }}
         >
@@ -255,7 +255,7 @@ function CreateReport({ closeView }) {
         sx={{
           width: "100%",
           mt: "3rem",
-          paddingInline: "40px",
+          paddingInline: "25px",
           height: "170px",
           borderRadius: "8px",
           background: "linear-gradient(271deg, #FAFAFA -1.18%, #F4FFFF 52.58%)",

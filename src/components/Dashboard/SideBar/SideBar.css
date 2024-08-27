@@ -4,12 +4,13 @@
   top: 0px;
   width: 19vw;
   height: 100vh;
-  padding: 0 10px;
+  padding: 0 1rem;
   overflow: auto;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.04);
   background-color: #fff;
+  border-right: 1px solid #efefef;
   /* background-color: blue; */
 }
 .sidemanu_content {
@@ -37,6 +38,7 @@
 }
 
 .premium_button {
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,7 +175,7 @@
 
 .menu--text {
   font-weight: 500;
-  font-size: 1vw;
+  font-size: 0.9rem;
   margin-top: 0.2vw;
 }
 
@@ -232,7 +234,7 @@
 .sidebar_powered_by .text {
   font-size: 0.7rem;
   font-weight: 400;
-  margin-top: 8vh;
+  margin-top: 2rem;
 }
 
 .sidebar_powered_by .brand_wrapper {
@@ -250,9 +252,23 @@
 }
 
 .sidebar_connect_btn {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: #005468;
+  background-color: transparent;
   line-height: 1.5rem;
   padding: 0.4rem 0.75rem 0.4rem 0.75rem;
+  border: 1px solid #005468;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar_connect_btn:hover {
+  color: white;
+  background-color: #005468;
+}
+
+.sidebar_logo {
+  height: 4.7rem;
+  width: 4.5rem;
 }
