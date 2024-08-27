@@ -1,0 +1,188 @@
+.sidemenu {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  width: 19vw;
+  height: 100vh;
+  padding: 0 10px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  /* background-color: blue; */
+}
+.sidemanu_content {
+  flex-grow: 1;
+  /* overflow-y: auto; */
+}
+.sidemenu::-webkit-scrollbar {
+  display: none;
+}
+
+.sidemenu_brand {
+  padding: 20px 0px 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.sidemenu_brand h6 {
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: #232526;
+}
+.subscribed_text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  background: linear-gradient(180deg, #ffc100 23.68%, #e0a10f 76.32%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subscribed_text svg {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.free_trial_text {
+  color: #b7b7b7;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
+
+.sidemenu_brand img {
+  width: 3vw;
+  height: 3vw;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.trail_days_box {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  border-radius: 8px;
+  background: linear-gradient(0deg, #fff 0%, #f1f1f1 100%);
+}
+.trail_days_box h4 {
+  font-size: 0.7rem;
+}
+.trail_days_box button {
+  border: none;
+  background: none;
+  color: #194af5;
+  font-size: 0.7rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+.sidebar_menu_item {
+  padding: 10px 15px 10px 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5vw;
+  text-decoration: none;
+  color: #2e2e2e;
+}
+.disbale_link {
+  padding: 10px 15px 10px 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5vw;
+  text-decoration: none;
+  color: #ddd;
+}
+
+.sidebar_menu_item svg {
+  vertical-align: middle;
+}
+
+.menu--text {
+  font-weight: 500;
+  font-size: 1vw;
+  margin-top: 0.2vw;
+}
+
+.sidebar_menu_item:hover {
+  color: #96cdcc;
+  background: #f6fffa;
+}
+
+.sidebar_menu_item:hover svg path {
+  fill: #96cdcc;
+}
+
+.checked {
+  color: #fff;
+  background: #77bcbb;
+}
+
+.checked svg path {
+  fill: #fff;
+}
+
+.sidebar_menu_item path {
+  fill: #96cdcc;
+}
+
+@media only screen and (max-width: 850px) and (min-width: 760px) {
+  .sidemenu {
+    width: 25vw;
+  }
+
+  .sidebar_menu_item {
+    padding: 10px 15px 10px 10px;
+  }
+}
+
+@media only screen and (max-width: 1190px) and (min-width: 850px) {
+  .sidemenu {
+    width: 23vw;
+  }
+
+  .sidebar_menu_item {
+    padding: 10px 15px 10px 15px;
+  }
+}
+
+.sidebar_powered_by {
+  display: flex;
+  /* gap: 0.8rem; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar_powered_by .text {
+  font-size: 0.9vw;
+  font-weight: 500;
+  color: #b5b5b5;
+  margin-top: 8vh;
+}
+
+.sidebar_powered_by .brand_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1vw;
+  font-weight: 500;
+  margin-top: 1vh;
+}
+
+.sidebar_powered_by .brand_wrapper img {
+  width: 1.8vw;
+}

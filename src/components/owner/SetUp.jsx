@@ -17,8 +17,7 @@ import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import OnboardingCompleteSVG from "../../assets/Onboarding.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import api from "../../utlils/api";
+import VideoPlayer from "../common/VideoPlayer";
 
 const OwnerSetUp = () => {
   const navigate = useNavigate();
@@ -82,12 +81,7 @@ const OwnerSetUp = () => {
     setOpen(false);
   };
 
-  const getSectors = async () => {
-    await api("/sector", "GET").then((res) => {
-      console.log(res.data);
-    });
-  };
-  getSectors();
+  // getSectors();
   const handleCountryChange = (event) => {
     setCountry(event.target.value);
   };
@@ -205,7 +199,8 @@ const OwnerSetUp = () => {
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullwidth
+                size="small"
+                fullWidth
                 label="Company Name"
                 variant="outlined"
                 sx={{
@@ -236,6 +231,7 @@ const OwnerSetUp = () => {
                 }}
               />
               <FormControl
+                size="small"
                 style={{ width: "49%", marginTop: "1rem" }}
                 sx={{
                   backgroundColor: "white",
@@ -292,6 +288,7 @@ const OwnerSetUp = () => {
                 </Select>
               </FormControl>
               <FormControl
+                size="small"
                 style={{
                   width: "49%",
                   marginTo: "1rem",
@@ -354,11 +351,12 @@ const OwnerSetUp = () => {
                 </Select>
               </FormControl>
               <TextField
+                size="small"
                 label="Average Revenue"
                 variant="outlined"
                 value={amount}
                 onChange={handleAmountChange}
-                fullwidth
+                fullWidth
                 type="number"
                 sx={{
                   fontSize: "14px",
@@ -436,7 +434,7 @@ const OwnerSetUp = () => {
                     </InputAdornment>
                   ),
                 }}
-                style={{ marginTop: 16, marginBottom: 20, color: "red" }}
+                style={{ marginTop: 16, color: "red" }}
               />
               <hr
                 style={{
@@ -447,7 +445,8 @@ const OwnerSetUp = () => {
                 }}
               />
               <FormControl
-                fullwidth
+                size="small"
+                fullWidth
                 style={{ marginTop: "1rem" }}
                 sx={{
                   backgroundColor: "white",
@@ -499,7 +498,8 @@ const OwnerSetUp = () => {
                 </Select>
               </FormControl>
               <FormControl
-                fullwidth
+                size="small"
+                fullWidth
                 style={{ marginTop: "1rem" }}
                 sx={{
                   fontSize: "14px",
@@ -562,7 +562,7 @@ const OwnerSetUp = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullwidth
+                fullWidth
                 style={{
                   marginTop: "2rem",
                   width: "100%",
@@ -625,7 +625,7 @@ const OwnerSetUp = () => {
                   </Typography>
                   <Button
                     onClick={() => {
-                      navigate("/owner/dashboard");
+                      navigate("/");
                     }}
                     variant="outlined"
                     style={{

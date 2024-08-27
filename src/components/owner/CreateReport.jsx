@@ -12,6 +12,7 @@ import CustomSelect from "../common/CustomSelect";
 import bannerImg from "../../assets/images/banner.png";
 import UploadFilesModal from "../common/UploadModal";
 import BookCall from "./BookCall";
+import { useNavigate } from "react-router-dom";
 
 const yearOptions = [
   { value: 2022, name: "2022" },
@@ -30,14 +31,14 @@ const unitOptions = [
   { value: "Meter", name: "Meter" },
   { value: "Kilogram", name: "Kilogram" },
 ];
-const matarialOptions = [
-  { value: "Liter", name: "Liter" },
-  { value: "Meter", name: "Meter" },
-  { value: "Kilogram", name: "Kilogram" },
-];
+// const matarialOptions = [
+//   { value: "Liter", name: "Liter" },
+//   { value: "Meter", name: "Meter" },
+//   { value: "Kilogram", name: "Kilogram" },
+// ];
 
 const mdInputStyle = {
-  marginRight: "1rem",
+  marginRight: "24px",
   width: "15rem",
 };
 
@@ -52,17 +53,27 @@ function CreateReport({ closeView }) {
   const [rawMatarial, setRawMatarial] = useState("");
   const [bookCall, setBookCall] = useState(false);
 
+  const navigate = useNavigate();
+
+  const handleNavigateToAddDataPoints = () => {
+    navigate("/owner/add-data-points", {
+      state: {
+        generationMethod: "manual",
+      },
+    });
+  };
+
   return (
     <Box
-      sx={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        padding: "1rem 2rem",
-        overflowY: "auto",
-      }}
+    // sx={{
+    //   position: "absolute",
+    //   top: 0,
+    //   left: 0,
+    //   width: "100%",
+    //   height: "100%",
+    //   padding: "1rem 2rem",
+    //   overflowY: "auto",
+    // }}
     >
       <Typography
         variant="h6"
@@ -71,6 +82,7 @@ function CreateReport({ closeView }) {
           fontSize: "18px",
           fontWeight: "500",
           fontFamily: "Inter",
+          padding: "12px 24px",
         }}
         onClick={closeView}
       >
@@ -94,114 +106,138 @@ function CreateReport({ closeView }) {
         sx={{
           boxShadow: "none",
           padding: "1rem",
-          borderRadius: "14px",
-          position: "relative",
-          mt: "1rem",
+          borderRadius: "10px",
+          // position: "relative",
+          mt: "24px",
+          padding: "24px",
         }}
       >
         <Typography
-          sx={{ fontSize: "14px", fontWeight: "600", fontFamily: "Inter" }}
+          sx={{
+            fontSize: { lg: "16px" },
+            fontWeight: "500",
+            fontFamily: "Inter",
+            lineHeight: { lg: 3 },
+          }}
         >
           Add name and select year
         </Typography>
-        <Box sx={{ mt: "1rem", mb: ".5rem" }}>
+        <Box sx={{ mt: "1rem", mb: 3 }}>
           <CustomField
             label={"Report Name"}
             value={reportName}
             onChange={(e) => setReportName(e.target.value)}
-            sx={{ marginRight: "1rem", width: "20rem" }}
+            sx={{ marginRight: 3, maxWidth: "400px", width: "100%" }}
           />
           <CustomSelect
             options={reportOptions}
             label={"Select reporting Segment"}
             value={""}
             // onChange={() => {}}
-            sx={{ marginRight: "1rem", width: "15rem", marginBottom: "15px" }}
+            sx={{ marginRight: 3, width: "15rem", marginBottom: "15px" }}
           />
           <CustomSelect
             options={yearOptions}
             label={"Year"}
             value={""}
             // onChange={() => {}}
-            sx={{ marginRight: "1rem", width: "6rem", marginBottom: "15px" }}
+            sx={{ marginRight: 3, width: "6rem", marginBottom: "15px" }}
           />
         </Box>
         <Typography
-          sx={{ fontSize: "14px", fontWeight: "600", fontFamily: "Inter" }}
+          sx={{
+            fontSize: { lg: "16px" },
+            fontWeight: "500",
+            fontFamily: "Inter",
+            lineHeight: { lg: 3 },
+          }}
         >
           Please enter your company's details
         </Typography>
-        <Box sx={{ mt: "1rem", width: "70%" }}>
-          <CustomField
-            label={"Company Name"}
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            sx={mdInputStyle}
-          />
-          <CustomField
-            label={"License Number"}
-            value={licenseNumb}
-            onChange={(e) => setLicenseNumb(e.target.value)}
-            sx={mdInputStyle}
-          />
-          <CustomField
-            label={"Total site area in m2"}
-            value={siteArea}
-            onChange={(e) => setSiteArea(e.target.value)}
-            sx={mdInputStyle}
-          />
-          <CustomField
-            label={"Units Produced in Report Period"}
-            value={unitProd}
-            onChange={(e) => setUnitProd(e.target.value)}
-            sx={mdInputStyle}
-          />
-          <CustomSelect
-            options={unitOptions}
-            label={"Unit"}
-            value={""}
-            // onChange={() => {}}
-            sx={{ ...mdInputStyle, marginBottom: "15px" }}
-          />
-          <br />
-          <CustomField
-            label={"Raw material Consumption"}
-            value={rawMatarial}
-            onChange={(e) => setRawMatarial(e.target.value)}
-            sx={mdInputStyle}
-          />
-          <CustomSelect
-            options={unitOptions}
-            label={"Unit"}
-            value={""}
-            // onChange={() => {}}
-            sx={{ ...mdInputStyle, marginBottom: "15px" }}
-          />
+        <Box sx={{ mt: "18.5px", display: "flex" }}>
+          <Box
+            sx={{
+              maxWidth: "80%",
+            }}
+          >
+            <CustomField
+              label={"Company Name"}
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              sx={mdInputStyle}
+            />
+            <CustomField
+              label={"License Number"}
+              value={licenseNumb}
+              onChange={(e) => setLicenseNumb(e.target.value)}
+              sx={mdInputStyle}
+            />
+            <CustomField
+              label={"Total site area in m2"}
+              value={siteArea}
+              onChange={(e) => setSiteArea(e.target.value)}
+              sx={mdInputStyle}
+            />
+            <CustomField
+              label={"Units Produced in Reporting"}
+              value={unitProd}
+              onChange={(e) => setUnitProd(e.target.value)}
+              sx={mdInputStyle}
+            />
+            <CustomSelect
+              options={unitOptions}
+              label={"Unit"}
+              value={""}
+              // onChange={() => {}}
+              sx={{ ...mdInputStyle, marginBottom: "15px" }}
+            />
+            <br />
+            <CustomField
+              label={"Raw material Consumption"}
+              value={rawMatarial}
+              onChange={(e) => setRawMatarial(e.target.value)}
+              sx={mdInputStyle}
+            />
+            <CustomSelect
+              options={unitOptions}
+              label={"Unit"}
+              value={""}
+              // onChange={() => {}}
+              sx={{ ...mdInputStyle, marginBottom: "15px" }}
+            />
+          </Box>
+
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "end",
+            }}
+          >
+            <Button
+              style={{
+                width: "max-content",
+                padding: "6px 28px",
+                borderRadius: 6,
+                backgroundImage:
+                  "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
+                fontWeight: 400,
+                fontSize: "14px",
+                fontFamily: "Inter",
+                color: "#FFF",
+                border: "1px solid #DDD",
+                letterSpacing: "0.5px",
+                cursor: "pointer",
+                textTransform: "none",
+                float: "right",
+              }}
+              onClick={() => setShowUpload(true)}
+            >
+              Next
+            </Button>
+          </div>
         </Box>
-        <Button
-          style={{
-            marginTop: "2rem",
-            width: "max-content",
-            padding: "6px 28px",
-            borderRadius: 6,
-            backgroundImage:
-              "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
-            fontWeight: 400,
-            fontSize: "14px",
-            fontFamily: "Inter",
-            color: "#FFF",
-            border: "1px solid #DDD",
-            letterSpacing: "0.5px",
-            cursor: "pointer",
-            textTransform: "none",
-            position: "absolute",
-            bottom: "1rem",
-            right: "1rem",
-          }}
-          onClick={() => setShowUpload(true)}
-        >
-          Next
-        </Button>
       </Paper>
       <Box
         sx={{
@@ -278,19 +314,25 @@ function CreateReport({ closeView }) {
           },
         }}
       >
-        <DialogContent style={{ width: "550px" }}>
+        <DialogContent
+          style={{ width: "550px" }}
+          sx={{
+            padding: 0,
+          }}
+        >
           <Box
             style={{
               // textAlign: "center",
-              padding: "1.5rem",
+              // padding: "1rem",
               borderRadius: "10px",
               backgroundColor: "#FFF",
               cursor: "pointer",
+              padding: "56px",
             }}
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: "500", fontFamily: "Inter", mb: "1rem" }}
+              sx={{ fontWeight: "400", fontFamily: "Inter", mb: "32px" }}
             >
               Choose how you want to generate the report?
             </Typography>
@@ -308,7 +350,7 @@ function CreateReport({ closeView }) {
                 display: "flex",
                 flexDirection: "row",
                 gap: "2rem",
-                mt: ".5rem",
+                // mt: ".5rem",
                 cursor: "pointer",
                 ":hover": {
                   backgroundColor: "#F6FFF7",
@@ -396,6 +438,7 @@ function CreateReport({ closeView }) {
               </Box>
             </Box>
             <Box
+              onClick={handleNavigateToAddDataPoints}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -405,7 +448,7 @@ function CreateReport({ closeView }) {
                 display: "flex",
                 flexDirection: "row",
                 gap: "2rem",
-                mt: ".5rem",
+                mt: "21px",
                 cursor: "pointer",
 
                 ":hover": {
@@ -499,7 +542,7 @@ function CreateReport({ closeView }) {
                     color: "#9B9B9B",
                   }}
                 >
-                  Enter your data directly using our manual upload for55
+                  Enter your data directly using our manual upload form
                 </Typography>
               </Box>
             </Box>

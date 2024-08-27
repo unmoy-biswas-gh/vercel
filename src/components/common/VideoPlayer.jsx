@@ -13,9 +13,8 @@ function VideoPlayer() {
       loop
       muted
       autoPlay
-      // controls
-      style={{ height: "100%" }}
-    ></video>
+      style={{ height: "100%", width: "100%", objectFit: "cover" }}
+    />
   );
 }
 

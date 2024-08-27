@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import defaultUser from "../../assets/images/login/defaultUser.png";
 import bgPattern from "../../assets/images/login/bg.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import VideoPlayer from "../common/VideoPlayer";
 import ImageModal from "../common/ImageModal";
 
 function PersonalInfo() {
@@ -76,7 +76,7 @@ function PersonalInfo() {
     });
 
     if (isFullNameValid) {
-      navigate("/owner/setuporg");
+      navigate("/setupprofile");
     }
   };
 
@@ -207,13 +207,7 @@ function PersonalInfo() {
                 }}
                 onClick={clickInput}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="19"
-                  height="19"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                >
+                <svg width="19" height="19" viewBox="0 0 25 24" fill="none">
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -234,7 +228,7 @@ function PersonalInfo() {
             </Box>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullwidth
+                fullWidth
                 label="Your Full name"
                 variant="outlined"
                 required
@@ -277,27 +271,8 @@ function PersonalInfo() {
 
               <button
                 type="submit"
-                variant="contained"
-                color="primary"
-                fullwidth
-                disabled={!isFormValid}
-                style={{
-                  marginTop: "2rem",
-                  width: "100%",
-                  padding: "14px 24px",
-                  borderRadius: 6,
-                  background: !isFormValid ? "#E8E8E8" : "",
-                  backgroundImage: isFormValid
-                    ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
-                    : "",
-                  fontWeight: 500,
-                  fontSize: "15px",
-                  fontFamily: "Inter",
-                  color: !isFormValid ? "#A2A2A2" : "#FFF",
-                  border: "1px solid #DDD",
-                  letterSpacing: "0.5px",
-                  cursor: "pointer",
-                }}
+                // disabled={!isFormValid}
+                className="signup_verify_btn"
               >
                 Next
               </button>

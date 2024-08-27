@@ -2,10 +2,9 @@ import { TextField } from "@mui/material";
 import React from "react";
 
 function CustomField({ sx, fullWidth, label, value, onChange, required }) {
-  console.log("fullWidth", fullWidth);
   return (
     <TextField
-      fullwidth={fullWidth}
+      fullWidth={fullWidth} // Corrected `fullWidth` prop name
       label={label}
       variant="outlined"
       required={required}
@@ -13,37 +12,35 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
       type="email"
       value={value}
       onChange={onChange}
-      // error={error.email}
-      // helperText={helperText.email}
       style={{
-        marginBottom: 15,
+        marginBottom: "24px",
         borderRadius: "10px",
         backgroundColor: "white",
       }}
       sx={{
-        fontSize: "14px",
+        maxWidth: "246px",
+        //  maxHeight: "56px",
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
             borderColor: "#369D9C",
           },
+          height: "56px", // Ensures consistent height
+        },
+        "& .MuiInputLabel-root": {
+          fontFamily: "Inter",
+          // fontSize: "14px", // Default font size for label
         },
         "& .MuiInputLabel-root.Mui-focused": {
           color: "rgba(0, 0, 0, 0.60)",
           fontFamily: "Inter",
-        },
-        "& .MuiFormHelperText-root": {
-          color: "red", // Custom helper text color
+          // fontSize: "12px", // Font size when label is floating
         },
         "& .MuiInputBase-input": {
           fontFamily: "Inter",
-          padding: "14px",
-        },
-        "& .MuiInputLabel-root": {
-          fontFamily: "Inter",
-          fontSize: "14px",
-        },
-        input: {
-          fontSize: "14px",
+          fontSize: "16px",
+          padding: "16px 14px", // Padding inside text field
+          height: "56px", // Ensures consistent height
+          boxSizing: "border-box",
         },
         ...sx,
       }}

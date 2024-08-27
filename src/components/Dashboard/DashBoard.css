@@ -1,0 +1,33 @@
+.dashboard_outlet {
+  position: absolute;
+  left: 19vw;
+  top: 0px;
+  background: #fbfbfb;
+  background-color: linear-gradient(
+    247deg,
+    #eef7ff 3.42%,
+    rgba(238, 247, 255, 0) 73.71%,
+    rgba(238, 247, 255, 0) 107.04%
+  );
+  height: 100vh;
+  width: 81vw;
+  overflow: scroll;
+}
+
+.dashboard_outlet .content_wrapper {
+  position: relative;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 850px) and (min-width: 760px) {
+  .dashboard_outlet {
+    left: 24vw;
+    width: 76vw;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 850px) {
+  .dashboard_outlet {
+    left: 24vw;
+    width: 76vw;
+  }
+}
