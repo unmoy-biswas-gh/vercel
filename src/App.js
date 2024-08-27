@@ -11,6 +11,7 @@ import PersonalInfo from "./components/owner/PersonalInfo";
 import DashBoard from "./components/owner/DashBoard";
 import { TeamMembers } from "./components/owner/teamMembers";
 import { Reports } from "./components/owner/reports";
+import { AddDataPoints } from "./components/owner/dataPoints";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="dashboard" element={<DashBoard />} />
           <Route path="team-members" element={<TeamMembers />} />
           <Route path="reports" element={<Reports />} />
+          <Route path="add-data-points" element={<AddDataPoints />} />
         </Route>
         <Route path="/setupprofile" element={<SetupOrg />} />
         <Route path="/setup" element={<SetUp />} />

@@ -521,9 +521,11 @@ function DashboardNav({ children }) {
         <Box
           sx={{
             background: "#F9F9F9",
-            marginLeft: "259px",
-            marginTop: "59px",
-            flex: 1,
+            marginLeft: { sm: `${drawerWidth}px`, xs: 0 }, // Adjust margin for small screens
+            marginTop: "60px", // Assuming AppBar height
+            width: { sm: `calc(100% - ${drawerWidth}px)`, xs: "100%" }, // Full width on small screens
+            height: "calc(100vh - 60px)", // Ensure it takes the full remaining height
+            overflow: "auto", // Handle overflow content
           }}
         >
           {children}

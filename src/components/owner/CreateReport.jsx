@@ -12,6 +12,7 @@ import CustomSelect from "../common/CustomSelect";
 import bannerImg from "../../assets/images/banner.png";
 import UploadFilesModal from "../common/UploadModal";
 import BookCall from "./BookCall";
+import { useNavigate } from "react-router-dom";
 
 const yearOptions = [
   { value: 2022, name: "2022" },
@@ -30,11 +31,11 @@ const unitOptions = [
   { value: "Meter", name: "Meter" },
   { value: "Kilogram", name: "Kilogram" },
 ];
-const matarialOptions = [
-  { value: "Liter", name: "Liter" },
-  { value: "Meter", name: "Meter" },
-  { value: "Kilogram", name: "Kilogram" },
-];
+// const matarialOptions = [
+//   { value: "Liter", name: "Liter" },
+//   { value: "Meter", name: "Meter" },
+//   { value: "Kilogram", name: "Kilogram" },
+// ];
 
 const mdInputStyle = {
   marginRight: "1rem",
@@ -51,6 +52,12 @@ function CreateReport({ closeView }) {
   const [unitProd, setUnitProd] = useState("");
   const [rawMatarial, setRawMatarial] = useState("");
   const [bookCall, setBookCall] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleNavigateToAddDataPoints = () => {
+    navigate("/owner/add-data-points");
+  };
 
   return (
     <Box
@@ -94,7 +101,7 @@ function CreateReport({ closeView }) {
         sx={{
           boxShadow: "none",
           padding: "1rem",
-          borderRadius: "14px",
+          borderRadius: "10px",
           position: "relative",
           mt: "1rem",
         }}
@@ -301,10 +308,10 @@ function CreateReport({ closeView }) {
               Choose how you want to generate the report?
             </Typography>
             <Box
-              // onClick={() => {
-              //   setShowUploadDoc(true);
-              //   setShowUpload(false);
-              // }}
+              onClick={() => {
+                setShowUploadDoc(true);
+                setShowUpload(false);
+              }}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
@@ -402,10 +409,7 @@ function CreateReport({ closeView }) {
               </Box>
             </Box>
             <Box
-              onClick={() => {
-                setShowUploadDoc(true);
-                setShowUpload(false);
-              }}
+              onClick={handleNavigateToAddDataPoints}
               sx={{
                 borderRadius: "10.979px",
                 border: "1.372px solid #DBDBDB",
