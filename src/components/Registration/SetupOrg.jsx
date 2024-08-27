@@ -9,10 +9,12 @@ import bgPattern from "../../assets/images/login/bg.svg";
 const SetupOrg = () => {
   const navigate = useNavigate();
   const [LogoSet, setLogoSet] = useState(false);
+  const [logo, setLogo] = useState(null);
 
-  const handleSubmit = (event) => {
+  console.log(logo);
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("/setup");
+    navigate("/setup", { state: logo });
   };
 
   return (
@@ -126,11 +128,15 @@ const SetupOrg = () => {
               Join us to access sustainability reports and track your progress
               towards a greener future.
             </Typography>
-            <UploadLogo imageSelected={setLogoSet} />
+            <UploadLogo
+              imageSelected={setLogoSet}
+              setLogo={setLogo}
+              logo={logo}
+            />
             <button
               onClick={handleSubmit}
               type="submit"
-              // disabled={!LogoSet}/
+              disabled={!LogoSet}
               variant="contained"
               color="primary"
               fullwidth

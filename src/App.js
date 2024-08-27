@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SetupOrg from "./components/Registration/SetupOrg";
 import SetUp from "./components/Registration/SetUp";
 import InviteTeam from "./components/Registration/InviteTeam";
-import Login from "./components/owner/login";
+import Login from "./components/owner/Login";
 import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
@@ -27,8 +27,8 @@ const App = () => {
           <Route path="/personalinfo" element={<PersonalInfo />} />{" "}
           <Route path="/setupprofile" element={<SetupOrg />} />
           <Route path="/setup" element={<OwnerSetUp />} />
-          <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} />
-          <Route path="/setup" element={<SetUp />} />
+          {/* <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} /> */}
+          {/* <Route path="/setup" element={<SetUp />} /> */}
           <Route path="/invite" element={<InviteTeam />} />
           <Route
             path="/"
@@ -42,8 +42,8 @@ const App = () => {
             <Route path="team-members" element={<TeamMembers />} />
             <Route path="add-data-points" element={<AddDataPoints />} />
             <Route path="monitor" element={<Monitor />} />
-            {/* <Route path="subcriptions" element={<TeamMembers />} />
-            <Route path="reports" element={<TeamMembers />} /> */}
+            <Route path="subcriptions" element={<>subcriptions</>} />
+            <Route path="reports" element={<>reports</>} />
           </Route>
         </Routes>
       </Router>

@@ -13,6 +13,7 @@ import defaultUser from "../../assets/images/login/defaultUser.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import VideoPlayer from "../common/VideoPlayer";
 import ImageModal from "../common/ImageModal";
+import { saveInfo } from "../../api/auth";
 
 function PersonalInfo() {
   const [fullName, setFullName] = useState("");
@@ -62,7 +63,7 @@ function PersonalInfo() {
     setIsFormValid(isFullNameValid && isProfileSet);
   }, [fullName, imageApi]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const isFullNameValid = fullName.trim() !== "";
@@ -74,9 +75,17 @@ function PersonalInfo() {
     setHelperText({
       fullName: !isFullNameValid ? "Full Name is required" : "",
     });
-
+    const formData = new FormData();
+    formData.append("user_profileImage", imageApi);
+    formData.append("user_name", fullName);
     if (isFullNameValid) {
-      navigate("/setupprofile");
+      let response = await saveInfo(formData);
+      console.log("pass", response);
+      if (response.status === 201) {
+        navigate("/setupprofile");
+      } else {
+        console.log("Could not add image and name");
+      }
     }
   };
 

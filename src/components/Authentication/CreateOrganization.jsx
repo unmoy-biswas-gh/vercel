@@ -11,10 +11,11 @@ import PasswordInput from "./PasswordInput";
 import { useLocation, useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import VideoPlayer from "../common/VideoPlayer";
+import { savepassword } from "../../api/auth";
 
 const CreateOrganization = () => {
   const location = useLocation();
-  console.log(location.state);
+  // console.log(location.state);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +34,7 @@ const CreateOrganization = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
-
+  // console.log("error", error);
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -52,14 +53,14 @@ const CreateOrganization = () => {
     );
   }, [email, password, agreed, password2]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate("/personalinfo");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     const isEmailValid = email.trim() !== "" && validateEmail(email);
     const isPasswordValid = password.trim() !== "";
     const isPasswordsMatch = password === password2;
     const isAgreedValid = agreed;
-
+    // console.log("password", password);
     setError({
       email: !isEmailValid,
       password: !isPasswordValid,
@@ -71,7 +72,16 @@ const CreateOrganization = () => {
       password2: !isPasswordsMatch ? "Passwords do not match" : "",
     });
 
+    const formData = new FormData();
+    formData.append("user_password", password);
     if (isEmailValid && isPasswordValid && isPasswordsMatch && isAgreedValid) {
+      let response = await savepassword(formData);
+      console.log("pass", response);
+      if (response.status === 201) {
+        navigate("/personalinfo");
+      } else {
+        console.log("Could not verify password");
+      }
     }
   };
 
@@ -170,8 +180,8 @@ const CreateOrganization = () => {
               placeholder={"Re-enter Password"}
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
-              error={error.password}
-              helperText={helperText.password}
+              error={error.password2}
+              helperText={helperText.password2}
             />
             <FormControlLabel
               control={

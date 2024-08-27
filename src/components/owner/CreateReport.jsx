@@ -56,7 +56,7 @@ function CreateReport({ closeView }) {
   const navigate = useNavigate();
 
   const handleNavigateToAddDataPoints = () => {
-    navigate("/owner/add-data-points", {
+    navigate("/add-data-points", {
       state: {
         generationMethod: "manual",
       },
@@ -109,7 +109,6 @@ function CreateReport({ closeView }) {
           borderRadius: "10px",
           // position: "relative",
           mt: "24px",
-          padding: "24px",
         }}
       >
         <Typography

@@ -8,7 +8,7 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
       label={label}
       variant="outlined"
       required={required}
-      size="medium"
+      size="small"
       type="email"
       value={value}
       onChange={onChange}
@@ -24,7 +24,6 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
           "&.Mui-focused fieldset": {
             borderColor: "#369D9C",
           },
-          height: "56px", // Ensures consistent height
         },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",
@@ -38,9 +37,6 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
         "& .MuiInputBase-input": {
           fontFamily: "Inter",
           fontSize: "16px",
-          padding: "16px 14px", // Padding inside text field
-          height: "56px", // Ensures consistent height
-          boxSizing: "border-box",
         },
         ...sx,
       }}

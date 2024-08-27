@@ -18,3 +18,26 @@
   background: #a0a0a0;
   cursor: default;
 }
+.login_text {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #717171;
+  text-align: center;
+  margin-top: 20px;
+}
+.login_text2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.login_text span {
+  font-size: 0.9rem;
+  font-weight: 400;
+  background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

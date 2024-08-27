@@ -6,6 +6,7 @@ function CustomSelect({ label, onChange, value, options, sx }) {
 
   return (
     <FormControl
+      size="small"
       sx={{
         backgroundColor: "white",
         fontSize: "16px",

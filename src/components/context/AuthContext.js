@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 // import { authentication } from "../../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import { verifyEmailOTP } from "../../api/auth";
+import { verifyEmailOTP, verifyEmailPassword } from "../../api/auth";
 // import {
 //   GoogleAuthProvider,
 //   getAuth,
@@ -37,16 +37,17 @@ export const AuthProvider = ({ children }) => {
   const [reloadUser, setReloadUser] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(true);
   const [subScriptionModalOpen, setSubscriptionModalOpen] = useState(false);
-  console.log("isAuthenticated", isAuthenticated);
-  console.log("token", token);
+  // console.log("isAuthenticated", isAuthenticated);
+  // console.log("token", token);
   async function verifyOtpWithBackend(data) {
     try {
       const authenticatedUser = await verifyEmailOTP(data);
-      console.log("authenticatedUser", authenticatedUser);
-      console.log(authenticatedUser?.data?.data);
+      // console.log("authenticatedUser", authenticatedUser);
+      // console.log(authenticatedUser?.data?.data);
       if (authenticatedUser?.data?.data?.token) {
-        console.log(authenticatedUser?.data?.data?.token);
-        setToken(authenticatedUser.token);
+        console.log("token", authenticatedUser?.data?.data?.token);
+        setToken(authenticatedUser?.data?.data?.token);
+        localStorage.setItem("token", authenticatedUser?.data?.data?.token);
         setIsAuthenticated(true); // updating state deirectly without checking if token has expired for immidiate effect
         return authenticatedUser;
       } else {
@@ -56,21 +57,22 @@ export const AuthProvider = ({ children }) => {
       console.log(err);
     }
   }
-
-  // async function verifyEmailOtpWithBackend(email, otp) {
-  //   try {
-  //     const authenticatedUser = await verifyEmailWithoutAuthOTP(email, otp);
-  //     if (authenticatedUser?.token) {
-  //       setToken(authenticatedUser.token);
-  //       setIsAuthenticated(true); // updating state deirectly without checking if token has expired for immidiate effect
-  //       return authenticatedUser;
-  //     } else {
-  //       throw new Error("Could not authenticate");
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  async function verifyPasswordWithBackend(data) {
+    try {
+      const authenticatedUser = await verifyEmailPassword(data);
+      if (authenticatedUser?.data?.data?.token) {
+        // console.log("token", authenticatedUser?.data?.data?.token);
+        setToken(authenticatedUser?.data?.data?.token);
+        localStorage.setItem("token", authenticatedUser?.data?.data?.token);
+        setIsAuthenticated(true); // updating state deirectly without checking if token has expired for immidiate effect
+        return authenticatedUser;
+      } else {
+        throw new Error("Could not authenticate");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   async function logout() {
     // await LougOut();
@@ -265,6 +267,7 @@ export const AuthProvider = ({ children }) => {
     // setSubscriptionModalOpen,
     // subScriptionModalOpen,
     verifyOtpWithBackend,
+    verifyPasswordWithBackend,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
