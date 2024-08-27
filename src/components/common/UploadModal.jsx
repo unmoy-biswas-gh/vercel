@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import uploadIcons from "../../assets/images/upload.png";
 
 import UploadingPopup from "./UploadingPopup";
+import { useNavigate } from "react-router-dom";
 
 const fileIcons = {
   pdf: (
@@ -166,6 +167,7 @@ function UploadFilesModal({ open, onClose }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showUploadedFile, setShowUploadedFile] = useState(false);
   const [processingScreen, setProcessingScreen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (uploadedFiles.length > 0) {
@@ -255,6 +257,11 @@ function UploadFilesModal({ open, onClose }) {
     try {
       // Simulate an API call
       await new Promise((resolve) => setTimeout(resolve, 4500)); // Adjust the duration as necessary
+      navigate("/owner/add-data-points", {
+        state: {
+          generationMethod: "ai",
+        },
+      });
     } catch (error) {
       // Handle error
       console.error("API Error:", error);

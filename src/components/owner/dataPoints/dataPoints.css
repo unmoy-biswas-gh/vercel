@@ -134,7 +134,8 @@
 .kpi-table-heading-cell {
   padding: 8.5px 0;
   color: #5b5b5b;
-  padding: 19px 40px;
+  padding: 19px 40px 0 40px;
+  margin-bottom: -20px;
 }
 
 .center-content {
@@ -172,14 +173,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 0;
+  padding: 8px 10px;
 }
 
 .kpi-table-data_value_div input {
-  max-width: 143px;
+  max-width: 120px;
   height: 40px;
   text-align: center;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid #dbdbdb;
   outline: none;
 }
@@ -303,4 +304,9 @@
   color: white;
   border: none;
   box-sizing: border-box;
+}
+
+/* AI STYLES */
+.ai-generated {
+  background-color: #f6fffa;
 }

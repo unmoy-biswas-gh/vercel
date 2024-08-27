@@ -1,6 +1,7 @@
 import React from "react";
 import messages from "../../../assets/messages.svg";
 import dummyUser from "../../../assets/dummyUser.png";
+import { useLocation } from "react-router-dom";
 
 const EnvironmentalKpi = () => {
   const headings = [
@@ -10,6 +11,11 @@ const EnvironmentalKpi = () => {
     "Value",
     "Assignee",
   ];
+
+  const location = useLocation();
+  console.log(location.state.generationMethod);
+
+  const isAiGenerated = location.state.generationMethod === "ai";
 
   const dummyData = [
     {
@@ -72,54 +78,6 @@ const EnvironmentalKpi = () => {
         overflow: "auto",
       }}
     >
-      {/* <div className="kpi-table_heading">
-        {headings.map((item) => (
-          <div className="heading_cell" key={item}>
-            {item}
-          </div>
-        ))}
-      </div>
-      <div className="kpi-table_body">
-        {dummyData.map((item) => (
-          <div key={item.id} className="kpi-table_row">
-            <div className="symbol-cell kpi-table-cell">{item.symbol}</div>
-            <div className="data-points-cell kpi-table-cell">
-              {item.dataPoints.map((pt) => (
-                <div key={pt.id} className="data-points-cell_point">
-                  {pt.point}
-                </div>
-              ))}
-            </div>
-            <div className="kpi-table-cell">
-              {item.dataPoints.map((pt) => (
-                <div key={pt.id} className="data-points-unit_cell">
-                  {pt.unit}
-                </div>
-              ))}
-            </div>
-            <div className="kpi-table-cell">
-              {item.dataPoints.map((pt) => (
-                <div key={pt.id} className="data-points-value_cell">
-          
-                  <input
-                    type="text"
-                    value={pt.value}
-                    className="data-points-value_input"
-                    placeholder="Enter Value"
-                  />
-                
-                </div>
-              ))}
-            </div>
-            <div className="data-points-assignee_cell kpi-table-cell">
-              <div className="chat">
-       
-              </div>
-            </div>
-          </div>
-        ))}
-      </div> */}
-
       <div className="kpi-table">
         <div className="kpi-table-row kpi-table-heading">
           {headings.map((item, index) => (
@@ -141,27 +99,50 @@ const EnvironmentalKpi = () => {
             key={item.id}
             className={`kpi-table-row ${index === 1 ? "no-gap" : ""}`}
           >
-            <div className="kpi-table-cell center-content kpi-table-symbol_div">
+            <div
+              className="kpi-table-cell center-content kpi-table-symbol_div"
+              style={{
+                backgroundColor: isAiGenerated ? "#F2F2F2" : "white",
+              }}
+            >
               {item.symbol}
             </div>
             <div className="kpi-table-cell">
               {item.dataPoints.map((pt) => (
-                <div className="kpi-table-data_point_div" key={pt.id}>
+                <div
+                  className="kpi-table-data_point_div"
+                  key={pt.id}
+                  style={{
+                    backgroundColor: pt.value ? "#F2F2F2" : "white",
+                  }}
+                >
                   {pt.point}
                 </div>
               ))}
             </div>
-            {/* kpi-table-data_unit_div */}
-            <div className="kpi-table-cell ">
+            <div className="kpi-table-cell">
               {item.dataPoints.map((pt) => (
-                <div className="kpi-table-data_unit_div " key={pt.id}>
+                <div
+                  className="kpi-table-data_unit_div"
+                  key={pt.id}
+                  style={{
+                    backgroundColor: pt.value ? "#F2F2F2" : "white",
+                  }}
+                >
                   {pt.unit}
                 </div>
               ))}
             </div>
-            <div className="kpi-table-cell ">
+            <div className="kpi-table-cell">
               {item.dataPoints.map((pt) => (
-                <div key={pt.value} className="kpi-table-data_value_div ">
+                <div
+                  key={pt.value}
+                  className="kpi-table-data_value_div"
+                  style={{
+                    backgroundColor:
+                      isAiGenerated && !pt.value ? "#FFEDED" : "",
+                  }}
+                >
                   <input
                     type="text"
                     placeholder="Enter Value"

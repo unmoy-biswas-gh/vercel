@@ -56,7 +56,11 @@ function CreateReport({ closeView }) {
   const navigate = useNavigate();
 
   const handleNavigateToAddDataPoints = () => {
-    navigate("/owner/add-data-points");
+    navigate("/owner/add-data-points", {
+      state: {
+        generationMethod: "manual",
+      },
+    });
   };
 
   return (

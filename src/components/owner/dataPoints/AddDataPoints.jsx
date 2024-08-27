@@ -7,6 +7,7 @@ import ai from "../../../assets/AI.svg";
 import EnvironmentalKpi from "./EnvironmentalKpi";
 import SocialKpi from "./SocialKpi";
 import GovernanceKpi from "./GovernanceKpi";
+import { useNavigate } from "react-router-dom";
 
 const Tab = ({ name, onClick, isActive }) => {
   return (
@@ -23,7 +24,7 @@ const Tab = ({ name, onClick, isActive }) => {
 
 const AddDataPoints = () => {
   const [currentTab, setCurrentTab] = useState(0);
-
+  const navigate = useNavigate();
   const tabs = [
     {
       id: 0,
@@ -44,7 +45,14 @@ const AddDataPoints = () => {
       <div className="add-data-points_container">
         {/* HEADING DIV */}
         <div className="add-data-points_heading">
-          <img src={back} alt="Back" height={16} width={16} />
+          <img
+            style={{ cursor: "pointer" }}
+            src={back}
+            alt="Back"
+            height={16}
+            width={16}
+            onClick={() => navigate("/owner/dashboard")}
+          />
           <h2>Add essential Data points</h2>
         </div>
 
@@ -68,7 +76,7 @@ const AddDataPoints = () => {
             ))}
           </div>
 
-          <button>
+          <button style={{ cursor: "pointer" }}>
             <img src={ai} alt="AI" /> <span>Upload data with AI</span>
           </button>
         </div>
