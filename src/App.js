@@ -15,6 +15,7 @@ import SignUp from "./components/Authentication/SignUp";
 import { AuthProvider } from "./components/context/AuthContext";
 import CreateOrganization from "./components/Authentication/CreateOrganization";
 import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
+import Reports from "./components/owner/reports/Reports";
 
 const App = () => {
   return (
@@ -43,7 +44,7 @@ const App = () => {
             <Route path="add-data-points" element={<AddDataPoints />} />
             <Route path="monitor" element={<Monitor />} />
             <Route path="subcriptions" element={<>subcriptions</>} />
-            <Route path="reports" element={<>reports</>} />
+            <Route path="reports" element={<Reports />} />
           </Route>
         </Routes>
       </Router>
