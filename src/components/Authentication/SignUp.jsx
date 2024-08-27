@@ -128,17 +128,7 @@ const SignUp = () => {
       alert("not a valid email");
     }
   };
-  // async function getActiveWeekdays() {
-  //   const response = await getCountries();
-  //   console.log(response);
-  //   if (response?.status === 200) {
-  //     console.log(response);
-  //   } else {
-  //   }
-  // }
-  // useEffect(() => {
-  //   getActiveWeekdays();
-  // }, []);
+
   return (
     <Grid container style={{ height: "100vh" }}>
       <Grid item xs={12} md={6} style={{ height: "100%", width: "100%" }}>
@@ -222,6 +212,11 @@ const SignUp = () => {
               >
                 Verify
               </button>
+
+              <p className="login_text">
+                Already have an account?{" "}
+                <span onClick={() => navigate("/login")}>Login</span>
+              </p>
             </>
           ) : (
             <>

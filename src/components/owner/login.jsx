@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
-import {
-  Grid,
-  Box,
-  Typography,
-  TextField,
-  Checkbox,
-  FormControlLabel,
-} from "@mui/material";
+import { Grid, Box, Typography, TextField } from "@mui/material";
 import PasswordInput from "../Authentication/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import VideoPlayer from "../common/VideoPlayer";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const { verifyPasswordWithBackend } = useAuth();
   const [error, setError] = useState({
     email: false,
     password: false,
@@ -25,7 +19,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [agreed, setAgreed] = useState(false);
+
   const [isFormValid, setIsFormValid] = useState(false);
 
   const navigate = useNavigate();
@@ -35,27 +29,21 @@ const Login = () => {
     return re.test(email);
   };
 
-  // useEffect(() => {
-  //   callApi();
-  // }, []);
-
   useEffect(() => {
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
 
     const isEmailValid = email.trim() !== "" && validateEmail(email);
     const isPasswordValid = passwordRegex.test(password);
-    const isAgreedValid = agreed;
 
-    setIsFormValid(isEmailValid && isPasswordValid && isAgreedValid);
-  }, [email, password, agreed]);
+    setIsFormValid(isEmailValid && isPasswordValid);
+  }, [email, password]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const isEmailValid = email.trim() !== "" && validateEmail(email);
     const isPasswordValid = password.trim() !== "";
-    const isAgreedValid = agreed;
 
     setError({
       email: !isEmailValid,
@@ -66,14 +54,23 @@ const Login = () => {
       email: !isEmailValid ? "Please enter a valid email address" : "",
       password: !isPasswordValid ? "Password is required" : "",
     });
+    const payload = {
+      user_email: email,
+      user_password: password,
+    };
+    if (isEmailValid && isPasswordValid) {
+      // localStorage.setItem(
+      //   "userInfo",
+      //   JSON.stringify({ user_name: email, user_password: password })
+      // );
 
-    if (isEmailValid && isPasswordValid && isAgreedValid) {
-      console.log(isEmailValid, isPasswordValid, isAgreedValid);
-      localStorage.setItem(
-        "userInfo",
-        JSON.stringify({ user_name: email, user_password: password })
-      );
-      navigate("/owner/personal-info");
+      let response = await verifyPasswordWithBackend(payload);
+      console.log("response", response);
+      if (response.status === 200) {
+        navigate("/");
+      } else {
+        console.log("error");
+      }
     }
   };
 
@@ -144,7 +141,7 @@ const Login = () => {
               gutterBottom
               style={{ fontFamily: "Inter", fontSize: "29px", fontWeight: 500 }}
             >
-              Register Account!
+              Sign In to Track Your Sustainability Goals
             </Typography>
             <Typography
               variant="body1"
@@ -157,8 +154,8 @@ const Login = () => {
                 color: "#8692A6",
               }}
             >
-              Join us to access sustainability reports and track your progress
-              towards a greener future.
+              Enter your credentials to access your personalized sustainability
+              dashboard.
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
@@ -166,7 +163,7 @@ const Login = () => {
                 label="Email Address"
                 variant="outlined"
                 required
-                size="medium"
+                size="small"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -208,57 +205,16 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 error={error.password}
                 helperText={helperText.password}
+                placeholder={"Password"}
               />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={agreed}
-                    onChange={(e) => setAgreed(e.target.checked)}
-                    sx={{
-                      color: "primary",
 
-                      "&.Mui-checked": {
-                        color: "#43BAB9",
-                      },
-                      svg: {
-                        fill: "#43BAB9",
-                      },
-                    }}
-                  />
-                }
-                label="I agree to terms & conditions"
-                sx={{
-                  marginTop: "2rem",
-                  fontFamily: "Inter",
-                  fontWeight: 500,
-                  color: "#696F79",
-                  "& .MuiFormControlLabel-label": {
-                    fontFamily: "Inter, Arial, sans-serif",
-                  },
-                  span: {
-                    fontWeight: "500",
-                  },
-                  ".MuiFormControlLabel-label": {
-                    fontSize: "14px",
-                  },
-                }}
-              />{" "}
-              {/* <CustomField
-                label={"Report Name"}
-                fullWidth={false}
-                // value={reportName}
-                // onChange={(e) => setReportName(e.target.value)}
-                sx={{ marginRight: "1rem", width: "20rem" }}
-              /> */}
               <button
                 type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
                 disabled={!isFormValid}
                 style={{
-                  marginTop: "8px",
-                  padding: "14px 24px",
+                  width: "100%",
+                  marginTop: "2.5rem",
+                  padding: "14px 0",
                   borderRadius: 6,
                   background: !isFormValid ? "#E8E8E8" : "",
                   backgroundImage: isFormValid
@@ -273,8 +229,9 @@ const Login = () => {
                   cursor: "pointer",
                 }}
               >
-                Register Account
+                Log In
               </button>
+              <p className="login_text2">Forgot Password?</p>
             </form>
           </Box>
         </Grid>

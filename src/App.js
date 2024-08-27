@@ -26,8 +26,8 @@ const App = () => {
           <Route path="/personalinfo" element={<PersonalInfo />} />{" "}
           <Route path="/setupprofile" element={<SetupOrg />} />
           <Route path="/setup" element={<OwnerSetUp />} />
-          <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} />
-          <Route path="/setup" element={<SetUp />} />
+          {/* <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} /> */}
+          {/* <Route path="/setup" element={<SetUp />} /> */}
           <Route path="/invite" element={<InviteTeam />} />
           <Route
             path="/"

@@ -13,14 +13,27 @@ import {
   Dialog,
   DialogContent,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
 import OnboardingCompleteSVG from "../../assets/Onboarding.svg";
 import VideoPlayer from "../common/VideoPlayer";
+import {
+  getCountries,
+  getEmpCount,
+  getIndustries,
+  getSectors,
+  saveOrg,
+} from "../../api/auth";
 
 const OwnerSetUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const logo = location.state;
+  const [countList, setCountList] = useState([]);
+  const [countryList, setCountryList] = useState([]);
+  const [industryList, setIndustryList] = useState([]);
+  const [sectorList, setSectorList] = useState([]);
   const [open, setOpen] = useState(false);
 
   const currencies = [
@@ -57,13 +70,14 @@ const OwnerSetUp = () => {
     Canada: "CAD",
   };
 
-  const [employee, setEmployee] = React.useState("");
-  const [country, setCountry] = React.useState("");
-  const [currency, setCurrency] = React.useState("");
-  const [amount, setAmount] = React.useState("");
-  const [sector, setSector] = React.useState("");
-  const [industry, setIndustry] = React.useState("");
-  const [isFormValid, setIsFormValid] = React.useState(false);
+  const [employee, setEmployee] = useState("");
+  const [country, setCountry] = useState("");
+  const [currency, setCurrency] = useState("");
+  const [amount, setAmount] = useState("");
+  const [sector, setSector] = useState("");
+  const [name, setName] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
     if (employee && country && currency && amount && sector && industry)
@@ -102,12 +116,63 @@ const OwnerSetUp = () => {
     setIndustry(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // navigate("/owner/invite");
-    setOpen(true);
-  };
 
+    const formData = new FormData();
+    formData.append("organization_name", name);
+    formData.append("organization_logo", logo);
+    formData.append("organization_employeeCount", employee);
+    formData.append("organization_country", country);
+    formData.append("organization_averageRevenue", amount);
+    formData.append("organization_sector", sector);
+    formData.append("organization_industry", industry);
+    let response = await saveOrg(formData);
+    console.log("saveOrg", response);
+    if (response.status === 201) {
+      setOpen(true);
+    } else {
+      console.log("Could not save org");
+    }
+  };
+  async function getAllCountries() {
+    const response = await getCountries();
+    if (response?.status === 200) {
+      setCountryList(response.data);
+    } else {
+    }
+  }
+  async function getAllIndustries() {
+    const response = await getIndustries();
+    if (response?.status === 200) {
+      console.log(response.data);
+      setIndustryList(response.data);
+    } else {
+    }
+  }
+  async function getAllSectors() {
+    const response = await getSectors();
+    if (response?.status === 200) {
+      console.log(response.data);
+      setSectorList(response.data);
+    } else {
+    }
+  }
+  async function getAllEmpCount() {
+    const response = await getEmpCount();
+    if (response?.status === 200) {
+      console.log(response.data);
+      setCountList(response.data);
+    } else {
+    }
+  }
+  useEffect(() => {
+    getAllCountries();
+    getAllSectors();
+    getAllEmpCount();
+    getAllIndustries();
+  }, []);
   return (
     <Box
       style={{
@@ -203,6 +268,8 @@ const OwnerSetUp = () => {
                 fullWidth
                 label="Company Name"
                 variant="outlined"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 sx={{
                   backgroundColor: "white",
 
@@ -276,15 +343,15 @@ const OwnerSetUp = () => {
                   value={employee}
                   onChange={handleEmployeeChange}
                 >
-                  <MenuItem value={2 - 10} sx={{ fontFamily: "Inter" }}>
-                    2-10
-                  </MenuItem>
-                  <MenuItem value={10 - 20} sx={{ fontFamily: "Inter" }}>
-                    10-20
-                  </MenuItem>
-                  <MenuItem value={20 - 30} sx={{ fontFamily: "Inter" }}>
-                    20-30
-                  </MenuItem>
+                  {countList.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      value={item?.id}
+                      sx={{ fontFamily: "Inter" }}
+                    >
+                      {item?.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl
@@ -332,22 +399,15 @@ const OwnerSetUp = () => {
                   value={country}
                   onChange={handleCountryChange}
                 >
-                  {Object.keys(countriesCurrency).map((key) => {
-                    return (
-                      <MenuItem value={key} sx={{ fontFamily: "Inter" }}>
-                        {key}
-                      </MenuItem>
-                    );
-                  })}
-                  {/* <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    IND
-                  </MenuItem>
-                  <MenuItem value={2} sx={{ fontFamily: "Inter" }}>
-                    USA
-                  </MenuItem>
-                  <MenuItem value={3} sx={{ fontFamily: "Inter" }}>
-                    UK
-                  </MenuItem> */}
+                  {countryList.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      value={item?.id}
+                      sx={{ fontFamily: "Inter" }}
+                    >
+                      {item?.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <TextField
@@ -360,8 +420,6 @@ const OwnerSetUp = () => {
                 type="number"
                 sx={{
                   fontSize: "14px",
-                  backgroundColor: "white",
-
                   "& .MuiOutlinedInput-root": {
                     "&.Mui-focused fieldset": {
                       borderColor: "#369D9C",
@@ -436,14 +494,14 @@ const OwnerSetUp = () => {
                 }}
                 style={{ marginTop: 16, color: "red" }}
               />
-              <hr
+              {/* <hr
                 style={{
                   border: "none",
                   borderTop: "1px solid #F7F7F7",
                   margin: "0",
                   backgroundColor: "white",
                 }}
-              />
+              /> */}
               <FormControl
                 size="small"
                 fullWidth
@@ -483,18 +541,15 @@ const OwnerSetUp = () => {
                   value={sector}
                   onChange={handleSectorChange}
                 >
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Renewable energy
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Food industry
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Infrastructure
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Telecommunications
-                  </MenuItem>
+                  {sectorList.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      value={item?.id}
+                      sx={{ fontFamily: "Inter" }}
+                    >
+                      {item?.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl
@@ -541,21 +596,15 @@ const OwnerSetUp = () => {
                   value={industry}
                   onChange={handleIndustryChange}
                 >
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Oil and gas Extraction
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Optic Fiber
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Solar Energy
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Food Delivery
-                  </MenuItem>
-                  <MenuItem value={1} sx={{ fontFamily: "Inter" }}>
-                    Steel Industry
-                  </MenuItem>
+                  {industryList.map((item, index) => (
+                    <MenuItem
+                      key={index}
+                      value={item?.id}
+                      sx={{ fontFamily: "Inter" }}
+                    >
+                      {item?.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <button

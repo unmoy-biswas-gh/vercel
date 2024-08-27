@@ -16,9 +16,7 @@ const CircularIcon = styled(Box)(({ theme }) => ({
   marginBottom: "20px",
 }));
 
-const UploadLogo = ({ imageSelected }) => {
-  const [logo, setLogo] = useState(null);
-
+const UploadLogo = ({ imageSelected, logo, setLogo }) => {
   const handleUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
