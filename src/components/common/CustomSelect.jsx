@@ -6,26 +6,32 @@ function CustomSelect({ label, onChange, value, options, sx }) {
 
   return (
     <FormControl
+      size="small"
       sx={{
         backgroundColor: "white",
-        fontSize: "14px",
+        fontSize: "16px",
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
             borderColor: "#369D9C",
           },
+          maxHeight: "56px",
+        },
+        "& .MuiInputLabel-root": {
+          fontSize: "12px",
         },
         "& .MuiInputLabel-root.Mui-focused": {
           color: "#369D9C", // Focused label color
+          // fontSize: "14px",
         },
         "& .MuiFormHelperText-root": {
           color: "red", // Custom helper text color
         },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",
-          fontSize: "14px",
+          fontSize: "16px",
         },
         ".MuiSelect-select": {
-          padding: "14px !important",
+          // padding: "14px !important",
         },
         "& MuiInputBase-root .MuiOutlinedInput-input": {
           padding: "14px !important",
@@ -42,8 +48,10 @@ function CustomSelect({ label, onChange, value, options, sx }) {
         label={label}
         value={selectValue}
         sx={{
-          fontSize: "14px",
+          fontSize: "16px",
           fontFamily: "Inter",
+          maxHeight: "56px",
+          height: "100%",
           // padding: "14px !important",
           "& MuiInputBase-root .MuiOutlinedInput-input": {
             padding: "14px !important",

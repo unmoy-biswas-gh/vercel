@@ -32,48 +32,8 @@ function SideBar() {
         <div className="sidemenu_brand">
           <img src={logo} alt="logo" />
 
-          <div className="subscriptiOn_side">
+          <div className="subscription_side">
             <h6>Star Bucks</h6>
-            <div>
-              {loading ? (
-                <Skeleton animation="wave" height={15} width="100%" />
-              ) : !user?.subscription?.plan?.defaultPlan ? (
-                <p className="subscribed_text">
-                  <svg width="16" height="16" viewBox="0 0 17 17" fill="none">
-                    <g clipPath="url(#clip0_3187_24487)">
-                      <path
-                        d="M15.4078 3.54376C15.1642 3.44228 14.8959 3.41561 14.6371 3.46713C14.3783 3.51866 14.1406 3.64605 13.9545 3.83309L12.2305 5.55709L9.17314 2.49976C8.9231 2.2498 8.58402 2.10938 8.23047 2.10938C7.87692 2.10938 7.53784 2.2498 7.2878 2.49976L4.23047 5.55709L2.50647 3.83309C2.32 3.64668 2.08245 3.51974 1.82384 3.46831C1.56524 3.41689 1.2972 3.44329 1.0536 3.54419C0.809996 3.64508 0.601779 3.81593 0.455267 4.03515C0.308754 4.25436 0.230525 4.51209 0.230469 4.77576L0.230469 11.8331C0.231527 12.7168 0.583057 13.5641 1.20795 14.1889C1.83284 14.8138 2.68007 15.1654 3.5638 15.1664H12.8971C13.7809 15.1654 14.6281 14.8138 15.253 14.1889C15.8779 13.5641 16.2294 12.7168 16.2305 11.8331V4.77576C16.2305 4.51207 16.1524 4.25428 16.006 4.03499C15.8595 3.8157 15.6514 3.64475 15.4078 3.54376ZM14.8971 11.8331C14.8971 12.3635 14.6864 12.8722 14.3113 13.2473C13.9363 13.6224 13.4276 13.8331 12.8971 13.8331H3.5638C3.03337 13.8331 2.52466 13.6224 2.14959 13.2473C1.77452 12.8722 1.5638 12.3635 1.5638 11.8331V4.77576L3.75914 6.97109C3.88415 7.09607 4.05369 7.16628 4.23047 7.16628C4.40725 7.16628 4.57678 7.09607 4.7018 6.97109L8.23047 3.44242L11.7591 6.97109C11.8842 7.09607 12.0537 7.16628 12.2305 7.16628C12.4072 7.16628 12.5768 7.09607 12.7018 6.97109L14.8971 4.77576V11.8331Z"
-                        fill="url(#paint0_linear_3187_24487)"
-                      />
-                    </g>
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear_3187_24487"
-                        x1="8.27115"
-                        y1="5.20183"
-                        x2="8.27115"
-                        y2="12.074"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#FFC100" />
-                        <stop offset="1" stopColor="#E0A10F" />
-                      </linearGradient>
-                      <clipPath id="clip0_3187_24487">
-                        <rect
-                          width="16"
-                          height="16"
-                          fill="white"
-                          transform="translate(0.230469 0.5)"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  Standard Plan
-                </p>
-              ) : (
-                <p className="free_trial_text">Free Trial</p>
-              )}
-            </div>
           </div>
         </div>
 
@@ -107,35 +67,7 @@ function SideBar() {
               <span className="menu--text">Dashboard</span>
             </div>
           </NavLink>
-          {/* Online Consultation hidden */}
-          {/* <NavLink
-          to="consultation"
-          className={(navLink) =>
-            navLink.isActive ? "sidebar_menu_item checked" : "sidebar_menu_item"
-          }
-        >
-          <div>
-            <svg
-              width="26"
-              height="26"
-              viewBox="0 0 36 28"
-              fill="none"
-              className="menu--icon"
-            >
-              <path
-                d="M17.8292 0.5C22.1888 0.5 25.2327 3.50426 25.2327 7.80964V20.1904C25.2327 24.4957 22.1888 27.5 17.8292 27.5H7.40347C3.04383 27.5 0 24.4957 0 20.1904V7.80964C0 3.50426 3.04383 0.5 7.40347 0.5H17.8292ZM32.3244 4.78217C33.1146 4.38014 34.0416 4.42217 34.7958 4.8973C35.55 5.3706 36 6.19293 36 7.09202V20.9091C36 21.81 35.55 22.6305 34.7958 23.1038C34.3836 23.3615 33.9228 23.493 33.4584 23.493C33.0714 23.493 32.6844 23.4017 32.3226 23.2171L29.6567 21.8721C28.6703 21.3714 28.0583 20.3663 28.0583 19.2498V8.74948C28.0583 7.63111 28.6703 6.62603 29.6567 6.12897L32.3244 4.78217Z"
-                fill="#B7B7B7"
-              />
-            </svg>
 
-            <span className="menu--text ">Online consultation</span>
-          </div>
-        </NavLink> */}
-          {/* Clinic */}
-
-          {/* Doctors */}
-
-          {/* Appointments */}
           <NavLink
             to="team-members"
             className={(navLink) =>
@@ -160,7 +92,7 @@ function SideBar() {
           </NavLink>
 
           <NavLink
-            to="patientslist"
+            to="reports"
             className={(navLink) =>
               navLink.isActive
                 ? "sidebar_menu_item checked"
@@ -183,7 +115,7 @@ function SideBar() {
           </NavLink>
 
           <NavLink
-            to="consent"
+            to="subcriptions"
             className={(navLink) =>
               navLink.isActive
                 ? "sidebar_menu_item checked"

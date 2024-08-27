@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import DashboardNav from "../DashboardNav";
-import "./teamMembers.css";
 import back from "../../../assets/ArrowLeft.svg";
 import search from "../../../assets/search.svg";
 import plus from "../../../assets/plus.svg";
 import {
-  Tabs,
-  Tab,
   Box,
   FormControl,
   InputAdornment,
   OutlinedInput,
+  Tab,
+  Tabs,
 } from "@mui/material";
-import AllMembers from "./AllMembers";
-import PendingMembers from "./PendingMembers";
-import AddMembers from "./AddMembers";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -40,30 +36,22 @@ function a11yProps(index) {
   };
 }
 
-const TeamMembers = () => {
-  const [value, setValue] = React.useState(0); // Initialize with 0 for the first tab
-  const [isAddMembersOpen, setIsAddMembersOpen] = useState(false);
-
+const Reports = () => {
+  const [value, setValue] = useState(0);
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
 
-  const memberTabs = [
+  const reportTabs = [
     {
       id: 0,
       name: "All Members",
-      component: <AllMembers />,
-    },
-    {
-      id: 1,
-      name: "Pending Invites",
-      component: <PendingMembers />,
+      component: <div>Vetted</div>,
     },
   ];
 
   return (
-    <>
-      {/* <DashboardNav> */}
+    <DashboardNav>
       <div className="team-members_container">
         <div className="team-members_heading_container">
           <button type="button" className="back-button">
@@ -92,14 +80,6 @@ const TeamMembers = () => {
               }}
             />
           </FormControl>
-
-          <button
-            className="team-members-add_member"
-            onClick={() => setIsAddMembersOpen(true)}
-          >
-            <img src={plus} alt="Add" height={18} width={18} />
-            <span>Add Member</span>
-          </button>
         </div>
 
         <Box
@@ -135,24 +115,18 @@ const TeamMembers = () => {
               },
             }}
           >
-            {memberTabs.map((item) => (
+            {reportTabs.map((item) => (
               <Tab key={item.id} label={item.name} {...a11yProps(item.id)} />
             ))}
           </Tabs>
 
           <TabPanel value={value} index={value}>
-            {memberTabs[value].component}
+            {reportTabs[value].component}
           </TabPanel>
         </Box>
       </div>
-      {/* </DashboardNav> */}
-
-      <AddMembers
-        handleClose={() => setIsAddMembersOpen(false)}
-        isOpen={isAddMembersOpen}
-      />
-    </>
+    </DashboardNav>
   );
 };
 
-export default TeamMembers;
+export default Reports;

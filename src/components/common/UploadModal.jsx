@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import uploadIcons from "../../assets/images/upload.png";
 
 import UploadingPopup from "./UploadingPopup";
+import { useNavigate } from "react-router-dom";
 
 const fileIcons = {
   pdf: (
@@ -166,6 +167,7 @@ function UploadFilesModal({ open, onClose }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [showUploadedFile, setShowUploadedFile] = useState(false);
   const [processingScreen, setProcessingScreen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (uploadedFiles.length > 0) {
@@ -190,9 +192,25 @@ function UploadFilesModal({ open, onClose }) {
       fileDropContainer.current.style.background = "#F9F9F9";
     }
   };
+  // const handleFileChange = (event) => {
+  //   const selectedFiles = Array.from(event.target.files);
+  //   // setUploadedFiles(selectedFiles);
+  //   setUploadedFiles((prev) => [...prev, ...selectedFiles]);
+  // };
   const handleFileChange = (event) => {
     const selectedFiles = Array.from(event.target.files);
-    setUploadedFiles(selectedFiles);
+
+    // Filter out files that are already uploaded
+    const newFiles = selectedFiles.filter(
+      (file) =>
+        !uploadedFiles.some(
+          (uploadedFile) =>
+            uploadedFile.name === file.name && uploadedFile.size === file.size
+        )
+    );
+
+    // Add new files to the uploadedFiles state
+    setUploadedFiles((prev) => [...prev, ...newFiles]);
   };
 
   const handleDrop = (e) => {
@@ -227,19 +245,54 @@ function UploadFilesModal({ open, onClose }) {
   //     URL.revokeObjectURL(url);
   //   };
 
+  const handleRemoveFile = (fileName) => {
+    setUploadedFiles((prevFiles) =>
+      prevFiles.filter((file) => file.name !== fileName)
+    );
+  };
+
+  const submitDocuments = async () => {
+    setProcessingScreen(true); // Start the loading animation
+
+    try {
+      // Simulate an API call
+      await new Promise((resolve) => setTimeout(resolve, 4500)); // Adjust the duration as necessary
+      navigate("/add-data-points", {
+        state: {
+          generationMethod: "ai",
+        },
+      });
+    } catch (error) {
+      // Handle error
+      console.error("API Error:", error);
+    } finally {
+      setTimeout(() => {
+        setProcessingScreen(false); // Stop the loading animation after a brief delay
+      }, 500); // Ensure progress bar finishes before hiding the popup
+    }
+  };
+
   return (
     <>
       <Dialog
         open={open}
-        onClose={onClose}
+        onClose={() => {
+          onClose();
+          setUploadedFiles([]);
+          setShowUploadedFile(false);
+        }}
         sx={{
           ".MuiPaper-root": {
             borderRadius: "20px",
+            maxHeight: "700px",
+            padding: 0,
+            maxWidth: "600px",
+            width: "100%",
           },
         }}
       >
-        <DialogContent style={{ width: "550px" }}>
-          <Box sx={{ padding: "1rem", position: "relative" }}>
+        <DialogContent style={{ width: "100%" }}>
+          <Box sx={{ padding: 4, position: "relative" }}>
             <Typography
               variant="h6"
               align="center"
@@ -271,7 +324,7 @@ function UploadFilesModal({ open, onClose }) {
               Upload Documents
             </Typography>
 
-            {!showUploadedFile ? (
+            {!showUploadedFile || uploadedFiles.length <= 0 ? (
               <>
                 <input
                   ref={fileInput}
@@ -331,14 +384,15 @@ function UploadFilesModal({ open, onClose }) {
                     <img
                       src={uploadIcons}
                       alt="upload"
-                      width={90}
+                      width={128}
+                      height={48}
                       style={{ margin: "auto" }}
                     />
                     <Typography
                       variant="h6"
                       align="center"
                       sx={{
-                        fontSize: "12px",
+                        fontSize: "16px",
                         fontWeight: "400",
                         fontFamily: "Inter",
                         color: "#9B9B9B",
@@ -353,10 +407,11 @@ function UploadFilesModal({ open, onClose }) {
                       onClick={handleUploadClick}
                       variant="outlined"
                       sx={{
-                        fontSize: "11px",
+                        fontSize: "16px",
                         fontWeight: "500",
-                        padding: ".5rem",
-                        width: "10rem",
+                        padding: 1,
+                        maxWidth: "238px",
+                        width: "100%",
                         fontFamily: "Inter",
                         borderRadius: "6px",
                         border: "1px solid var(--G2, #369D9C)",
@@ -398,7 +453,71 @@ function UploadFilesModal({ open, onClose }) {
                   >
                     {uploadedFiles.map((file) => {
                       return (
+                        // <Box
+                        //   key={file.name}
+                        //   sx={{
+                        //     display: "flex",
+                        //     flexDirection: "row",
+                        //     width: "100%",
+                        //     height: "60px",
+                        //     backgroundColor: "#E6F5EE",
+                        //     alignItems: "center",
+                        //     justifyContent: "space-between",
+                        //     gap: "1rem",
+                        //     padding: ".5rem",
+                        //     borderRadius: "8px",
+                        //     border: "1px solid #DBDBDB",
+                        //     mb: ".5rem",
+                        //   }}
+                        // >
+                        //   <Box
+                        //     sx={{
+                        //       display: "flex",
+                        //       alignItems: "center",
+                        //       gap: "1rem",
+                        //     }}
+                        //   >
+                        //     {file.type === "text/csv" && fileIcons.csv}
+                        //     {file.type === "application/pdf" && fileIcons.pdf}
+                        //     {file.type === "application/vnd.ms-excel" ||
+                        //       (file.type ===
+                        //         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" &&
+                        //         fileIcons.xls)}
+                        //     <Typography
+                        //       variant="h6"
+                        //       align="center"
+                        //       sx={{
+                        //         fontSize: "12px",
+                        //         fontWeight: "400",
+                        //         fontFamily: "Inter",
+                        //         color: "#000",
+                        //         whiteSpace: "nowrap", // Prevents text from wrapping to the next line
+                        //         overflow: "hidden", // Hides the overflow
+                        //         textOverflow: "ellipsis", // Adds ellipsis (...) at the end
+                        //         maxWidth: "100%",
+                        //       }}
+                        //     >
+                        //       {file.name}
+                        //     </Typography>
+                        //   </Box>
+                        //   <svg
+                        //     onClick={() => handleRemoveFile(file.name)}
+                        //     style={{ cursor: "pointer" }}
+                        //     xmlns="http://www.w3.org/2000/svg"
+                        //     width="22"
+                        //     height="22"
+                        //     viewBox="0 0 30 30"
+                        //     fill="none"
+                        //   >
+                        //     <path
+                        //       d="M10.8828 20.422L15.2943 16.0105L19.7058 20.422L20.5734 19.5544L16.1619 15.1429L20.5734 10.7315L19.7058 9.86388L15.2943 14.2754L10.8828 9.86388L10.0152 10.7315L14.4267 15.1429L10.0152 19.5544L10.8828 20.422ZM15.298 26.1716C13.7736 26.1716 12.3399 25.8824 10.9968 25.304C9.65457 24.7248 8.48675 23.9389 7.49335 22.9464C6.49996 21.9538 5.71365 20.7872 5.13444 19.4466C4.55523 18.106 4.26563 16.6727 4.26562 15.1466C4.26562 13.6206 4.55482 12.1869 5.13322 10.8454C5.71161 9.50402 6.4975 8.3362 7.4909 7.34199C8.4843 6.34777 9.65089 5.56147 10.9907 4.98308C12.3305 4.40468 13.7638 4.11508 15.2906 4.11426C16.8175 4.11344 18.2512 4.40264 19.5918 4.98185C20.9324 5.56106 22.1002 6.34696 23.0953 7.33954C24.0903 8.33212 24.8766 9.49871 25.4542 10.8393C26.0318 12.1799 26.3214 13.6132 26.323 15.1393C26.3246 16.6653 26.0354 18.099 25.4554 19.4405C24.8754 20.7819 24.0895 21.9497 23.0977 22.9439C22.106 23.9381 20.9394 24.7244 19.598 25.3028C18.2565 25.8812 16.8232 26.1708 15.298 26.1716ZM15.2943 24.9462C18.0311 24.9462 20.3491 23.9965 22.2485 22.0971C24.1479 20.1978 25.0976 17.8797 25.0976 15.1429C25.0976 12.4062 24.1479 10.0881 22.2485 8.18875C20.3491 6.28936 18.0311 5.33967 15.2943 5.33967C12.5576 5.33967 10.2395 6.28936 8.34011 8.18875C6.44073 10.0881 5.49103 12.4062 5.49103 15.1429C5.49103 17.8797 6.44073 20.1978 8.34011 22.0971C10.2395 23.9965 12.5576 24.9462 15.2943 24.9462Z"
+                        //       fill="#FF3A3A"
+                        //     />
+                        //   </svg>
+                        // </Box>
+
                         <Box
+                          key={file.name}
                           sx={{
                             display: "flex",
                             flexDirection: "row",
@@ -419,14 +538,15 @@ function UploadFilesModal({ open, onClose }) {
                               display: "flex",
                               alignItems: "center",
                               gap: "1rem",
+                              flexGrow: 1, // Allows the inner Box to take available space
                             }}
                           >
                             {file.type === "text/csv" && fileIcons.csv}
                             {file.type === "application/pdf" && fileIcons.pdf}
-                            {file.type === "application/vnd.ms-excel" ||
-                              (file.type ===
-                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" &&
-                                fileIcons.xls)}
+                            {(file.type === "application/vnd.ms-excel" ||
+                              file.type ===
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") &&
+                              fileIcons.xls}
                             <Typography
                               variant="h6"
                               align="center"
@@ -434,14 +554,18 @@ function UploadFilesModal({ open, onClose }) {
                                 fontSize: "12px",
                                 fontWeight: "400",
                                 fontFamily: "Inter",
-                                color: "#9B9B9B",
+                                color: "#000",
+                                whiteSpace: "nowrap", // Prevents text from wrapping to the next line
+                                overflow: "hidden", // Hides the overflow
+                                textOverflow: "ellipsis", // Adds ellipsis (...) at the end
+                                maxWidth: "300px", // Limits the width of the text
                               }}
                             >
                               {file.name}
                             </Typography>
                           </Box>
                           <svg
-                            onClick={() => {}}
+                            onClick={() => handleRemoveFile(file.name)}
                             style={{ cursor: "pointer" }}
                             xmlns="http://www.w3.org/2000/svg"
                             width="22"
@@ -471,6 +595,7 @@ function UploadFilesModal({ open, onClose }) {
                   <Button
                     variant="outlined"
                     onClick={() => setShowUploadedFile(false)}
+                    // onClick={() => console.log("hi")}
                     sx={{
                       padding: "6px 28px",
                       fontWeight: 400,
@@ -494,7 +619,8 @@ function UploadFilesModal({ open, onClose }) {
                   </Button>
                   <Button
                     onClick={() => {
-                      setProcessingScreen(true);
+                      // setProcessingScreen(true);
+                      submitDocuments(); // SUBMITTING DOCUMENTS
                       onClose();
                     }}
                     style={{
@@ -563,6 +689,8 @@ function UploadFilesModal({ open, onClose }) {
         open={processingScreen}
         onClose={() => {
           setProcessingScreen(false);
+          setUploadedFiles([]);
+          setShowUploadedFile(false);
           onClose();
         }}
       />

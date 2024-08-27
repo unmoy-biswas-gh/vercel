@@ -14,6 +14,7 @@ import Monitor from "./components/Dashboard/Monitor";
 import SignUp from "./components/Authentication/SignUp";
 import { AuthProvider } from "./components/context/AuthContext";
 import CreateOrganization from "./components/Authentication/CreateOrganization";
+import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
 
 const App = () => {
   return (
@@ -37,11 +38,12 @@ const App = () => {
               </PrivateRoute>
             }
           >
-            <Route index element={<Monitor />} />{" "}
-            <Route path="monitor" element={<Monitor />} />
+            <Route index element={<Monitor />} />
             <Route path="team-members" element={<TeamMembers />} />
-            {/* <Route path="subcriptions" element={<TeamMembers />} />
-            <Route path="reports" element={<TeamMembers />} /> */}
+            <Route path="add-data-points" element={<AddDataPoints />} />
+            <Route path="monitor" element={<Monitor />} />
+            <Route path="subcriptions" element={<>subcriptions</>} />
+            <Route path="reports" element={<>reports</>} />
           </Route>
         </Routes>
       </Router>
