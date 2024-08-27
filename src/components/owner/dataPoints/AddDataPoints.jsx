@@ -41,7 +41,7 @@ const AddDataPoints = () => {
   ];
 
   return (
-    <DashboardNav>
+    <>
       <div className="add-data-points_container">
         {/* HEADING DIV */}
         <div className="add-data-points_heading">
@@ -51,7 +51,7 @@ const AddDataPoints = () => {
             alt="Back"
             height={16}
             width={16}
-            onClick={() => navigate("/owner/dashboard")}
+            onClick={() => navigate("/")}
           />
           <h2>Add essential Data points</h2>
         </div>
@@ -109,7 +109,7 @@ const AddDataPoints = () => {
           </button>
         )}
       </div>
-    </DashboardNav>
+    </>
   );
 };
 

@@ -7,14 +7,13 @@ import {
   Checkbox,
   FormControlLabel,
 } from "@mui/material";
-import PasswordInput from "../Registration/PasswordInput";
+import PasswordInput from "../Authentication/PasswordInput";
 import { useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import api from "../../utlils/api";
+import VideoPlayer from "../common/VideoPlayer";
 
-const OwnerLogin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,15 +35,9 @@ const OwnerLogin = () => {
     return re.test(email);
   };
 
-  const callApi = async () => {
-    await api("/sector", "GET", null).then((res) => {
-      return res;
-    });
-  };
-
-  useEffect(() => {
-    callApi();
-  }, []);
+  // useEffect(() => {
+  //   callApi();
+  // }, []);
 
   useEffect(() => {
     const passwordRegex =
@@ -99,9 +92,6 @@ const OwnerLogin = () => {
           xs={12}
           md={6}
           style={{
-            // backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${nursery})`,
-            // backgroundSize: "cover",
-            // backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
@@ -172,7 +162,7 @@ const OwnerLogin = () => {
             </Typography>
             <form onSubmit={handleSubmit}>
               <TextField
-                fullwidth
+                fullWidth
                 label="Email Address"
                 variant="outlined"
                 required
@@ -264,7 +254,7 @@ const OwnerLogin = () => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                fullwidth
+                fullWidth
                 disabled={!isFormValid}
                 style={{
                   marginTop: "8px",
@@ -293,4 +283,4 @@ const OwnerLogin = () => {
   );
 };
 
-export default OwnerLogin;
+export default Login;

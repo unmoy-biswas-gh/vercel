@@ -63,89 +63,89 @@ const TeamMembers = () => {
 
   return (
     <>
-      <DashboardNav>
-        <div className="team-members_container">
-          <div className="team-members_heading_container">
-            <button type="button" className="back-button">
-              <img src={back} alt="Go Back" />
-            </button>
-            <h1>Team Members</h1>
-          </div>
+      {/* <DashboardNav> */}
+      <div className="team-members_container">
+        <div className="team-members_heading_container">
+          <button type="button" className="back-button">
+            <img src={back} alt="Go Back" />
+          </button>
+          <h1>Team Members</h1>
+        </div>
 
-          <div className="team-members-input_container">
-            <FormControl variant="outlined">
-              <OutlinedInput
-                style={{
-                  borderRadius: "8px",
-                }}
-                type="search"
-                className="team-members-input"
-                id="outlined-adornment-weight"
-                startAdornment={
-                  <InputAdornment position="start">
-                    <img src={search} alt="Search" height={19} width={19} />
-                  </InputAdornment>
-                }
-                aria-describedby="outlined-weight-helper-text"
-                inputProps={{
-                  "aria-label": "weight",
-                }}
-              />
-            </FormControl>
+        <div className="team-members-input_container">
+          <FormControl variant="outlined">
+            <OutlinedInput
+              style={{
+                borderRadius: "8px",
+              }}
+              type="search"
+              className="team-members-input"
+              id="outlined-adornment-weight"
+              startAdornment={
+                <InputAdornment position="start">
+                  <img src={search} alt="Search" height={19} width={19} />
+                </InputAdornment>
+              }
+              aria-describedby="outlined-weight-helper-text"
+              inputProps={{
+                "aria-label": "weight",
+              }}
+            />
+          </FormControl>
 
-            <button
-              className="team-members-add_member"
-              onClick={() => setIsAddMembersOpen(true)}
-            >
-              <img src={plus} alt="Add" height={18} width={18} />
-              <span>Add Member</span>
-            </button>
-          </div>
+          <button
+            className="team-members-add_member"
+            onClick={() => setIsAddMembersOpen(true)}
+          >
+            <img src={plus} alt="Add" height={18} width={18} />
+            <span>Add Member</span>
+          </button>
+        </div>
 
-          <Box
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            height: "100%", // Ensure the container takes up the full height
+          }}
+        >
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            TabIndicatorProps={{
+              style: {
+                background:
+                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)",
+              },
+            }}
             sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              height: "100%", // Ensure the container takes up the full height
+              "& .MuiTab-root": {
+                background:
+                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)", // Gradient for tab text
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textTransform: "none", // Remove uppercase transformation
+                fontSize: "1rem",
+                fontWeight: 500,
+              },
+              "& .Mui-selected": {
+                color: "transparent", // Maintain gradient text on selected tab
+              },
             }}
           >
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
-              TabIndicatorProps={{
-                style: {
-                  background:
-                    "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)",
-                },
-              }}
-              sx={{
-                "& .MuiTab-root": {
-                  background:
-                    "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)", // Gradient for tab text
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  textTransform: "none", // Remove uppercase transformation
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                },
-                "& .Mui-selected": {
-                  color: "transparent", // Maintain gradient text on selected tab
-                },
-              }}
-            >
-              {memberTabs.map((item) => (
-                <Tab key={item.id} label={item.name} {...a11yProps(item.id)} />
-              ))}
-            </Tabs>
+            {memberTabs.map((item) => (
+              <Tab key={item.id} label={item.name} {...a11yProps(item.id)} />
+            ))}
+          </Tabs>
 
-            <TabPanel value={value} index={value}>
-              {memberTabs[value].component}
-            </TabPanel>
-          </Box>
-        </div>
-      </DashboardNav>
+          <TabPanel value={value} index={value}>
+            {memberTabs[value].component}
+          </TabPanel>
+        </Box>
+      </div>
+      {/* </DashboardNav> */}
 
       <AddMembers
         handleClose={() => setIsAddMembersOpen(false)}

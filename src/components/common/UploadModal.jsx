@@ -257,7 +257,7 @@ function UploadFilesModal({ open, onClose }) {
     try {
       // Simulate an API call
       await new Promise((resolve) => setTimeout(resolve, 4500)); // Adjust the duration as necessary
-      navigate("/owner/add-data-points", {
+      navigate("/add-data-points", {
         state: {
           generationMethod: "ai",
         },

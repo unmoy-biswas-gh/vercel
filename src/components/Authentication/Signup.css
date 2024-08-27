@@ -1,0 +1,20 @@
+.signup_verify_btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 14px 0px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
+}
+.signup_verify_btn:disabled {
+  margin-top: 16px;
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #a0a0a0;
+  cursor: default;
+}
