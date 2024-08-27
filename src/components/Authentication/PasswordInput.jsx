@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-const PasswordInput = ({ value, onChange, error, helperText }) => {
+const PasswordInput = ({ value, onChange, error, helperText, placeholder }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -15,10 +15,11 @@ const PasswordInput = ({ value, onChange, error, helperText }) => {
 
   return (
     <TextField
+      size="small"
       type={showPassword ? "text" : "password"}
-      label="Create Password"
+      label={placeholder}
       variant="outlined"
-      fullwidth
+      fullWidth
       required
       value={value}
       onChange={onChange}
@@ -26,8 +27,6 @@ const PasswordInput = ({ value, onChange, error, helperText }) => {
       helperText={helperText}
       sx={{
         fontSize: "14px",
-        backgroundColor: "white",
-
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
             borderColor: "#369D9C",

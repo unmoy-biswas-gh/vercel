@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import UploadLogo from "./UploadLogo";
 import pic from "../../assets/gesh.png";
 import bgPattern from "../../assets/images/login/bg.svg";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import VideoPlayer from "../common/VideoPlayer";
 
 const OwnerSetupOrg = () => {
   const navigate = useNavigate();

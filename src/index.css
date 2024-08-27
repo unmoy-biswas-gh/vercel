@@ -1,20 +1,35 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("./assets/Font/Inter.ttf") format("truetype");
-  font-weight: 100 500 600 900;
-}
 body fieldset {
   border-color: #c5d2cb !important;
 }
-body {
-  font-family: "Inter", Arial, sans-serif;
+
+/* Remove the scrollbar on number type input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
 }
-* {
-  box-sizing: border-box;
-  font-family: "Inter" Arial, sans-serif;
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.ge3s_green_button {
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
 }

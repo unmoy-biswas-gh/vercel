@@ -105,7 +105,7 @@ const SetupOrg = () => {
               gutterBottom
               style={{
                 fontFamily: "Inter",
-                fontSize: "34px",
+                fontSize: "25px",
                 fontWeight: 500,
                 marginBottom: "2rem",
               }}
@@ -130,7 +130,7 @@ const SetupOrg = () => {
             <button
               onClick={handleSubmit}
               type="submit"
-              disabled={!LogoSet}
+              // disabled={!LogoSet}/
               variant="contained"
               color="primary"
               fullwidth
@@ -161,7 +161,6 @@ const SetupOrg = () => {
                 margin: "auto",
                 marginTop: "1rem",
                 cursor: "pointer",
-                fontSize: "14px",
                 fontFamily: "Inter",
                 fontWeight: 500,
                 background: "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
