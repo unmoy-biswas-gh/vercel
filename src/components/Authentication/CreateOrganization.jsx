@@ -34,7 +34,7 @@ const CreateOrganization = () => {
     confirmPassword: false,
   });
   console.log("password", password);
-  
+
   useEffect(() => {
     setEmail(location.state);
   }, [location]);

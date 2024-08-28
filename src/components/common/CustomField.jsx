@@ -27,7 +27,7 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
         },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",
-          // fontSize: "14px", // Default font size for label
+          fontSize: "14px", // Default font size for label
         },
         "& .MuiInputLabel-root.Mui-focused": {
           color: "rgba(0, 0, 0, 0.60)",
@@ -36,7 +36,7 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
         },
         "& .MuiInputBase-input": {
           fontFamily: "Inter",
-          fontSize: "16px",
+          fontSize: "14px",
         },
         ...sx,
       }}

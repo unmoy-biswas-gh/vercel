@@ -10,7 +10,9 @@
 body fieldset {
   border-color: #c5d2cb !important;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 /* Remove the scrollbar on number type input */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

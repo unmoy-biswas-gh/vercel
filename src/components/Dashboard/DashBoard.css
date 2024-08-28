@@ -11,23 +11,17 @@
   );
   height: 100vh;
   width: 81vw;
+  /* border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px; */
+  border-right: 5px solid #77bcbb;
+  border-top: 5px solid #77bcbb;
+  border-bottom: 5px solid #77bcbb;
+  border-bottom: 5px solid #77bcbb;
   overflow: scroll;
 }
-
-.dashboard_outlet .content_wrapper {
-  position: relative;
-  z-index: 0;
-}
-
-@media only screen and (max-width: 850px) and (min-width: 760px) {
-  .dashboard_outlet {
-    left: 24vw;
-    width: 76vw;
-  }
-}
-@media only screen and (max-width: 1200px) and (min-width: 850px) {
-  .dashboard_outlet {
-    left: 24vw;
-    width: 76vw;
-  }
+.ge3s_dashboard_border {
+  height: 100vh !important;
+  border-left: 5px solid #77bcbb;
+  border-top: 5px solid #77bcbb;
+  border-bottom: 5px solid #77bcbb;
 }
