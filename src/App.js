@@ -42,8 +42,6 @@ const App = () => {
             path="/team-members-register"
             element={<TeamMembersRegister />}
           />
-          {/* <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} /> */}
-          {/* <Route path="/setup" element={<SetUp />} /> */}
           <Route path="/invite" element={<InviteTeam />} />
           <Route
             path="/"

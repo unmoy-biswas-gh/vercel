@@ -122,7 +122,9 @@ const OwnerSetUp = () => {
 
     const formData = new FormData();
     formData.append("organization_name", name);
-    formData.append("organization_logo", logo);
+    if (logo) {
+      formData.append("organization_logo", logo);
+    }
     formData.append("organization_employeeCount", employee);
     formData.append("organization_country", country);
     formData.append("organization_averageRevenue", amount);

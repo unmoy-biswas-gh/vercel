@@ -33,7 +33,7 @@ const CreateOrganization = () => {
     password: false,
     confirmPassword: false,
   });
-  console.log("password", password);
+  // console.log("password", password);
 
   useEffect(() => {
     setEmail(location.state);
@@ -46,7 +46,7 @@ const CreateOrganization = () => {
     setHelperText({
       password:
         password.trim() !== "" && !isPasswordValid
-          ? "Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol."
+          ? "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
           : "",
       confirmPassword:
         confirmPassword.trim() !== "" && !passwordsMatch

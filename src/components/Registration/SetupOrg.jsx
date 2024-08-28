@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Grid, Box, Typography, Button } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UploadLogo from "./UploadLogo";
 import pic from "../../assets/gesh.png";
 import jungle from "../../assets/jungle.jpg";
 import bgPattern from "../../assets/images/login/bg.svg";
+import VideoPlayer from "../common/VideoPlayer";
 
 const SetupOrg = () => {
   const navigate = useNavigate();
   const [LogoSet, setLogoSet] = useState(false);
   const [logo, setLogo] = useState(null);
 
-  console.log(logo);
+  // console.log(logo);
   const handleSubmit = async (event) => {
     event.preventDefault();
     navigate("/setup", { state: logo });
@@ -32,41 +33,15 @@ const SetupOrg = () => {
           xs={12}
           md={6}
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,26,0,0.5), rgba(0,26,0,0.5)), url(${jungle})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             position: "relative",
+            height: "100%",
+            overflow: "hidden",
           }}
         >
-          <Box
-            style={{
-              background:
-                "linear-gradient(145deg, rgba(255, 255, 255, 0.36) 3.9%, rgba(255, 255, 255, 0.00) 100.68%)",
-              padding: "45px 40px 61px",
-              borderRadius: "18px",
-              maxWidth: "80%",
-              textAlign: "center",
-              color: "white",
-              width: "50%",
-              backgroundFilter: "blur(2px)",
-            }}
-          >
-            <Typography
-              variant="h4"
-              style={{
-                fontWeight: 400,
-                fontSize: 28,
-                fontFamily: "Inter",
-                textAlign: "left",
-              }}
-            >
-              Step into the future of business—where sustainability meets
-              success
-            </Typography>
-          </Box>
+          <VideoPlayer />
         </Grid>
         <Grid
           item
@@ -109,7 +84,7 @@ const SetupOrg = () => {
                 fontFamily: "Inter",
                 fontSize: "25px",
                 fontWeight: 500,
-                marginBottom: "2rem",
+                marginBottom: "1.5rem",
               }}
             >
               Setup your Organization Profile!
@@ -118,7 +93,7 @@ const SetupOrg = () => {
               variant="body1"
               style={{
                 marginTop: "16px",
-                marginBottom: "3rem",
+                marginBottom: "2rem",
                 fontFamily: "Inter",
                 fontWeight: 400,
                 fontSize: 17,
@@ -141,16 +116,16 @@ const SetupOrg = () => {
               color="primary"
               fullwidth
               style={{
-                marginTop: "4rem",
+                marginTop: "3rem",
                 width: 500,
-                padding: "16px 24px",
+                padding: "12px 24px",
                 borderRadius: 6,
                 background: !LogoSet ? "#E8E8E8" : "",
                 backgroundImage: LogoSet
                   ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
                   : "",
                 fontWeight: 500,
-                fontSize: "18px",
+                fontSize: "16px",
                 fontFamily: "Inter",
                 color: !LogoSet ? "#A2A2A2" : "#FFF",
                 border: "1px solid #DDD",
@@ -160,24 +135,24 @@ const SetupOrg = () => {
             >
               Next
             </button>
-            <Typography
+            <button
               onClick={handleSubmit}
-              sx={{
-                width: "max-content",
-                margin: "auto",
-                marginTop: "1rem",
-                cursor: "pointer",
-                fontFamily: "Inter",
+              type="submit"
+              style={{
+                marginTop: ".5rem",
+                width: 500,
+                padding: "12px 24px",
+                border: "none",
+                background: "none",
                 fontWeight: 500,
-                background: "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
-                backgroundClip: "text",
-                "-webkitBackgroundClip": "text",
-                "-webkitTextFillColor": "transparent",
-                fontSize: 18,
+                fontSize: "16px",
+                fontFamily: "Inter",
+                color: "#369D9C",
+                cursor: "pointer",
               }}
             >
               Skip
-            </Typography>
+            </button>
           </Box>
         </Grid>
       </Grid>

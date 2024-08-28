@@ -31,46 +31,48 @@ const Login = () => {
 
   useEffect(() => {
     const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = passwordRegex.test(password);
+    // Check if the fields have values and validate them
+    const isEmailValid = email.trim() === "" || validateEmail(email);
+    const isPasswordValid =
+      password.trim() === "" || passwordRegex.test(password);
 
+    // Set errors only if the field has a value and is not valid
+    setError({
+      email: email.trim() !== "" && !isEmailValid,
+      password: password.trim() !== "" && !isPasswordValid,
+    });
+
+    // Set helper text based on validation
+    setHelperText({
+      email:
+        email.trim() !== "" && !isEmailValid
+          ? "Please enter a valid email address"
+          : "",
+      password:
+        password.trim() !== "" && !isPasswordValid
+          ? "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
+          : "",
+    });
+
+    // Set form validity
     setIsFormValid(isEmailValid && isPasswordValid);
   }, [email, password]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = password.trim() !== "";
-
-    setError({
-      email: !isEmailValid,
-      password: !isPasswordValid,
-    });
-
-    setHelperText({
-      email: !isEmailValid ? "Please enter a valid email address" : "",
-      password: !isPasswordValid ? "Password is required" : "",
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const payload = {
       user_email: email,
       user_password: password,
     };
-    if (isEmailValid && isPasswordValid) {
-      // localStorage.setItem(
-      //   "userInfo",
-      //   JSON.stringify({ user_name: email, user_password: password })
-      // );
 
-      let response = await verifyPasswordWithBackend(payload);
-      console.log("response", response);
-      if (response.status === 200) {
-        navigate("/");
-      } else {
-        console.log("error");
-      }
+    let response = await verifyPasswordWithBackend(payload);
+    console.log("response", response);
+    if (response?.status === 200) {
+      navigate("/");
+    } else {
+      console.log("error");
     }
   };
 
