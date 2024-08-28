@@ -5,8 +5,8 @@ import work from "../../assets/Work.png";
 import upload2 from "../../assets/up.jpg";
 
 const CircularIcon = styled(Box)(({ theme }) => ({
-  width: "120px",
-  height: "120px",
+  width: "100px",
+  height: "100px",
   borderRadius: "50%",
   border: "2px solid #43BAB9",
   display: "flex",
@@ -37,6 +37,7 @@ const UploadLogo = ({ imageSelected, logo, setLogo }) => {
         alignItems: "center",
         justifyContent: "center",
         height: "100%",
+        // background: "red",
       }}
     >
       <CircularIcon>
@@ -64,14 +65,13 @@ const UploadLogo = ({ imageSelected, logo, setLogo }) => {
       <label htmlFor="upload-button" style={{ cursor: "pointer" }}>
         <Box
           style={{
-            padding: "10x 20px",
-            width: 209,
+            padding: "8px 0",
+            width: 180,
             height: 48,
             border: "1px solid rgba(70, 95, 241, 0.40)",
             borderRadius: "8px",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "1rem",
             display: "flex",
             cursor: "pointer",
           }}

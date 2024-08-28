@@ -58,34 +58,34 @@ function PersonalInfo() {
 
   useEffect(() => {
     const isFullNameValid = fullName.trim() !== "";
-    const isProfileSet = imageApi;
+    const isProfileSet = imageApi?.length > 0;
 
-    setIsFormValid(isFullNameValid && isProfileSet);
+    const isFormValid = isFullNameValid && isProfileSet;
+
+    setIsFormValid(isFormValid);
+
+    setError({
+      fullName: fullName && !isFullNameValid,
+    });
+
+    setHelperText({
+      fullName: fullName && !isFullNameValid ? "Full Name is required" : "",
+    });
   }, [fullName, imageApi]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const isFullNameValid = fullName.trim() !== "";
-
-    setError({
-      fullName: !isFullNameValid,
-    });
-
-    setHelperText({
-      fullName: !isFullNameValid ? "Full Name is required" : "",
-    });
     const formData = new FormData();
     formData.append("user_profileImage", imageApi);
     formData.append("user_name", fullName);
-    if (isFullNameValid) {
-      let response = await saveInfo(formData);
-      console.log("pass", response);
-      if (response.status === 201) {
-        navigate("/setupprofile");
-      } else {
-        console.log("Could not add image and name");
-      }
+
+    let response = await saveInfo(formData);
+    console.log("pass", response);
+    if (response.status === 201) {
+      navigate("/setupprofile");
+    } else {
+      console.log("Could not add image and name");
     }
   };
 
@@ -280,7 +280,7 @@ function PersonalInfo() {
 
               <button
                 type="submit"
-                // disabled={!isFormValid}
+                disabled={!isFormValid}
                 className="signup_verify_btn"
               >
                 Next
