@@ -28,10 +28,11 @@ function CustomSelect({ label, onChange, value, options, sx }) {
         },
         "& .MuiInputLabel-root": {
           fontFamily: "Inter",
-          fontSize: "16px",
+          fontSize: "14px",
         },
         ".MuiSelect-select": {
           // padding: "14px !important",
+          fontSize: "14px",
         },
         "& MuiInputBase-root .MuiOutlinedInput-input": {
           padding: "14px !important",

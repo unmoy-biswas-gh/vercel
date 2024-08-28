@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SetupOrg from "./components/Registration/SetupOrg";
 import SetUp from "./components/Registration/SetUp";
 import InviteTeam from "./components/Registration/InviteTeam";
-import Login from "./components/owner/Login";
+import Login from "./components/owner/login";
 import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
@@ -15,6 +15,10 @@ import SignUp from "./components/Authentication/SignUp";
 import { AuthProvider } from "./components/context/AuthContext";
 import CreateOrganization from "./components/Authentication/CreateOrganization";
 import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
+import Reports from "./components/owner/reports/Reports";
+import { Subscription } from "./components/subscriptions";
+import TeamMembersRegister from "./components/teamMembersLogin/TeamMembersRegister";
+import TeamMembersProfile from "./components/teamMembersLogin/TeamMembersProfile";
 
 const App = () => {
   return (
@@ -27,6 +31,15 @@ const App = () => {
           <Route path="/personalinfo" element={<PersonalInfo />} />{" "}
           <Route path="/setupprofile" element={<SetupOrg />} />
           <Route path="/setup" element={<OwnerSetUp />} />
+          <Route
+            path="/team-members-profile"
+            element={<TeamMembersProfile />}
+          />
+          <Route path="/team-members-login" element={<>Team members login</>} />
+          <Route
+            path="/team-members-register"
+            element={<TeamMembersRegister />}
+          />
           {/* <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} /> */}
           {/* <Route path="/setup" element={<SetUp />} /> */}
           <Route path="/invite" element={<InviteTeam />} />
@@ -42,8 +55,8 @@ const App = () => {
             <Route path="team-members" element={<TeamMembers />} />
             <Route path="add-data-points" element={<AddDataPoints />} />
             <Route path="monitor" element={<Monitor />} />
-            <Route path="subcriptions" element={<>subcriptions</>} />
-            <Route path="reports" element={<>reports</>} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="subscriptions" element={<Subscription />} />
           </Route>
         </Routes>
       </Router>

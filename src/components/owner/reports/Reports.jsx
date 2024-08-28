@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import DashboardNav from "../DashboardNav";
 import back from "../../../assets/ArrowLeft.svg";
 import search from "../../../assets/search.svg";
-import plus from "../../../assets/plus.svg";
+import "./reports.css";
 import {
   Box,
   FormControl,
   InputAdornment,
   OutlinedInput,
+  Paper,
   Tab,
   Tabs,
 } from "@mui/material";
+import Vetted from "./Vetted";
+import SentForVerification from "./SentForVerification";
+import SaveAsReady from "./SaveAsReady";
+import DraftsTable from "./DraftsTable";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -24,7 +28,9 @@ function TabPanel(props) {
       className="tab-panel"
       {...other}
     >
-      {value === index && <div className="tab-panel_child">{children}</div>}
+      {value === index && (
+        <div className="tab-panel_child reports-tab">{children}</div>
+      )}
     </div>
   );
 }
@@ -45,48 +51,94 @@ const Reports = () => {
   const reportTabs = [
     {
       id: 0,
-      name: "All Members",
-      component: <div>Vetted</div>,
+      name: "Vetted",
+      component: <Vetted />,
+    },
+    {
+      id: 1,
+      name: "Sent For Verification ",
+      component: <SentForVerification />,
+    },
+    {
+      id: 2,
+      name: "Saved as ready",
+      component: <SaveAsReady />,
+    },
+    {
+      id: 3,
+      name: "Drafts",
+      component: <DraftsTable />,
     },
   ];
 
   return (
-    <DashboardNav>
-      <div className="team-members_container">
-        <div className="team-members_heading_container">
-          <button type="button" className="back-button">
-            <img src={back} alt="Go Back" />
-          </button>
-          <h1>Team Members</h1>
-        </div>
+    <>
+      <div className="reports-table_container">
+        <div className="reports-table_heading-parent">
+          <div>
+            <div className="reports-table_heading_container">
+              <button type="button" className="back-button">
+                <img src={back} alt="Go Back" />
+              </button>
+              <h1>Report Status</h1>
+            </div>
 
-        <div className="team-members-input_container">
-          <FormControl variant="outlined">
-            <OutlinedInput
+            <div className="reports-table-input_container">
+              <FormControl variant="outlined">
+                <OutlinedInput
+                  sx={{
+                    borderRadius: "8px",
+                    maxHeight: "48px",
+                  }}
+                  type="search"
+                  className="reports-table-input"
+                  id="outlined-adornment-weight"
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <img src={search} alt="Search" height={19} width={19} />
+                    </InputAdornment>
+                  }
+                  aria-describedby="outlined-weight-helper-text"
+                  inputProps={{
+                    "aria-label": "weight",
+                  }}
+                />
+              </FormControl>
+            </div>
+          </div>
+
+          <Paper
+            sx={{
+              padding: { lg: "16px 18px" },
+              maxWidth: "400px",
+              width: "100%",
+              borderRadius: { lg: "10px" },
+            }}
+          >
+            <div
               style={{
-                borderRadius: "8px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "13px",
               }}
-              type="search"
-              className="team-members-input"
-              id="outlined-adornment-weight"
-              startAdornment={
-                <InputAdornment position="start">
-                  <img src={search} alt="Search" height={19} width={19} />
-                </InputAdornment>
-              }
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                "aria-label": "weight",
-              }}
-            />
-          </FormControl>
+            >
+              <div className="booking-heading">
+                <h2>Go ahead and book a call</h2>
+                <p>We are here to help you in improve sustainability report.</p>
+              </div>
+              <div>
+                <button className="booking-btn">Book a call</button>
+              </div>
+            </div>
+          </Paper>
         </div>
 
         <Box
           sx={{
             width: "100%",
-            display: "flex",
-            flexDirection: "column",
+            // display: "flex",
+            // flexDirection: "column",
             height: "100%", // Ensure the container takes up the full height
           }}
         >
@@ -102,16 +154,17 @@ const Reports = () => {
             }}
             sx={{
               "& .MuiTab-root": {
-                background:
-                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)", // Gradient for tab text
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
                 textTransform: "none", // Remove uppercase transformation
                 fontSize: "1rem",
                 fontWeight: 500,
+                color: "#666666D9", // Set non-active tab text to gray
               },
               "& .Mui-selected": {
-                color: "transparent", // Maintain gradient text on selected tab
+                color: "transparent", // Make the selected tab text transparent to show the gradient
+                background:
+                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
             }}
           >
@@ -125,7 +178,7 @@ const Reports = () => {
           </TabPanel>
         </Box>
       </div>
-    </DashboardNav>
+    </>
   );
 };
 

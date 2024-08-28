@@ -43,8 +43,8 @@ const CreateOrganization = () => {
     setEmail(location.state);
   }, [location]);
   useEffect(() => {
-    const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = password.trim() !== "";
+    const isEmailValid = email?.trim() !== "" && validateEmail(email);
+    const isPasswordValid = password?.trim() !== "";
     const isPasswordsMatch = password === password2;
     const isAgreedValid = agreed;
 

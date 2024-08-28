@@ -1,0 +1,114 @@
+.subscriptions-container {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+}
+
+.tab-panel_child {
+  height: 100%;
+}
+
+.subscriptions-tab {
+  /* padding: 2rem; */
+  margin-top: 0.8rem;
+}
+
+.your-subscriptions-container {
+  height: 100%;
+}
+
+.your-subscriptions-heading {
+  margin-bottom: 32px;
+}
+
+.your-subscriptions-heading h1 {
+  font-weight: 700;
+  color: #229897;
+  font-size: 1.6rem;
+  line-height: 2.5rem;
+}
+
+.your-subscriptions-heading h2 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: -0.01em;
+}
+
+.your-subscriptions-card_container {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.your-subscriptions-card {
+  border: 1px solid #e4e4e4;
+  padding: 1.2rem;
+  max-width: 380px;
+  width: 100%;
+}
+
+.your-subscription-benefits_container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.your-subscriptions-card_heading {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.your-subscriptions-card_heading h2 {
+  font-size: 24px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+.your-subscriptions-card_heading h3 {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+.your-subscriptions-card_heading h4 {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.your-subscription-benefits_container h3 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.your-subscription_benefit {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.your-subscription-get_started_outlined {
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+  padding: 11px 0;
+  border: 1px solid #a3a3a3;
+  font-size: 12px;
+  font-weight: bold;
+  color: #a3a3a3;
+  border-radius: 4px;
+}
+
+.your-subscription-get_started_filled {
+  background: linear-gradient(101.74deg, #369d9c 0%, #28814d 100%);
+  color: #ffffff;
+  width: 100%;
+  padding: 11px 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
