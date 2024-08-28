@@ -19,6 +19,8 @@ import Reports from "./components/owner/reports/Reports";
 import { Subscription } from "./components/subscriptions";
 import TeamMembersRegister from "./components/teamMembersLogin/TeamMembersRegister";
 import TeamMembersProfile from "./components/teamMembersLogin/TeamMembersProfile";
+import TeamMembersDashboard from "./components/Dashboard/TeamMembersDashboard";
+import TeamMemberDataPoints from "./components/teamMembers/dataPoints/TeamMemberDataPoints";
 
 const App = () => {
   return (
@@ -57,6 +59,9 @@ const App = () => {
             <Route path="monitor" element={<Monitor />} />
             <Route path="reports" element={<Reports />} />
             <Route path="subscriptions" element={<Subscription />} />
+          </Route>
+          <Route path="/team" element={<TeamMembersDashboard />}>
+            <Route path="data-points" element={<TeamMemberDataPoints />} />
           </Route>
         </Routes>
       </Router>
