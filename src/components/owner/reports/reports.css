@@ -8,7 +8,7 @@
 
 .booking-heading h2 {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 24px;
 }
 
@@ -21,17 +21,35 @@
 
 .booking-btn {
   cursor: pointer;
-  border: 1px solid;
+  border: none;
   padding: 0.8rem 1rem;
-  border-radius: 6px;
+  border-radius: 10px;
   font-weight: 500;
   font-size: 14px;
   background: var(--booking-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  border-image-slice: 1; /* Ensures the gradient fills the entire border */
+  border-image-slice: 1;
   border-image-source: var(--booking-gradient);
+  position: relative;
+  z-index: 1;
+}
+
+.booking-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: -1;
+  background: var(--booking-gradient);
+  padding: 1.5px; /* Adjusts the thickness of the border */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
 
 .tab-panel_child.reports-tab {
@@ -49,14 +67,14 @@
 .reports-table_heading-parent {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
 }
 
 .reports-table_heading_container {
   display: flex;
   gap: 16px;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .reports-table_heading_container h1 {

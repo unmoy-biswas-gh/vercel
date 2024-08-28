@@ -109,7 +109,7 @@ const Reports = () => {
 
           <Paper
             sx={{
-              padding: { lg: "18px 20px" },
+              padding: { lg: "16px 18px" },
               maxWidth: "400px",
               width: "100%",
               borderRadius: { lg: "10px" },
@@ -154,16 +154,17 @@ const Reports = () => {
             }}
             sx={{
               "& .MuiTab-root": {
-                background:
-                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)", // Gradient for tab text
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
                 textTransform: "none", // Remove uppercase transformation
                 fontSize: "1rem",
                 fontWeight: 500,
+                color: "#666666D9", // Set non-active tab text to gray
               },
               "& .Mui-selected": {
-                color: "transparent", // Maintain gradient text on selected tab
+                color: "transparent", // Make the selected tab text transparent to show the gradient
+                background:
+                  "linear-gradient(101.74deg, #369D9C 0%, #28814D 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
             }}
           >
