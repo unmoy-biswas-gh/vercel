@@ -17,6 +17,8 @@ import CreateOrganization from "./components/Authentication/CreateOrganization";
 import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
 import Reports from "./components/owner/reports/Reports";
 import { Subscription } from "./components/subscriptions";
+import TeamMembersRegister from "./components/teamMembersLogin/TeamMembersRegister";
+import TeamMembersProfile from "./components/teamMembersLogin/TeamMembersProfile";
 
 const App = () => {
   return (
@@ -29,6 +31,15 @@ const App = () => {
           <Route path="/personalinfo" element={<PersonalInfo />} />{" "}
           <Route path="/setupprofile" element={<SetupOrg />} />
           <Route path="/setup" element={<OwnerSetUp />} />
+          <Route
+            path="/team-members-profile"
+            element={<TeamMembersProfile />}
+          />
+          <Route path="/team-members-login" element={<>Team members login</>} />
+          <Route
+            path="/team-members-register"
+            element={<TeamMembersRegister />}
+          />
           {/* <Route path="/README.mdsetuporg" element={<OwnerSetupOrg />} /> */}
           {/* <Route path="/setup" element={<SetUp />} /> */}
           <Route path="/invite" element={<InviteTeam />} />
