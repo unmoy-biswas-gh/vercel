@@ -168,7 +168,7 @@ function SideBar() {
           </NavLink>
 
           <NavLink
-            to="subcriptions"
+            to="subscriptions"
             className={(navLink) =>
               navLink.isActive
                 ? "sidebar_menu_item checked"

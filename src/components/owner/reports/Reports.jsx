@@ -137,8 +137,8 @@ const Reports = () => {
         <Box
           sx={{
             width: "100%",
-            display: "flex",
-            flexDirection: "column",
+            // display: "flex",
+            // flexDirection: "column",
             height: "100%", // Ensure the container takes up the full height
           }}
         >

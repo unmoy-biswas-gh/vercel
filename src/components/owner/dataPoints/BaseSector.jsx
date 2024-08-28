@@ -9,7 +9,7 @@ const BaseSector = () => {
     "Data Point",
     "Data Point Unit",
     "Value",
-    "Assignee",
+    "Comments",
   ];
 
   const location = useLocation();

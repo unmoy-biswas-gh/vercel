@@ -16,6 +16,7 @@ import { AuthProvider } from "./components/context/AuthContext";
 import CreateOrganization from "./components/Authentication/CreateOrganization";
 import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
 import Reports from "./components/owner/reports/Reports";
+import { Subscription } from "./components/subscriptions";
 
 const App = () => {
   return (
@@ -43,8 +44,8 @@ const App = () => {
             <Route path="team-members" element={<TeamMembers />} />
             <Route path="add-data-points" element={<AddDataPoints />} />
             <Route path="monitor" element={<Monitor />} />
-            <Route path="subcriptions" element={<>subcriptions</>} />
             <Route path="reports" element={<Reports />} />
+            <Route path="subscriptions" element={<Subscription />} />
           </Route>
         </Routes>
       </Router>
