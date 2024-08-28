@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SetupOrg from "./components/Registration/SetupOrg";
 import SetUp from "./components/Registration/SetUp";
 import InviteTeam from "./components/Registration/InviteTeam";
-import Login from "./components/owner/Login";
 import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
@@ -15,6 +14,7 @@ import SignUp from "./components/Authentication/SignUp";
 import { AuthProvider } from "./components/context/AuthContext";
 import CreateOrganization from "./components/Authentication/CreateOrganization";
 import AddDataPoints from "./components/owner/dataPoints/AddDataPoints";
+import Login from "./components/Authentication/Login";
 
 const App = () => {
   return (
@@ -39,9 +39,9 @@ const App = () => {
             }
           >
             <Route index element={<Monitor />} />
+            <Route path="monitor" element={<Monitor />} />
             <Route path="team-members" element={<TeamMembers />} />
             <Route path="add-data-points" element={<AddDataPoints />} />
-            <Route path="monitor" element={<Monitor />} />
             <Route path="subcriptions" element={<>subcriptions</>} />
             <Route path="reports" element={<>reports</>} />
           </Route>

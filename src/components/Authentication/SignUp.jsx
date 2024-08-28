@@ -6,7 +6,7 @@ import VideoPlayer from "../common/VideoPlayer";
 import "./Signup.css";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import AccountVerifiedModal from "./AccountVerifiedModal";
-import { getCountries, sendOTPtoEmail } from "../../api/auth";
+import { sendOTPtoEmail } from "../../api/auth";
 import { useAuth } from "../context/AuthContext";
 const SignUp = () => {
   const navigate = useNavigate();
@@ -44,35 +44,13 @@ const SignUp = () => {
     if (response.status === 200) {
       setOpen(true);
     } else {
+      setOtpError(true);
       console.log("error");
     }
   };
   const resendOTP = () => {
     startTimer();
-    if (otp.length < 6) {
-      //   toast.error(`Please Enter a Valid OTP`);
-    }
-    // try {
-    //   const isMobile = !!mobileNumber.includes("@");
-
-    const payload = {
-      email: email,
-      otp: otp,
-    };
-    console.log("payload", payload);
-    //   api
-    //     .post("/auth/verify-admin", PayloadOfOtp)
-    //     .then(async (response) => {
-    //       cookie.save("token", response.data.token);
-    //       await setIsUserAuthenticated(true);
-    //       navigate("/doctors");
-    //     })
-    //     .catch((err) => {
-    //       toast.error(`Couldn't verify OTP`);
-    //     });
-    // } catch (error) {
-    //   toast.error(`Error:${error}`);
-    // }
+    handleSubmit();
   };
 
   useEffect(() => {
@@ -98,23 +76,25 @@ const SignUp = () => {
   };
   useEffect(() => {
     const isEmailValid = email.trim() !== "" && validateEmail(email);
+    const shouldShowError = email.trim() !== "" && !isEmailValid;
+
+    setHelperText({
+      email: shouldShowError ? "Please enter a valid email address" : "",
+    });
+
+    setError(shouldShowError);
+
     setIsFormValid(isEmailValid);
   }, [email]);
+
   useEffect(() => {
     if (status === "otp") startTimer();
   }, [status]);
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     const isEmailValid = email.trim() !== "" && validateEmail(email);
     const payload = {
       user_email: email,
     };
-    setError(!isEmailValid);
-
-    setHelperText({
-      email: !isEmailValid ? "Please enter a valid email address" : "",
-    });
 
     if (isEmailValid) {
       let response = await sendOTPtoEmail(payload);
@@ -208,7 +188,7 @@ const SignUp = () => {
                 className="signup_verify_btn"
                 type="submit"
                 onClick={handleSubmit}
-                //   disabled={!isFormValid}
+                disabled={!isFormValid}
               >
                 Verify
               </button>
@@ -236,11 +216,14 @@ const SignUp = () => {
                   }}
                   color={"black"}
                 >
-                  unmoy@growhut.in
+                  {email}
                 </Typography>
 
                 <Typography
-                  onClick={() => setStatus("login")}
+                  onClick={() => {
+                    setOtp("");
+                    setStatus("login");
+                  }}
                   color={"primary"}
                   sx={{
                     fontFamily: "Inter",
@@ -336,10 +319,10 @@ const SignUp = () => {
               )}
               <button
                 onClick={handleOTP}
-                fullWidth
+                disabled={otp.length !== 6}
                 className="signup_verify_btn"
               >
-                VERIFY_OTP
+                VERIFY OTP
               </button>
             </>
           )}
