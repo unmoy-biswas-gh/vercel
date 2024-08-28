@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SetupOrg from "./components/Registration/SetupOrg";
 import SetUp from "./components/Registration/SetUp";
 import InviteTeam from "./components/Registration/InviteTeam";
-import Login from "./components/owner/login";
+import Login from "./components/Authentication/Login";
 import OwnerSetUp from "./components/owner/SetUp";
 import OwnerSetupOrg from "./components/owner/SetupOrg";
 import PersonalInfo from "./components/owner/PersonalInfo";
@@ -54,6 +54,7 @@ const App = () => {
             }
           >
             <Route index element={<Monitor />} />
+            <Route path="monitor" element={<Monitor />} />
             <Route path="team-members" element={<TeamMembers />} />
             <Route path="add-data-points" element={<AddDataPoints />} />
             <Route path="monitor" element={<Monitor />} />
