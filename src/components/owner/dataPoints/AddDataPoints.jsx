@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DashboardNav from "../DashboardNav";
+import DashboardNav from "../../Dashboard/TopBar";
 import "./dataPoints.css";
 import back from "../../../assets/ArrowLeft.svg";
 import BaseSector from "./BaseSector";

@@ -3,22 +3,21 @@
   left: 0px;
   top: 0px;
   width: 19vw;
-  height: 100vh;
+  height: 98vh;
   padding: 0 1rem;
-  overflow: auto;
+  /* overflow: auto; */
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.04);
   background-color: #fff;
   border-right: 1px solid #efefef;
+
   /* background-color: blue; */
 }
 .sidemanu_content {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   /* overflow-y: auto; */
-}
-.sidemenu::-webkit-scrollbar {
-  display: none;
 }
 
 .sidemenu_brand {
@@ -223,11 +222,9 @@
 
 .sidebar_powered_by {
   display: flex;
-  /* gap: 0.8rem; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: auto;
   margin-bottom: 20px;
 }
 

@@ -12,69 +12,60 @@ import { useLocation, useNavigate } from "react-router-dom";
 import pic from "../../assets/gesh.png";
 import VideoPlayer from "../common/VideoPlayer";
 import { savepassword } from "../../api/auth";
-
+const validatePassword = (password) => {
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordRegex.test(password);
+};
 const CreateOrganization = () => {
   const location = useLocation();
-  // console.log(location.state);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-  const [error, setError] = useState({
-    email: false,
-    password: false,
-    password2: false,
-  });
-  const [helperText, setHelperText] = useState({
-    email: "",
-    password: "",
-    password2: "",
-  });
-  const [agreed, setAgreed] = useState(false);
-  const [isFormValid, setIsFormValid] = useState(false);
-
   const navigate = useNavigate();
-  // console.log("error", error);
-  const validateEmail = (email) => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  };
+  const [email, setEmail] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [helperText, setHelperText] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+  const [error, setError] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+  console.log("password", password);
+
   useEffect(() => {
     setEmail(location.state);
   }, [location]);
+
   useEffect(() => {
-    const isEmailValid = email?.trim() !== "" && validateEmail(email);
-    const isPasswordValid = password?.trim() !== "";
-    const isPasswordsMatch = password === password2;
-    const isAgreedValid = agreed;
+    const passwordsMatch = password === confirmPassword;
+    const isPasswordValid = validatePassword(password);
 
-    setIsFormValid(
-      isEmailValid && isPasswordValid && isPasswordsMatch && isAgreedValid
-    );
-  }, [email, password, agreed, password2]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const isEmailValid = email.trim() !== "" && validateEmail(email);
-    const isPasswordValid = password.trim() !== "";
-    const isPasswordsMatch = password === password2;
-    const isAgreedValid = agreed;
-    // console.log("password", password);
-    setError({
-      email: !isEmailValid,
-      password: !isPasswordValid,
-      password2: !isPasswordsMatch,
-    });
     setHelperText({
-      email: !isEmailValid ? "Please enter a valid email address" : "",
-      password: !isPasswordValid ? "Password is required" : "",
-      password2: !isPasswordsMatch ? "Passwords do not match" : "",
+      password:
+        password.trim() !== "" && !isPasswordValid
+          ? "Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol."
+          : "",
+      confirmPassword:
+        confirmPassword.trim() !== "" && !passwordsMatch
+          ? "Passwords don't match"
+          : "",
     });
 
+    setError({
+      password: password.trim() !== "" && !isPasswordValid,
+      confirmPassword: confirmPassword.trim() !== "" && !passwordsMatch,
+    });
+
+    setIsFormValid(isPasswordValid && passwordsMatch && password.trim() !== "");
+  }, [password, confirmPassword]);
+
+  const handleSubmit = async () => {
     const formData = new FormData();
     formData.append("user_password", password);
-    if (isEmailValid && isPasswordValid && isPasswordsMatch && isAgreedValid) {
+    if (password) {
       let response = await savepassword(formData);
       console.log("pass", response);
       if (response.status === 201) {
@@ -110,7 +101,7 @@ const CreateOrganization = () => {
           <Typography
             variant="h1"
             gutterBottom
-            style={{ fontFamily: "Inter", fontSize: "36px", fontWeight: 700 }}
+            style={{ fontFamily: "Inter", fontSize: "36px", fontWeight: 500 }}
           >
             Register Account!
           </Typography>
@@ -178,10 +169,10 @@ const CreateOrganization = () => {
             </Box>
             <PasswordInput
               placeholder={"Re-enter Password"}
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-              error={error.password2}
-              helperText={helperText.password2}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              error={error.confirmPassword}
+              helperText={helperText.confirmPassword}
             />
             <FormControlLabel
               control={
@@ -209,7 +200,7 @@ const CreateOrganization = () => {
             />
             <button
               type="submit"
-              //   disabled={!isFormValid}
+              disabled={!isFormValid}
               className="signup_verify_btn"
             >
               Register Account
