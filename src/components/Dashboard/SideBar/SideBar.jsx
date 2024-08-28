@@ -44,7 +44,7 @@ function SideBar() {
           </button>
         </div>
 
-        <div className={"mt-1"}>
+        <div>
           <NavLink
             to="monitor"
             className={(navLink) =>
@@ -83,13 +83,7 @@ function SideBar() {
             <div
               style={{ display: "flex", gap: "0.8rem", alignItems: "center" }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
@@ -113,13 +107,7 @@ function SideBar() {
             <div
               style={{ display: "flex", gap: "0.8rem", alignItems: "center" }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <g clip-path="url(#clip0_1822_3324)">
                   <path
                     d="M13.125 17.5H4.375C4.20924 17.5 4.05027 17.4342 3.93306 17.3169C3.81585 17.1997 3.75 17.0408 3.75 16.875V5.625C3.75 5.45924 3.81585 5.30027 3.93306 5.18306C4.05027 5.06585 4.20924 5 4.375 5H10.625L13.75 8.125V16.875C13.75 17.0408 13.6842 17.1997 13.5669 17.3169C13.4497 17.4342 13.2908 17.5 13.125 17.5Z"
@@ -172,13 +160,7 @@ function SideBar() {
             <div
               style={{ display: "flex", gap: "0.8rem", alignItems: "center" }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path
                   d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
                   stroke="#96CDCC"
@@ -228,7 +210,6 @@ function SideBar() {
                   fill="#96CDCC"
                 />
               </svg>
-
               <span className="menu--text">Subscription</span>
             </div>
           </NavLink>
