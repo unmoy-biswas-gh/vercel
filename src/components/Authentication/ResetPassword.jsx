@@ -69,6 +69,19 @@ const ResetPassword = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 error={!!errors.email}
                 helperText={errors.email}
+                sx={{
+                  fontSize: "14px",
+                  input: {
+                    fontSize: "14px",
+                  },
+                  "& .MuiFormLabel-root": {
+                    fontSize: "14px",
+                  },
+                  "& .MuiInputBase-root": {
+                    fontSize: "14px",
+                    borderRadius: "5px",
+                  },
+                }}
               />
             </FormControl>
 

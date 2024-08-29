@@ -87,10 +87,26 @@ const NewPassword = () => {
 
           <form onSubmit={handleSubmit}>
             <FormControl sx={{ mb: 3 }} fullWidth variant="outlined">
-              <InputLabel htmlFor="outlined-adornment-password">
+              <InputLabel
+                sx={{ fontSize: "14px" }}
+                htmlFor="outlined-adornment-password"
+              >
                 Password
               </InputLabel>
               <OutlinedInput
+                sx={{
+                  fontSize: "14px",
+                  input: {
+                    fontSize: "14px",
+                  },
+                  "& .MuiFormLabel-root": {
+                    fontSize: "14px",
+                  },
+                  "& .MuiInputBase-root": {
+                    fontSize: "14px",
+                    borderRadius: "5px",
+                  },
+                }}
                 name="password"
                 onChange={handlePasswordChange}
                 value={passwords.password}
@@ -112,10 +128,26 @@ const NewPassword = () => {
             </FormControl>
 
             <FormControl sx={{ mb: 5 }} fullWidth variant="outlined">
-              <InputLabel htmlFor="outlined-adornment--confirm-password">
+              <InputLabel
+                htmlFor="outlined-adornment--confirm-password"
+                sx={{ fontSize: "14px" }}
+              >
                 Confirm Password
               </InputLabel>
               <OutlinedInput
+                sx={{
+                  fontSize: "14px",
+                  input: {
+                    fontSize: "14px",
+                  },
+                  "& .MuiFormLabel-root": {
+                    fontSize: "14px",
+                  },
+                  "& .MuiInputBase-root": {
+                    fontSize: "14px",
+                    borderRadius: "5px",
+                  },
+                }}
                 name="confirmPassword"
                 onChange={handlePasswordChange}
                 value={passwords.confirmPassword}
