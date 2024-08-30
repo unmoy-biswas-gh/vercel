@@ -18,7 +18,7 @@ function CustomField({ sx, fullWidth, label, value, onChange, required }) {
         backgroundColor: "white",
       }}
       sx={{
-        maxWidth: "246px",
+        // maxWidth: "246px",
         //  maxHeight: "56px",
         "& .MuiOutlinedInput-root": {
           "&.Mui-focused fieldset": {
