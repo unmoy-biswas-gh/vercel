@@ -63,17 +63,18 @@ const CreateOrganization = () => {
   }, [password, confirmPassword]);
 
   const handleSubmit = async () => {
-    const formData = new FormData();
-    formData.append("user_password", password);
-    if (password) {
-      let response = await savepassword(formData);
-      console.log("pass", response);
-      if (response.status === 201) {
-        navigate("/personalinfo");
-      } else {
-        console.log("Could not verify password");
-      }
-    }
+    navigate("/personalinfo");
+    // const formData = new FormData();
+    // formData.append("user_password", password);
+    // if (password) {
+    //   let response = await savepassword(formData);
+    //   console.log("pass", response);
+    //   if (response.status === 201) {
+    //     navigate("/personalinfo");
+    //   } else {
+    //     console.log("Could not verify password");
+    //   }
+    // }
   };
 
   return (
@@ -200,7 +201,7 @@ const CreateOrganization = () => {
             />
             <button
               type="submit"
-              disabled={!isFormValid}
+              // disabled={!isFormValid}
               className="signup_verify_btn"
             >
               Register Account

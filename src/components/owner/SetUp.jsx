@@ -118,25 +118,27 @@ const OwnerSetUp = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // navigate("/owner/invite");
+    setOpen(true);
 
-    const formData = new FormData();
-    formData.append("organization_name", name);
-    if (logo) {
-      formData.append("organization_logo", logo);
-    }
-    formData.append("organization_employeeCount", employee);
-    formData.append("organization_country", country);
-    formData.append("organization_averageRevenue", amount);
-    formData.append("organization_sector", sector);
-    formData.append("organization_industry", industry);
-    let response = await saveOrg(formData);
-    console.log("saveOrg", response);
-    if (response.status === 201) {
-      setOpen(true);
-    } else {
-      console.log("Could not save org");
-    }
+    // // navigate("/owner/invite");
+
+    // const formData = new FormData();
+    // formData.append("organization_name", name);
+    // if (logo) {
+    //   formData.append("organization_logo", logo);
+    // }
+    // formData.append("organization_employeeCount", employee);
+    // formData.append("organization_country", country);
+    // formData.append("organization_averageRevenue", amount);
+    // formData.append("organization_sector", sector);
+    // formData.append("organization_industry", industry);
+    // let response = await saveOrg(formData);
+    // console.log("saveOrg", response);
+    // if (response.status === 201) {
+    //   setOpen(true);
+    // } else {
+    //   console.log("Could not save org");
+    // }
   };
   async function getAllCountries() {
     const response = await getCountries();
@@ -611,23 +613,22 @@ const OwnerSetUp = () => {
               </FormControl>
               <button
                 type="submit"
-                variant="contained"
-                color="primary"
-                fullWidth
                 style={{
                   marginTop: "2rem",
                   width: "100%",
                   padding: "14px 24px",
 
                   borderRadius: 6,
-                  background: !isFormValid ? "#E8E8E8" : "",
+                  background: "#E8E8E8",
+                  // background: !isFormValid ? "#E8E8E8" : "",
                   backgroundImage: isFormValid
                     ? "linear-gradient(102deg, #369D9C 0%, #28814D 100%)"
-                    : "",
+                    : "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",
                   fontWeight: 500,
                   fontSize: "15px",
                   fontFamily: "Inter",
-                  color: !isFormValid ? "#A2A2A2" : "#FFF",
+                  // color: !isFormValid ? "#A2A2A2" : "#FFF",
+                  color: !isFormValid ? "#fff" : "#fff",
                   border: "1px solid #DDD",
                   letterSpacing: "0.5px",
                   cursor: "pointer",

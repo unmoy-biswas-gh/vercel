@@ -66,14 +66,14 @@ const Login = () => {
       user_email: email,
       user_password: password,
     };
-
-    let response = await verifyPasswordWithBackend(payload);
-    console.log("response", response);
-    if (response?.status === 200) {
-      navigate("/");
-    } else {
-      console.log("error");
-    }
+    navigate("/");
+    // let response = await verifyPasswordWithBackend(payload);
+    // console.log("response", response);
+    // if (response?.status === 200) {
+    //   navigate("/");
+    // } else {
+    //   console.log("error");
+    // }
   };
 
   return (
@@ -212,7 +212,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                disabled={!isFormValid}
+                // disabled={!isFormValid}
                 style={{
                   width: "100%",
                   marginTop: "2.5rem",
@@ -232,13 +232,8 @@ const Login = () => {
                 }}
               >
                 Log In
-              </button>
-              <p
-                className="login_text2"
-                onClick={() => navigate("/reset-password")}
-              >
-                Forgot Password?
-              </p>
+              </button> 
+              <p className="login_text2" onClick={()=> navigate('/reset-password')} >Forgot Password?</p>
             </form>
           </Box>
         </Grid>

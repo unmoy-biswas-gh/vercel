@@ -75,18 +75,18 @@ function PersonalInfo() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    navigate("/setupprofile");
+    // const formData = new FormData();
+    // formData.append("user_profileImage", imageApi);
+    // formData.append("user_name", fullName);
 
-    const formData = new FormData();
-    formData.append("user_profileImage", imageApi);
-    formData.append("user_name", fullName);
-
-    let response = await saveInfo(formData);
-    console.log("pass", response);
-    if (response.status === 201) {
-      navigate("/setupprofile");
-    } else {
-      console.log("Could not add image and name");
-    }
+    // let response = await saveInfo(formData);
+    // console.log("pass", response);
+    // if (response.status === 201) {
+    //   navigate("/setupprofile");
+    // } else {
+    //   console.log("Could not add image and name");
+    // }
   };
 
   return (
@@ -280,7 +280,7 @@ function PersonalInfo() {
 
               <button
                 type="submit"
-                disabled={!isFormValid}
+                // disabled={!isFormValid}
                 className="signup_verify_btn"
               >
                 Next

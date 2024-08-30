@@ -111,7 +111,7 @@ const SetupOrg = () => {
             <button
               onClick={handleSubmit}
               type="submit"
-              disabled={!LogoSet}
+              // disabled={!LogoSet}
               variant="contained"
               color="primary"
               fullwidth

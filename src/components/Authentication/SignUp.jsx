@@ -38,15 +38,15 @@ const SignUp = () => {
       user_otp: otp,
     };
     console.log("payload", payload);
-
-    let response = await verifyOtpWithBackend(payload);
-    // console.log("response", response);
-    if (response.status === 200) {
-      setOpen(true);
-    } else {
-      setOtpError(true);
-      console.log("error");
-    }
+    setOpen(true);
+    // let response = await verifyOtpWithBackend(payload);
+    // // console.log("response", response);
+    // if (response.status === 200) {
+    //   setOpen(true);
+    // } else {
+    //   setOtpError(true);
+    //   console.log("error");
+    // }
   };
   const resendOTP = () => {
     startTimer();
@@ -95,18 +95,18 @@ const SignUp = () => {
     const payload = {
       user_email: email,
     };
-
-    if (isEmailValid) {
-      let response = await sendOTPtoEmail(payload);
-      // console.log("response", response);
-      if (response.data.status === 200) {
-        setStatus("otp");
-      } else {
-        console.log("wrong email");
-      }
-    } else {
-      alert("not a valid email");
-    }
+    setStatus("otp");
+    // if (isEmailValid) {
+    //   let response = await sendOTPtoEmail(payload);
+    //   // console.log("response", response);
+    //   if (response.data.status === 200) {
+    //     setStatus("otp");
+    //   } else {
+    //     console.log("wrong email");
+    //   }
+    // } else {
+    //   alert("not a valid email");
+    // }
   };
 
   return (
