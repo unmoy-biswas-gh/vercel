@@ -81,6 +81,9 @@ const ResetPassword = () => {
                     fontSize: "14px",
                     borderRadius: "5px",
                   },
+                  "& .Mui-focused .MuiFormLabel-root": {
+                    color: "gray", // Label color when focused (floating)
+                  },
                 }}
               />
             </FormControl>

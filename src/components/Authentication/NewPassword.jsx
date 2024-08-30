@@ -106,6 +106,9 @@ const NewPassword = () => {
                     fontSize: "14px",
                     borderRadius: "5px",
                   },
+                  "& .Mui-focused .MuiFormLabel-root": {
+                    color: "gray", // Label color when focused (floating)
+                  },
                 }}
                 name="password"
                 onChange={handlePasswordChange}
@@ -146,6 +149,9 @@ const NewPassword = () => {
                   "& .MuiInputBase-root": {
                     fontSize: "14px",
                     borderRadius: "5px",
+                  },
+                  "& .Mui-focused .MuiFormLabel-root": {
+                    color: "gray", // Label color when focused (floating)
                   },
                 }}
                 name="confirmPassword"

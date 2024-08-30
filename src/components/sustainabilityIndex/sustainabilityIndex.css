@@ -1,0 +1,69 @@
+.charts-container {
+  padding: 30px 100px;
+}
+
+.charts-container h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 20px;
+  /* white-space: nowrap; */
+}
+
+.sustain-subheading-h2 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.chart-left-label {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.sustain-base-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr; /* 1st column is small, next 2 columns are equal width */
+  gap: 16px; /* Optional: Add some spacing between columns */
+  width: 100%; /* Ensures the grid takes up the full width of its container */
+}
+
+.sustain-base-grid-item {
+  padding: 16px;
+  border: 1px solid #ddd; /* Optional: Border for grid items */
+}
+
+.sustain-base-small-column {
+  grid-column: 1 / 2; /* Specifies the 1st column */
+}
+
+.sustain-base-equal-column {
+  grid-column: span 1; /* Specifies the 2nd and 3rd columns */
+}
+
+.sustain-environmental-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr; /* 1st column is small, next 2 columns are equal width */
+  gap: 16px; /* Optional: Add some spacing between columns */
+  width: 100%; /* Ensures the grid takes up the full width of its container */
+}
+
+.sustain-environmental-grid-item {
+  padding: 16px;
+  border: 1px solid #ddd; /* Optional: Border for grid items */
+}
+
+.sustain-environmental-small-column {
+  grid-column: 1 / 2;
+  padding: 16px;
+}
+
+.sustain-environmental-equal-column {
+  grid-column: span 1; /* Specifies the 2nd and 3rd columns */
+}
+
+.half-doughnut-legend {
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: 400;
+}
