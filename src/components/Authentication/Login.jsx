@@ -233,7 +233,12 @@ const Login = () => {
               >
                 Log In
               </button>
-              <p className="login_text2">Forgot Password?</p>
+              <p
+                className="login_text2"
+                onClick={() => navigate("/reset-password")}
+              >
+                Forgot Password?
+              </p>
             </form>
           </Box>
         </Grid>

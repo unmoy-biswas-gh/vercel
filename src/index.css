@@ -35,3 +35,11 @@ input[type="number"] {
   cursor: pointer;
   background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
 }
+
+.green_text_gradient {
+  background: linear-gradient(101.74deg, #369d9c 0%, #28814d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

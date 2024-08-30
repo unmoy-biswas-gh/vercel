@@ -21,6 +21,10 @@ import TeamMembersRegister from "./components/teamMembersLogin/TeamMembersRegist
 import TeamMembersProfile from "./components/teamMembersLogin/TeamMembersProfile";
 import TeamMembersDashboard from "./components/Dashboard/TeamMembersDashboard";
 import TeamMemberDataPoints from "./components/teamMembers/dataPoints/TeamMemberDataPoints";
+import ResetPassword from "./components/Authentication/ResetPassword";
+import ResetPasswordOTP from "./components/Authentication/ResetPasswordOTP";
+import NewPassword from "./components/Authentication/NewPassword";
+import SustainabilityIndex from "./components/sustainabilityIndex/SustainabilityIndex";
 
 const App = () => {
   return (
@@ -28,6 +32,12 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/reset-password/otp" element={<ResetPasswordOTP />} />
+          <Route
+            path="/reset-password/new-password"
+            element={<NewPassword />}
+          />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/register" element={<CreateOrganization />} />
           <Route path="/personalinfo" element={<PersonalInfo />} />{" "}
@@ -62,6 +72,10 @@ const App = () => {
           <Route path="/team" element={<TeamMembersDashboard />}>
             <Route path="data-points" element={<TeamMemberDataPoints />} />
           </Route>
+          <Route
+            path="/sustainability-index"
+            element={<SustainabilityIndex />}
+          />
         </Routes>
       </Router>
     </AuthProvider>
