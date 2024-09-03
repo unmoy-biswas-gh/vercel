@@ -18,6 +18,9 @@
   border-bottom: 9px solid #77bcbb;
   overflow: scroll;
   border-radius: 0px 15px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  /* width: "100%"; */
 }
 .ge3s_dashboard_border {
   height: 100vh !important;

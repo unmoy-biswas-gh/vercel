@@ -8,13 +8,13 @@
 
 .booking-heading h2 {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 24px;
 }
 
 .booking-heading p {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.7rem;
   line-height: 16px;
   color: #9a9a9a;
 }
@@ -22,10 +22,10 @@
 .booking-btn {
   cursor: pointer;
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem;
   border-radius: 10px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   background: var(--booking-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -57,7 +57,7 @@
 }
 
 .reports-table_container {
-  padding: 32px;
+  padding: 10px 32px 10px 32px;
   height: 100%;
   max-width: 100%;
   height: 100%;
@@ -68,6 +68,7 @@
   display: flex;
   justify-content: space-between;
   align-items: start;
+  margin-bottom: 20px;
 }
 
 .reports-table_heading_container {
@@ -84,7 +85,7 @@
 }
 
 .reports-table-input_container {
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
   display: flex;
   align-items: center;
   gap: 16px;

@@ -64,7 +64,7 @@ const Subscription = () => {
           sx={{
             "& .MuiTab-root": {
               textTransform: "none", // Remove uppercase transformation
-              fontSize: "1rem",
+              fontSize: "14px",
               fontWeight: 500,
               color: "#666666D9", // Set non-active tab text to gray
             },
