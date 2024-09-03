@@ -7,6 +7,7 @@ import EnvironmentalKpi from "./EnvironmentalKpi";
 import SocialKpi from "./SocialKpi";
 import GovernanceKpi from "./GovernanceKpi";
 import { useNavigate } from "react-router-dom";
+import PageHeading from "../../common/PageHeading/PageHeading";
 
 const Tab = ({ name, onClick, isActive }) => {
   return (
@@ -49,7 +50,7 @@ const TeamMemberDataPoints = () => {
     <>
       <div className="team-members_add-data-points_container">
         {/* HEADING DIV */}
-        <div className="team-members_add-data-points_heading">
+        {/* <div className="team-members_add-data-points_heading">
           <img
             style={{ cursor: "pointer" }}
             src={back}
@@ -59,7 +60,11 @@ const TeamMemberDataPoints = () => {
             onClick={() => navigate("/")}
           />
           <h2>Add essential Data points</h2>
-        </div>
+        </div> */}
+        <PageHeading
+          onClick={() => navigate("/")}
+          text={"Add essential Data points"}
+        />
 
         {/* ALL TABS DIV  */}
         <div className="team-members_add-data-points_tabs_container">
@@ -67,7 +72,7 @@ const TeamMemberDataPoints = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "16px",
+              gap: "12px",
               flexWrap: "wrap",
             }}
           >

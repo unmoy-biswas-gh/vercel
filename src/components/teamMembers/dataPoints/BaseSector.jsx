@@ -77,7 +77,7 @@ const BaseSector = () => {
         overflow: "auto",
       }}
     >
-      <div className="kpi-table">
+      {/* <div className="kpi-table">
         <div className="kpi-table-row kpi-table-heading">
           {headings.map((item, index) => (
             <div
@@ -219,6 +219,170 @@ const BaseSector = () => {
             </div>
           );
         })}
+      </div> */}
+      <div className="new-kpi-table-container">
+        <div className="new-kpi-table">
+          <div className="new-kpi-table-header">
+            <div className="new-kpi-table-row new-kpi-table-head-row">
+              <div className="new-kpi-table-cell header-cell centered">
+                <div className="new-kpi-table-header-content">Symbol</div>
+              </div>
+              <div className="new-kpi-table-cell header-cell">
+                <div className="new-kpi-table-header-content">Data Point</div>
+              </div>
+              <div className="new-kpi-table-cell header-cell">
+                <div className="new-kpi-table-header-content">
+                  Data Point Unit
+                </div>
+              </div>
+              <div className="new-kpi-table-cell header-cell centered">
+                <div className="new-kpi-table-header-content">Value</div>
+              </div>
+              <div className="new-kpi-table-cell header-cell centered">
+                <div className="new-kpi-table-header-content">Comments</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="new-kpi-table-body">
+            {dummyData.map((item) => {
+              const hasValue = item.dataPoints.some(
+                (pt) => pt.value !== "" || !pt.value
+              );
+              return (
+                <div
+                  key={item.id}
+                  className="new-kpi-table-row new-kpi-table-body-row"
+                >
+                  <div
+                    style={{
+                      backgroundColor: hasValue ? "#F2F2F2" : "#FFEDED",
+                    }}
+                    className="new-kpi-table-cell centered"
+                  >
+                    <div className="new-kpi-table-cell-content">
+                      {item.symbol}
+                    </div>
+                  </div>
+                  <div className="new-kpi-table-cell">
+                    {item.dataPoints.map((pt) => (
+                      <div
+                        style={{
+                          backgroundColor:
+                            pt.value !== "" ? "#F2F2F2" : "white",
+                        }}
+                        key={pt.point}
+                        className="new-kpi-table-cell-content data"
+                      >
+                        {pt.point}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="new-kpi-table-cell">
+                    {item.dataPoints.map((pt) => (
+                      <div
+                        key={pt.unit}
+                        className="new-kpi-table-cell-content data"
+                        style={{
+                          backgroundColor:
+                            isAiGenerated && pt.value !== ""
+                              ? "#F2F2F2"
+                              : "white",
+                        }}
+                      >
+                        {pt.unit}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="new-kpi-table-cell centered">
+                    {item.dataPoints.map((pt) => (
+                      <div
+                        style={{
+                          backgroundColor: !pt.value ? "#FFEDED" : "",
+                        }}
+                        key={pt.value}
+                        className="new-kpi-table-cell-content input-wrapper"
+                      >
+                        <input
+                          value={pt.value}
+                          type="text"
+                          className="input-field"
+                          placeholder="Enter value"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="new-kpi-table-cell centered">
+                    <div className="new-kpi-table-cell-content">
+                      {item.messages === "unread" ? (
+                        <div className="messages-wrapper">
+                          <div className="profile-images-container">
+                            {[1, 2, 3, 4, 5].slice(0, 3).map((img) => (
+                              <img
+                                key={img}
+                                src={dummyUser}
+                                alt="Messaged"
+                                height={28}
+                                width={28}
+                              />
+                            ))}
+                            {[1, 2, 3, 4, 5].length > 4 && (
+                              <div className="extra-images">
+                                +{[1, 2, 3, 4, 5].length - 3}
+                              </div>
+                            )}
+                          </div>
+                          <div className="notifications-div">
+                            <img
+                              src={messages}
+                              alt="Messaged"
+                              height={24}
+                              width={24}
+                            />
+                            <span className="unread">2 Unread</span>
+                          </div>
+                        </div>
+                      ) : item.messages === "read" ? (
+                        <div className="messages-wrapper">
+                          <div className="profile-images-container">
+                            {[1, 2, 3, 4].map((img) => (
+                              <img
+                                key={img}
+                                src={dummyUser}
+                                alt="Messaged"
+                                height={28}
+                                width={28}
+                              />
+                            ))}
+                          </div>
+                          <div className="notifications-div">
+                            <img
+                              src={messages}
+                              alt="Messaged"
+                              height={24}
+                              width={24}
+                            />
+                            <span className="read">0 Unread</span>
+                          </div>
+                        </div>
+                      ) : item.messages === "not assigned" ? (
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <button className="assign-btn">Assign</button>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

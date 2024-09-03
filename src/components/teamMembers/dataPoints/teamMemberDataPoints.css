@@ -7,7 +7,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
 }
 
 .team-members_add-data-points_heading {
@@ -77,16 +77,20 @@
 .team-members_add-data-points_tabName {
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
   color: #9d9d9d;
   background: transparent;
 }
 
+.team-members_add-data-points_tabName:hover {
+  color: #00191d;
+}
+
 .team-members_add-data-points_tabName.active {
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
   background: var(--tab-gradient);
   background-clip: text;
@@ -177,14 +181,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 9.49px 10px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #f2f2f2;
 }
 
 .kpi-table-data_value_div input {
   max-width: 100px;
-  height: 36px;
+  max-height: 35px;
   text-align: center;
   border-radius: 8px;
   border: 1px solid #dbdbdb;
@@ -290,12 +294,12 @@
 
 .kpi-table-prev-btn {
   cursor: pointer;
-  padding: 10px 32px;
+  padding: 6px 28px;
   box-sizing: border-box;
-  /* background: var(--tab-gradient); */
+  background: transparent;
   border: 1px solid #02a673;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 24px;
   color: #02a673;
@@ -303,10 +307,10 @@
 
 .kpi-table-next-btn {
   cursor: pointer;
-  padding: 8px 28px;
+  padding: 6px 26px;
   background: var(--tab-gradient);
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 24px;
   color: white;

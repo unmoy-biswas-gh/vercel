@@ -77,11 +77,12 @@ const TeamMembers = () => {
         <div className="team-members-input_container">
           <FormControl variant="outlined">
             <OutlinedInput
-              style={{
+              sx={{
                 borderRadius: "8px",
+                maxHeight: "40px",
               }}
               type="search"
-              className="team-members-input"
+              className="reports-table-input"
               id="outlined-adornment-weight"
               startAdornment={
                 <InputAdornment position="start">
@@ -125,7 +126,7 @@ const TeamMembers = () => {
             sx={{
               "& .MuiTab-root": {
                 textTransform: "none", // Remove uppercase transformation
-                fontSize: "1rem",
+                fontSize: "14px",
                 fontWeight: 500,
                 color: "#666666D9", // Set non-active tab text to gray
               },

@@ -15,6 +15,41 @@ import VideoPlayer from "../common/VideoPlayer";
 import ImageModal from "../common/ImageModal";
 import { saveInfo } from "../../api/auth";
 
+const styles = {
+  fontSize: "13px",
+  // borderColor: "#E0E0E0",
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "5px",
+    borderColor: "#E0E0E0",
+    "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+      borderColor: "#C5D2CB", // Conditional border color
+    },
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "rgba(0, 0, 0, 0.60)",
+    fontFamily: "Inter",
+  },
+  "& .MuiFormHelperText-root": {
+    color: "red", // Custom helper text color
+  },
+  "& .MuiInputBase-input": {
+    fontFamily: "Inter",
+    borderColor: "#EEEEEE",
+    maxHeight: "40px",
+    fontSize: "14px",
+    padding: "11.5px 12px", // Adjust the padding to reduce the size
+  },
+  "& .MuiInputLabel-root": {
+    fontFamily: "Inter",
+    fontSize: "13px",
+    transform: "translate(12px, 12px) scale(1)", // Adjust the label position
+    color: "#787878",
+  },
+  "& .MuiInputLabel-shrink": {
+    transform: "translate(15px, -7px) scale(0.8)", // Adjust the label position when it shrinks
+  },
+};
+
 function TeamMembersProfile() {
   const [fullName, setFullName] = useState("");
   const imageInput = useRef();
@@ -257,31 +292,7 @@ function TeamMembersProfile() {
                   borderRadius: "10px",
                   backgroundColor: "white",
                 }}
-                sx={{
-                  fontSize: "14px",
-                  "& .MuiOutlinedInput-root": {
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#369D9C",
-                    },
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "rgba(0, 0, 0, 0.60)",
-                    fontFamily: "Inter",
-                  },
-                  "& .MuiFormHelperText-root": {
-                    color: "red", // Custom helper text color
-                  },
-                  "& .MuiInputBase-input": {
-                    fontFamily: "Inter",
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontFamily: "Inter",
-                    fontSize: "14px",
-                  },
-                  input: {
-                    fontSize: "14px",
-                  },
-                }}
+                sx={styles}
               />
 
               <button

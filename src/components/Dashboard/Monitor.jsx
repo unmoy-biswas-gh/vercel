@@ -8,7 +8,8 @@ const Monitor = () => {
   const [createReport, setCreateReport] = useState(false);
   return (
     <Box
-    // sx={{ width: "100%", height: "100%" }}
+      // sx={{ width: "100%", height: "100%" }}
+      sx={{ flexGrow: 1 }}
     >
       {createReport ? (
         <CreateReport closeView={() => setCreateReport(false)} />

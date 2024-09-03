@@ -227,15 +227,18 @@
 }
 
 .sidebar_powered_by {
+  margin: 0 auto 20px auto;
+  width: 88%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   position: relative;
   background-color: #f6f8f7;
-  border-radius: 0 0 8px 8px;
-  padding: 20px 10px 10px 10px; /* Adjust the padding as needed */
+  /* background-color: red; */
+  border-radius: 8px 8px 8px 8px;
+  padding: 25px 8px 10px 8px; /* Adjust the padding as needed */
 }
 
 .logo_wrapper {

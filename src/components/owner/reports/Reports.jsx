@@ -15,6 +15,8 @@ import Vetted from "./Vetted";
 import SentForVerification from "./SentForVerification";
 import SaveAsReady from "./SaveAsReady";
 import DraftsTable from "./DraftsTable";
+import PageHeading from "../../common/PageHeading/PageHeading";
+import { useNavigate } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,24 +73,27 @@ const Reports = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="reports-table_container">
         <div className="reports-table_heading-parent">
           <div>
-            <div className="reports-table_heading_container">
+            {/* <div className="reports-table_heading_container">
               <button type="button" className="back-button">
                 <img src={back} alt="Go Back" />
               </button>
               <h1>Report Status</h1>
-            </div>
+            </div> */}
+            <PageHeading onClick={() => navigate("/")} text={"Report Status"} />
 
             <div className="reports-table-input_container">
               <FormControl variant="outlined">
                 <OutlinedInput
                   sx={{
                     borderRadius: "8px",
-                    maxHeight: "48px",
+                    maxHeight: "40px",
                   }}
                   type="search"
                   className="reports-table-input"
@@ -110,7 +115,7 @@ const Reports = () => {
           <Paper
             sx={{
               padding: { lg: "16px 18px" },
-              maxWidth: "400px",
+              maxWidth: "350px",
               width: "100%",
               borderRadius: { lg: "10px" },
             }}
@@ -120,7 +125,7 @@ const Reports = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                gap: "13px",
+                gap: "10px",
               }}
             >
               <div className="booking-heading">
@@ -155,7 +160,7 @@ const Reports = () => {
             sx={{
               "& .MuiTab-root": {
                 textTransform: "none", // Remove uppercase transformation
-                fontSize: "1rem",
+                fontSize: "14px",
                 fontWeight: 500,
                 color: "#666666D9", // Set non-active tab text to gray
               },

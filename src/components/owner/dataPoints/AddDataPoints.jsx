@@ -58,7 +58,7 @@ const AddDataPoints = () => {
         </div> */}
         <PageHeading
           onClick={() => navigate("/")}
-          text={"Add essential Data points"}
+          text={"Add essential data points"}
         />
 
         {/* ALL TABS DIV  */}

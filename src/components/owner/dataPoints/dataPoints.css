@@ -194,7 +194,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 9.49px 10px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #f2f2f2;
 }
@@ -317,12 +317,12 @@
 
 .kpi-table-prev-btn {
   cursor: pointer;
-  padding: 10px 32px;
+  padding: 6px 28px;
   box-sizing: border-box;
-  /* background: var(--tab-gradient); */
+  background: transparent;
   border: 1px solid #02a673;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 24px;
   color: #02a673;
@@ -330,10 +330,10 @@
 
 .kpi-table-next-btn {
   cursor: pointer;
-  padding: 10px 32px;
+  padding: 6px 28px;
   background: var(--tab-gradient);
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 24px;
   color: white;
@@ -344,4 +344,157 @@
 /* AI STYLES */
 .ai-generated {
   background-color: #f6fffa;
+}
+
+/* NEW TABLE CODE */
+
+.new-kpi-table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.new-kpi-table {
+  max-width: 100%;
+  border-collapse: collapse;
+  overflow: auto;
+}
+
+.new-kpi-table-header {
+  margin-bottom: 10px;
+  border: none !important;
+}
+
+.new-kpi-table-head-row,
+.new-kpi-table-row {
+  display: grid;
+  grid-template-columns: 0.7fr 2fr 1fr 1fr 1.5fr;
+  background-color: white;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: none;
+}
+
+.new-kpi-table-head-row {
+  background-color: #fcfcfc;
+  border: none !important;
+}
+
+.new-kpi-table-cell {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  position: relative;
+  min-width: 0; /* Ensure cells don't overflow */
+  min-width: 150px;
+}
+
+.header-cell {
+  border: none !important;
+  background-color: #fcfcfc !important;
+}
+
+.new-kpi-table-cell:last-child {
+  border-right: none;
+}
+
+.new-kpi-table-cell:first-child {
+  border-left: none;
+}
+
+/* Header cell styles */
+.new-kpi-table-header-content {
+  padding: 8px 30px;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: none !important;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #5b5b5b;
+  font-weight: 600;
+}
+
+/* Center only specific header cells */
+.new-kpi-table-head-row
+  .new-kpi-table-cell:nth-child(1)
+  .new-kpi-table-header-content,
+.new-kpi-table-head-row
+  .new-kpi-table-cell:nth-child(4)
+  .new-kpi-table-header-content,
+.new-kpi-table-head-row
+  .new-kpi-table-cell:nth-child(5)
+  .new-kpi-table-header-content {
+  justify-content: center;
+}
+
+/* Content cell styles */
+.new-kpi-table-cell-content {
+  padding: 10px 30px;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Center specific columns in content */
+.new-kpi-table-cell:nth-child(1) .new-kpi-table-cell-content,
+.new-kpi-table-cell:nth-child(4) .new-kpi-table-cell-content,
+.new-kpi-table-cell:nth-child(5) .new-kpi-table-cell-content {
+  justify-content: center;
+}
+
+/* Data and input wrapper styles */
+.data,
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+  box-sizing: border-box;
+}
+
+.data:last-child,
+.input-wrapper:last-child {
+  border-bottom: none;
+}
+
+.input-field {
+  width: 75%;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 6px;
+  border: 0.5px solid #dbdbdb;
+}
+
+.input-field::placeholder {
+  color: #dbdbdb;
+  font-size: 10px;
+}
+
+.new-kpi-table-row:first-child .new-kpi-table-cell {
+  border-top: none;
+}
+
+.new-kpi-table-row:last-child .new-kpi-table-cell {
+  border-bottom: none;
+}
+
+.new-kpi-table-body-row {
+  margin-bottom: 30px;
+}
+
+.new-kpi-table-cell > .new-kpi-table-cell-content:last-child {
+  border-bottom: none;
 }
