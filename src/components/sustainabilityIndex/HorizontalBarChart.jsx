@@ -4,7 +4,7 @@ import { AxisLeft, AxisBottom } from "@visx/axis";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { animated, useTransition } from "@react-spring/web";
 
-const defaultMargin = { top: 10, right: 10, bottom: 30, left: 50 };
+const defaultMargin = { top: 10, right: 10, bottom: 50, left: 50 };
 
 export default function HorizontalBarChart({
   data,
@@ -13,6 +13,7 @@ export default function HorizontalBarChart({
   height,
   margin = defaultMargin,
   animate = true,
+  showLegend = false,
 }) {
   if (width < 10) return null;
 
@@ -33,12 +34,16 @@ export default function HorizontalBarChart({
 
   const colorScale = scaleOrdinal({
     domain: ["background", "fill"],
-    range: ["#E1F4F3", colors[0]], // Light color for background, dark color for fill
+    range: colors, // Light color for background, dark color for fill
   });
 
   return (
     <svg width={width} height={height}>
-      <Group top={margin.top} left={margin.left}>
+      {/* Legend */}
+      {showLegend && (
+        <Legend color={colorScale("fill")} label="Value" width={width} />
+      )}
+      <Group top={margin.top + (showLegend ? 20 : 0)} left={margin.left}>
         {data.map((d, i) => {
           const yPosition = yScale(d.label);
           const barHeight = yScale.bandwidth();
@@ -101,6 +106,18 @@ export default function HorizontalBarChart({
         />
       </Group>
     </svg>
+  );
+}
+
+// Legend Component
+function Legend({ color, label, width }) {
+  return (
+    <Group top={10} left={width / 2 - 50}>
+      <rect width={12} height={12} fill={color} />
+      <text x={18} y={10} fill="#333" fontSize={10} textAnchor="start">
+        {label}
+      </text>
+    </Group>
   );
 }
 

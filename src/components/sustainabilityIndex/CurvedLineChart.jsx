@@ -7,32 +7,18 @@ import {
   Tooltip,
 } from "@visx/xychart";
 import { LinearGradient } from "@visx/gradient";
-import { curveLinear } from "@visx/curve";
+import { curveNatural } from "@visx/curve";
 import { Axis } from "@visx/xychart";
 
-// Function to generate a unique ID
-const generateUniqueId = () =>
-  `gradient-${Math.random().toString(36).substr(2, 9)}`;
-
-export default function LineAreaGraph({
-  width,
-  height,
-  lineColor,
-  gradientFrom = "#8debff", // Default Gradient start color
-  gradientTo = "#ffffff", // Default Gradient end color
-  data,
-}) {
-  // Generate a unique gradient ID for this instance
-  const gradientId = React.useMemo(() => generateUniqueId(), []);
-
+export default function CurvedLineChart({ width, height, color }) {
   // Updated data
-  const newData = data || [
-    { quarter: "Q1 2023", value: 0.1 },
-    { quarter: "Q2 2023", value: 0.25 },
-    { quarter: "Q3 2023", value: 0.4 },
-    { quarter: "Q4 2023", value: 0.5 },
-    { quarter: "Q1 2024", value: 0.6 },
-    { quarter: "Q2 2024", value: 0.8 },
+  const newData = [
+    { quarter: "Q1 2023", value: 2 },
+    { quarter: "Q2 2023", value: 4 },
+    { quarter: "Q3 2023", value: 2 },
+    { quarter: "Q4 2023", value: 4 },
+    { quarter: "Q1 2024", value: 8 },
+    { quarter: "Q2 2024", value: 7 },
   ];
 
   return (
@@ -41,14 +27,10 @@ export default function LineAreaGraph({
       yScale={{ type: "linear" }}
       height={height}
       width={width}
-      margin={{ top: 40, right: 0, bottom: 30, left: 30 }} // Reduced left margin
+      margin={{ top: 40, right: 0, bottom: 30, left: 45 }} // Reduced left margin
     >
-      {/* Define the gradient using a unique ID */}
-      <LinearGradient
-        id={gradientId} // Use the unique gradient ID
-        from={gradientFrom} // Use the gradientFrom prop
-        to={gradientTo} // Use the gradientTo prop
-      />
+      {/* Define the gradient */}
+      <LinearGradient id="curved-green-gradient" from="#92dec7" to="#fff" />
 
       {/* AnimatedAreaSeries for the filled area */}
       <AnimatedAreaSeries
@@ -57,8 +39,8 @@ export default function LineAreaGraph({
         xAccessor={(d) => d.quarter}
         yAccessor={(d) => d.value}
         fillOpacity={0.4} // Controls the opacity of the area below the line
-        fill={`url(#${gradientId})`} // Apply the gradient using the unique ID
-        curve={curveLinear} // Apply the natural curve
+        fill="url(#curved-green-gradient)" // Apply the gradient
+        curve={curveNatural} // Apply the natural curve
       />
 
       {/* AnimatedLineSeries for the line with animation */}
@@ -67,9 +49,9 @@ export default function LineAreaGraph({
         data={newData}
         xAccessor={(d) => d.quarter}
         yAccessor={(d) => d.value}
-        stroke={lineColor} // Updated line color
+        stroke={color} // Updated line color
         strokeWidth={1} // Line thickness
-        curve={curveLinear} // Apply the natural curve
+        curve={curveNatural} // Apply the natural curve
         strokeOpacity={1} // Ensure full opacity
       />
 
@@ -87,7 +69,7 @@ export default function LineAreaGraph({
               cx={x}
               cy={y}
               r={4} // Radius of the dot
-              fill={lineColor} // Dot color matching the line
+              fill={color} // Dot color matching the line
             />
           );
         }}
@@ -106,10 +88,15 @@ export default function LineAreaGraph({
         hideAxisLine
         hideTicks
         numTicks={4} // Reduce the number of labels on the left axis
+        label="In Million m3"
+        labelOffset={0}
+        tickLabelProps={{
+          dx: "01em",
+        }}
       />
       <Tooltip
         offsetLeft={-120}
-        offsetTop={0}
+        offsetTop={-40}
         renderTooltip={({ tooltipData }) => (
           <div
             style={{
@@ -124,7 +111,7 @@ export default function LineAreaGraph({
           >
             <div
               style={{
-                backgroundColor: lineColor,
+                backgroundColor: color,
                 height: 12,
                 width: 12,
               }}

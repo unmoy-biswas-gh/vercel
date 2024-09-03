@@ -26,8 +26,8 @@ export default function HalfDoughnutChart({
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
   const radius = Math.min(innerWidth, innerHeight) / 2;
-  const centerY = innerHeight / 2;
-  const centerX = innerWidth / 2;
+  const centerY = height / 2; // Center based on the full height of the SVG
+  const centerX = width / 2; // Center based on the full width of the SVG
   const innerRadius = radius * 0.8;
 
   // Color scale
@@ -38,8 +38,16 @@ export default function HalfDoughnutChart({
 
   return (
     <div>
-      <svg style={{ rotate: "90deg" }} width={width} height={height}>
-        <Group top={centerY + margin.top} left={centerX + margin.left}>
+      <svg
+        style={{
+          rotate: "90deg",
+          display: "block",
+          margin: "auto",
+        }}
+        width={width}
+        height={height}
+      >
+        <Group top={centerY} left={centerX + 30}>
           <Pie
             data={
               selectedSlice
@@ -73,7 +81,7 @@ export default function HalfDoughnutChart({
         <LegendOrdinal
           scale={colorScale}
           direction="row"
-          itemMargin="5px"
+          itemMargin="0 5px"
           shape="circle"
           shapeHeight={10}
           shapeWidth={10}

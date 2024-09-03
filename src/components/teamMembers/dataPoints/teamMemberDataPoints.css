@@ -3,7 +3,7 @@
 }
 
 .team-members_add-data-points_container {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
   justify-content: center;
   gap: 4px;
   align-items: center;
-  padding: 13px 20px;
+  padding: 10px 15px;
   border: none;
   background: radial-gradient(
     50% 132.61% at 50% 50.13%,
@@ -51,9 +51,13 @@
   );
   border-radius: 20px;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 12px;
   color: #ffffff;
+  box-shadow: 0px 4.43px 13.29px -8.86px #ffffff3d inset,
+    0px 19.93px 17.71px -8.86px #005c3136,
+    0px -13.29px 17.71px 0px #ffffff38 inset, 0px 4.43px 8.86px -4.43px #005c31,
+    0px 2.21px 6.64px 0px #ffffff40 inset, 0px 1.11px 0px -4.43px #005c31;
 }
 
 .team-members_add-data-points_tab {
@@ -64,7 +68,7 @@
 }
 
 .team-members_add-data-points_tab.activeTab {
-  padding: 11px;
+  padding: 8px;
   border: 1px solid #02a673;
   border-radius: 8px;
   cursor: pointer;
@@ -109,7 +113,7 @@
 .kpi-table {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr 2fr 2fr; /* Adjust the ratios as needed */
-  row-gap: 40px; /* Optional: adds space between cells */
+  row-gap: 24px; /* Optional: adds space between cells */
 }
 
 .no-gap {
@@ -148,7 +152,7 @@
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
 }
@@ -156,7 +160,7 @@
 .kpi-table-data_point_div {
   padding: 19px 40px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
 }
@@ -164,7 +168,7 @@
 .kpi-table-data_unit_div {
   padding: 19px 40px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
 }
@@ -173,12 +177,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 10px;
+  padding: 9.49px 10px;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
 }
 
 .kpi-table-data_value_div input {
-  max-width: 120px;
-  height: 40px;
+  max-width: 100px;
+  height: 36px;
   text-align: center;
   border-radius: 8px;
   border: 1px solid #dbdbdb;
@@ -190,6 +196,8 @@
   justify-content: center;
   align-items: center;
   padding: 12px 35px;
+  background-color: #fff;
+  border-left: 1px solid #f2f2f2;
 }
 
 .assignments-div {
@@ -273,7 +281,7 @@
 }
 
 .kpi-table-btns_div {
-  padding: 40px 35px;
+  padding: 10px 35px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -295,7 +303,7 @@
 
 .kpi-table-next-btn {
   cursor: pointer;
-  padding: 10px 32px;
+  padding: 8px 28px;
   background: var(--tab-gradient);
   border-radius: 6px;
   font-size: 16px;
