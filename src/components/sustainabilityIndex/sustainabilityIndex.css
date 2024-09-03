@@ -1,12 +1,66 @@
+.sustainability-top-heading {
+  border-bottom: 1px solid #eeeeee;
+  padding: 20px 100px;
+  margin-bottom: 20px;
+}
+
+.sustainability-top-heading h1 {
+  padding: 0 10px;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
 .charts-container {
   padding: 30px 100px;
+  background-color: #f9f9f9;
 }
 
 .charts-container h2 {
   font-size: 1rem;
   font-weight: 500;
   line-height: 20px;
+  margin-bottom: 14px;
   /* white-space: nowrap; */
+}
+
+.sustainability-section_heading {
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.sustainability-heading {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sustainability-heading_container {
+  padding: 40px 10px 60px 10px;
+  overflow: hidden; /* To ensure the pseudo-elements are contained */
+  margin-bottom: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/sustainabilityReport/sustainabilityHeading.png");
+}
+
+.sustainability-heading_title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sustainability-heading_title h1 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.sustainability-heading_title h2 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0;
 }
 
 .sustain-subheading-h2 {
@@ -66,4 +120,121 @@
   margin-top: 20px;
   font-size: 12px;
   font-weight: 400;
+}
+
+.base-sector-card_title {
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.base-sector-card_grade {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.grading-section {
+  margin-bottom: 60px;
+}
+
+.disclaimer-div {
+  margin-top: 60px;
+}
+
+.disclaimer-div h3 {
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16.94px;
+}
+
+.disclaimer-div ul {
+  margin-left: 15px;
+  list-style: decimal;
+}
+
+.disclaimer-div ul li {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+.sustainability-bottom_div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 20px 90px;
+  border-top: 1px solid #dbdbdb;
+}
+
+.verification-btn {
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
+}
+
+.btn-no_borders {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 24px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.expert-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 30px 20px 30px;
+  border: 1px solid #dbdbdb;
+  padding: 15px;
+}
+
+.expert-left_div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.expert-left_div h2 {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+}
+
+.expert-left_div h3 {
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 24px;
+}
+
+.expert-right_div {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 0 10px 0 0;
+}
+
+.expert-right_div .book-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid #699191;
+  font-size: 0.8rem;
+  padding: 12px;
+  color: #699191;
+  width: 200px;
+}
+
+.expert-right_div .close-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }

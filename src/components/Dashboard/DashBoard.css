@@ -2,7 +2,7 @@
   position: absolute;
   left: 19vw;
   top: 0px;
-  background: #fbfbfb;
+  background: #fafafa;
   background-color: linear-gradient(
     247deg,
     #eef7ff 3.42%,
@@ -13,15 +13,15 @@
   width: 81vw;
   /* border-top-right-radius: 16px;
   border-bottom-right-radius: 16px; */
-  border-right: 5px solid #77bcbb;
-  border-top: 5px solid #77bcbb;
-  border-bottom: 5px solid #77bcbb;
-  border-bottom: 5px solid #77bcbb;
+  border-right: 9px solid #77bcbb;
+  border-top: 9px solid #77bcbb;
+  border-bottom: 9px solid #77bcbb;
   overflow: scroll;
+  border-radius: 0px 15px 15px 0px;
 }
 .ge3s_dashboard_border {
   height: 100vh !important;
-  border-left: 5px solid #77bcbb;
-  border-top: 5px solid #77bcbb;
-  border-bottom: 5px solid #77bcbb;
+  border-left: 9px solid #77bcbb;
+  border-top: 9px solid #77bcbb;
+  border-bottom: 9px solid #77bcbb;
 }

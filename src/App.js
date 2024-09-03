@@ -25,6 +25,7 @@ import ResetPassword from "./components/Authentication/ResetPassword";
 import ResetPasswordOTP from "./components/Authentication/ResetPasswordOTP";
 import NewPassword from "./components/Authentication/NewPassword";
 import SustainabilityIndex from "./components/sustainabilityIndex/SustainabilityIndex";
+import { ManageAccount } from "./components/owner/manageAccount";
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
             <Route path="monitor" element={<Monitor />} />
             <Route path="reports" element={<Reports />} />
             <Route path="subscriptions" element={<Subscription />} />
+            <Route path="manage-account" element={<ManageAccount />} />
           </Route>
           <Route path="/team" element={<TeamMembersDashboard />}>
             <Route path="data-points" element={<TeamMemberDataPoints />} />

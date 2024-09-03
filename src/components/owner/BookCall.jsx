@@ -123,7 +123,7 @@ function BookCall({ open, onClose }) {
                     },
                     ".Mui-selected": {
                       backgroundColor: "#2B8860 !important",
-                      color: "#fff !important",
+                      color: "whtie !important",
                     },
                     "&.MuiDateCalendar-root": {
                       width: "100% !important",
@@ -179,8 +179,8 @@ function BookCall({ open, onClose }) {
         {currentState === "callConfirm" && (
           <Box
             sx={{
-              width: "400px",
-              padding: "1rem",
+              width: "500px",
+              padding: "2rem",
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-end",
@@ -284,6 +284,7 @@ function BookCall({ open, onClose }) {
                       onClick={() => setCurrentState("selectDate")}
                     >
                       <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="24"
                         height="24"
                         viewBox="0 0 24 24"

@@ -39,7 +39,7 @@ function SideBar() {
           </div>
 
           <button className="premium_button">
-            <img src={premium} alt="Premium" />
+            <img src={premium} alt="Premium" height={10} width={10} />
             <span>Premium Plan</span>
           </button>
         </div>

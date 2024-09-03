@@ -62,7 +62,7 @@ const AddDataPoints = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "16px",
+              gap: "14px",
               flexWrap: "wrap",
             }}
           >
@@ -77,7 +77,8 @@ const AddDataPoints = () => {
           </div>
 
           <button style={{ cursor: "pointer" }}>
-            <img src={ai} alt="AI" /> <span>Upload data with AI</span>
+            <img src={ai} alt="AI" />{" "}
+            <span style={{ fontSize: "12px" }}>Upload data with AI</span>
           </button>
         </div>
 

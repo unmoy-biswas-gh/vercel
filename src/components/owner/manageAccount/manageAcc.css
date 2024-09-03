@@ -1,0 +1,74 @@
+.manage-account_container {
+  padding: 0 32px;
+  background-color: #fafafa;
+}
+
+.manage-account_heading-div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px 0 16px;
+  margin-bottom: 16px;
+}
+
+.manage-account_heading-div h1 {
+  font-weight: 500;
+  margin: 0;
+  font-size: 16px;
+}
+
+.account-details_container {
+  background-color: #fff;
+  padding: 28px 16px;
+}
+
+.account-details_container h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 24px;
+}
+
+.account-details_upload-div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.account-details_upload-btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 30px;
+  background-color: transparent;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  color: #585555;
+  font-size: 12px;
+}
+
+.company-details_form {
+}
+
+.owner-details_form {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.account-details_save-btn {
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(102deg, #369d9c 0%, #28814d 100%);
+}
+
+.account-details_save-btn:disabled {
+  background: #e8e8e8;
+  color: #a2a2a2;
+}
