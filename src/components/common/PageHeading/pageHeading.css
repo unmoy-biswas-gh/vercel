@@ -1,0 +1,12 @@
+.page-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 12px 12px 12px;
+}
+
+.page-heading h1 {
+  font-weight: 500;
+  margin: 0;
+  font-size: 16px;
+}

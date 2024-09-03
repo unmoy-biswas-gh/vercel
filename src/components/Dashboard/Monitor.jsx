@@ -7,7 +7,9 @@ const Monitor = () => {
   const dashBoardOption = useRef(null);
   const [createReport, setCreateReport] = useState(false);
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
+    <Box
+    // sx={{ width: "100%", height: "100%" }}
+    >
       {createReport ? (
         <CreateReport closeView={() => setCreateReport(false)} />
       ) : (
@@ -53,7 +55,7 @@ const Monitor = () => {
             </svg>
             <Typography
               sx={{
-                fontSize: "12px",
+                fontSize: "11px",
                 fontFamily: "Inter",
                 fontWeight: 500,
                 background: "linear-gradient(102deg, #369D9C 0%, #28814D 100%)",

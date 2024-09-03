@@ -12,12 +12,13 @@ const value = (d) => d.value;
 const defaultMargin = { top: 20, right: 20, bottom: 10, left: 20 };
 
 export default function DoughnutChart({
-  data,
+  data = [], // Default to an empty array if data is not provided
   colors,
   width,
   height,
   margin = defaultMargin,
   animate = true,
+  centerText = "", // New prop for center text
 }) {
   const [selectedSlice, setSelectedSlice] = useState(null);
 
@@ -37,9 +38,21 @@ export default function DoughnutChart({
   });
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <svg width={width} height={height}>
         <Group top={centerY + margin.top} left={centerX + margin.left}>
+          {/* Text in the middle of the doughnut */}
+          <text
+            x={0}
+            y={0}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            style={{ fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            {centerText}
+          </text>
           <Pie
             data={
               selectedSlice
@@ -48,7 +61,7 @@ export default function DoughnutChart({
             }
             pieValue={value}
             outerRadius={radius} // Use the full radius to fill the chart
-            innerRadius={innerRadius} // Set inner radius to 0 for a full pie chart
+            innerRadius={innerRadius} // Set inner radius to create a doughnut chart
           >
             {(pie) => (
               <AnimatedPie
@@ -67,6 +80,21 @@ export default function DoughnutChart({
           </Pie>
         </Group>
       </svg>
+      {/* <LegendOrdinal
+        scale={colorScale}
+        direction="row"
+        itemDirection="row"
+        shapeHeight={10}
+        shapeWidth={10}
+        shape="circle"
+        style={{
+          display: "flex",
+          gap: "5px",
+          justifyContent: "center",
+          marginTop: 10,
+          fontSize: 10,
+        }}
+      /> */}
     </div>
   );
 }

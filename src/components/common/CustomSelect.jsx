@@ -2,6 +2,28 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React, { useState } from "react";
 
 function CustomSelect({ label, onChange, value, options, sx }) {
+  const selectStyles = {
+    fontSize: "14px",
+    borderColor: "#EEEEEE",
+    "& .MuiSelect-select": {
+      fontFamily: "Inter",
+      borderColor: "#EEEEEE",
+      maxHeight: "40px",
+      padding: "11px 12px", // Adjust the padding to reduce the size
+    },
+    "& .MuiInputLabel-root": {
+      fontFamily: "Inter",
+      fontSize: "14px",
+      transform: "translate(12px, 12px) scale(1)", // Adjust the label position
+    },
+    "& .MuiInputLabel-shrink": {
+      transform: "translate(12px, -6px) scale(0.75)", // Adjust the label position when it shrinks
+    },
+    "& .MuiSelect-icon": {
+      fontSize: "24px", // Adjust the size of the select icon
+    },
+  };
+
   const [selectValue, setValue] = useState("");
 
   return (
@@ -40,24 +62,15 @@ function CustomSelect({ label, onChange, value, options, sx }) {
         ...sx,
       }}
     >
-      <InputLabel id="demo-simple-select-label" sx={{ fontSize: "14px" }}>
+      <InputLabel id={label} sx={{ fontSize: "14px" }}>
         {label}
       </InputLabel>
       <Select
-        labelId="demo-simple-select-label"
+        labelId={label}
         id="demo-simple-select"
         label={label}
         value={selectValue}
-        sx={{
-          fontSize: "16px",
-          fontFamily: "Inter",
-          maxHeight: "56px",
-          height: "100%",
-          // padding: "14px !important",
-          "& MuiInputBase-root .MuiOutlinedInput-input": {
-            padding: "14px !important",
-          },
-        }}
+        sx={selectStyles}
         onChange={onChange ? onChange : (e) => setValue(e.target.value)}
       >
         {options.map((item) => (

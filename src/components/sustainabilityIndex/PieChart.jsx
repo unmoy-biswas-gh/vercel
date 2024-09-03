@@ -76,11 +76,10 @@ export default function PieChart({
           shapeWidth={10}
           style={{
             display: "flex",
-            margin: 0,
+            // gap: "5px",
             justifyContent: "center",
-            alignItems: "center",
-            fontSize: "11px",
-            fontWeight: "0.687rem",
+            marginTop: 10,
+            fontSize: 10,
             flexWrap: "wrap",
           }}
         />

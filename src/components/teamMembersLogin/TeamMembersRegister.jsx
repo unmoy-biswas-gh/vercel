@@ -325,7 +325,7 @@ const TeamMembersRegister = () => {
             </Typography>
             <Button
               onClick={() => {
-                navigate("/");
+                navigate("/team");
               }}
               variant="outlined"
               style={{

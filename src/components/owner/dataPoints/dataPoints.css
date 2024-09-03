@@ -3,18 +3,18 @@
 }
 
 .add-data-points_container {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
 }
 
 .add-data-points_heading {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 18px 24px 0 24px;
+  padding: 10px 24px 0 24px;
 }
 
 .add-data-points_heading button {
@@ -26,7 +26,7 @@
 .add-data-points_heading h2 {
   font-weight: 500;
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .add-data-points_tabs_container {
@@ -42,7 +42,7 @@
   justify-content: center;
   gap: 4px;
   align-items: center;
-  padding: 13px 20px;
+  padding: 10px 15px;
   border: none;
   background: radial-gradient(
     50% 132.61% at 50% 50.13%,
@@ -51,9 +51,13 @@
   );
   border-radius: 20px;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 12px;
   color: #ffffff;
+  box-shadow: 0px 4.43px 13.29px -8.86px #ffffff3d inset,
+    0px 19.93px 17.71px -8.86px #005c3136,
+    0px -13.29px 17.71px 0px #ffffff38 inset, 0px 4.43px 8.86px -4.43px #005c31,
+    0px 2.21px 6.64px 0px #ffffff40 inset, 0px 1.11px 0px -4.43px #005c31;
 }
 
 .add-data-points_tab {
@@ -64,7 +68,7 @@
 }
 
 .add-data-points_tab.activeTab {
-  padding: 11px;
+  padding: 6px;
   border: 1px solid #02a673;
   border-radius: 8px;
   cursor: pointer;
@@ -73,16 +77,20 @@
 .add-data-points_tabName {
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
   color: #9d9d9d;
   background: transparent;
 }
 
+.add-data-points_tabName:hover {
+  color: #00191d;
+}
+
 .add-data-points_tabName.active {
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
   background: var(--tab-gradient);
   background-clip: text;
@@ -109,7 +117,7 @@
 .kpi-table {
   display: grid;
   grid-template-columns: 1fr 4fr 2fr 2fr 2fr; /* Adjust the ratios as needed */
-  row-gap: 40px; /* Optional: adds space between cells */
+  row-gap: 24px; /* Optional: adds space between cells */
 }
 
 .no-gap {
@@ -123,19 +131,23 @@
 .kpi-table-cell {
   /* padding: 10px; */
   background-color: #f9f9f9;
+  /* border: 1px solid #f2f2f2; */
+  font-size: 12px;
 }
 
 .kpi-table-heading {
-  border-bottom: 1px solid #ccc;
+  border-bottom: none;
   font-weight: 600;
   font-size: 12px;
   line-height: 14.42px;
+  background-color: #fcfcfc;
 }
 .kpi-table-heading-cell {
-  padding: 8.5px 0;
+  padding: 5px 0;
   color: #5b5b5b;
   padding: 19px 40px 0 40px;
   margin-bottom: -20px;
+  border: none;
 }
 
 .center-content {
@@ -148,41 +160,57 @@
   justify-content: center;
   align-items: center;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
+  border: 1px solid #f2f2f2;
 }
 
 .kpi-table-data_point_div {
   padding: 19px 40px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
+  border-top: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: none;
 }
 
 .kpi-table-data_unit_div {
   padding: 19px 40px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 16.9px;
   white-space: nowrap;
+  border-top: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  border-left: none;
 }
 
 .kpi-table-data_value_div {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 10px;
+  padding: 9.49px 10px;
+  background-color: #fff;
+  border: 1px solid #f2f2f2;
 }
 
 .kpi-table-data_value_div input {
-  max-width: 120px;
-  height: 40px;
+  max-width: 100px;
+  height: 36px;
   text-align: center;
   border-radius: 8px;
   border: 1px solid #dbdbdb;
   outline: none;
+  font-size: 12px;
+}
+
+.kpi-table-data_value_div input::placeholder {
+  color: #787878;
 }
 
 .assignee-cell {
@@ -190,10 +218,17 @@
   justify-content: center;
   align-items: center;
   padding: 12px 35px;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #fff;
+  border-left: 1px solid #f2f2f2;
 }
 
 .assignments-div {
   width: 100%;
+}
+
+.kpi-table-cell .assignee-cell {
+  background-color: #fff;
 }
 
 .messages-wrapper {
@@ -273,7 +308,7 @@
 }
 
 .kpi-table-btns_div {
-  padding: 40px 35px;
+  padding: 10px 35px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
