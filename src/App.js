@@ -74,10 +74,7 @@ const App = () => {
           <Route path="/team" element={<TeamMembersDashboard />}>
             <Route path="data-points" element={<TeamMemberDataPoints />} />
           </Route>
-          <Route
-            path="/sustainability-index"
-            element={<SustainabilityIndex />}
-          />
+          <Route path="/score-card" element={<SustainabilityIndex />} />
         </Routes>
       </Router>
     </AuthProvider>
