@@ -44,6 +44,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("../../assets/sustainabilityReport/sustainabilityHeading.png");
+  background-color: white;
+  border-radius: 16px;
 }
 
 .sustainability-heading_title {

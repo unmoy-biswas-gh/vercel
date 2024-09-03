@@ -18,13 +18,14 @@ const SocialStatsCard = ({ icon, title, amount }) => {
         bgcolor: "#FAE6EA",
         p: "20px 16px",
         borderRadius: "16px",
+        height: "100%",
       }}
     >
       <img
         src={icon}
         alt={title}
-        height={28}
-        width={28}
+        height={24}
+        width={24}
         style={{ marginBottom: "6px" }}
       />
       <h4 className="base-sector-card_title">{title}</h4>
