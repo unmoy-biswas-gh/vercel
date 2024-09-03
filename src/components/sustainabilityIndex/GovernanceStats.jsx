@@ -138,14 +138,13 @@ const GovernanceStats = () => {
                 onChange={(e) => console.log(e.target.value)}
                 options={[
                   {
-                    name: "Percentage of Revenue spent on local suppliers (%)",
+                    name: "Proportion of indirect employees",
                     value: "option1",
                   },
                   { name: "option2", value: "option2" },
                 ]}
                 value={trendFilter}
                 placeholder={"Select Trend"}
-                fontSize="13px"
               />
             </div>
             <div style={{ height: "260px" }}>
