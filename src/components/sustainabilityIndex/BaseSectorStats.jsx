@@ -210,7 +210,7 @@ const BaseSectorStats = () => {
             <Typography sx={{ fontSize: "11px", marginBottom: 5 }}>
               *Total number of KPIs reported: 39/45
             </Typography>
-            <div style={{ height: "220px" }}>
+            {/* <div style={{ height: "220px" }}>
               <ParentSize>
                 {({ width, height }) => (
                   // <PieChart
@@ -222,7 +222,7 @@ const BaseSectorStats = () => {
                   <BreakDownPieChart height={height} width={width} />
                 )}
               </ParentSize>
-            </div>
+            </div> */}
           </Box>
 
           <Box

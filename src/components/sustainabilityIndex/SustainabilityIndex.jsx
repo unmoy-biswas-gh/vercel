@@ -7,6 +7,7 @@ import SocialStats from "./SocialStats";
 import logo from "../../assets/images/logo.png";
 import expert from "../../assets/expert.svg";
 import close from "../../assets/close.svg";
+import { useState } from "react";
 
 const SustainabilityIndex = () => {
   const disclaimer = [
@@ -16,6 +17,8 @@ const SustainabilityIndex = () => {
     "No warranty is given on the fitness of the sustainability scorecard for any particular purpose. The scorecard should not be relied upon to make acquisition, divestment, investment, hiring, or other decisions without supplementary diligence",
     "The proprietary SI index methodology by GE3S takes into account only broad industrial sectors, specific sectors or clients who might have additional parameters that need to be monitored should reach out to ge3s via email/purchasing the “essentials” plan",
   ];
+
+  const [showExpert, setShowExpert] = useState(true);
 
   return (
     <>
@@ -53,24 +56,26 @@ const SustainabilityIndex = () => {
         </div>
       </div>
 
-      <div className="expert-div">
-        <div className="expert-left_div">
-          <img src={expert} alt="expert" height={35} width={35} />
-          <div className="expert-left_div_text">
-            <h2>Expert Consultation to Boost Your Scores!</h2>
-            <h3>
-              Enhance your performance through personalized insights from
-              seasoned professionals
-            </h3>
+      {showExpert ? (
+        <div className="expert-div">
+          <div className="expert-left_div">
+            <img src={expert} alt="expert" height={35} width={35} />
+            <div className="expert-left_div_text">
+              <h2>Expert Consultation to Boost Your Scores!</h2>
+              <h3>
+                Enhance your performance through personalized insights from
+                seasoned professionals
+              </h3>
+            </div>
+          </div>
+          <div className="expert-right_div">
+            <button className="book-btn">Book a call</button>
+            <button onClick={() => setShowExpert(false)} className="close-btn">
+              <img src={close} alt="Close" height={20} width={20} />
+            </button>
           </div>
         </div>
-        <div className="expert-right_div">
-          <button className="book-btn">Book a call</button>
-          <button className="close-btn">
-            <img src={close} alt="Close" height={20} width={20} />
-          </button>
-        </div>
-      </div>
+      ) : null}
 
       <div className="sustainability-bottom_div">
         <button className="btn-no_borders">Save as Ready</button>
