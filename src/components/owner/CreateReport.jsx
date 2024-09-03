@@ -19,6 +19,7 @@ import bannerImg from "../../assets/images/banner.png";
 import UploadFilesModal from "../common/UploadModal";
 import BookCall from "./BookCall";
 import { useNavigate } from "react-router-dom";
+import PageHeading from "../common/PageHeading/PageHeading";
 
 const yearOptions = [
   { value: 2022, name: "2022" },
@@ -644,7 +645,7 @@ function CreateReport({ closeView }) {
     // </Box>
 
     <Box sx={{ padding: "0px 24px", backgroundColor: "#fafafa" }}>
-      <Typography
+      {/* <Typography
         variant="h6"
         sx={{
           cursor: "pointer",
@@ -671,7 +672,8 @@ function CreateReport({ closeView }) {
           />
         </svg>{" "}
         Create Report
-      </Typography>
+      </Typography> */}
+      <PageHeading onClick={() => closeView()} text={"Create Report"} />
       <Box
         sx={{
           padding: "16px",
@@ -946,14 +948,16 @@ function CreateReport({ closeView }) {
         ></Box>
         <Box
           sx={{
-            marginLeft: "20%",
+            // marginLeft: "20%",
+            flexGrow: 1,
             display: "flex",
-            // flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
+            // justifyContent: "center",
+            background:
+              "linear-gradient(270.87deg, #FAFAFA -1.18%, #F4FFFF 52.58%)", // Apply the gradient here
           }}
         >
-          <div>
+          <div style={{ marginLeft: "20%" }}>
             <Typography sx={{ fontSize: "13px", fontFamily: "Inter" }}>
               Need Help with Your Sustainability Report?
             </Typography>

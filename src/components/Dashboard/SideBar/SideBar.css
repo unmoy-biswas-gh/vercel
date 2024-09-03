@@ -232,12 +232,24 @@
   align-items: center;
   flex-direction: column;
   margin-bottom: 20px;
+  position: relative;
+  background-color: #f6f8f7;
+  border-radius: 0 0 8px 8px;
+  padding: 20px 10px 10px 10px; /* Adjust the padding as needed */
+}
+
+.logo_wrapper {
+  background: #fff;
+  padding: 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: -30px; /* Adjust the top value as needed to position the logo */
 }
 
 .sidebar_powered_by .text {
   font-size: 0.7rem;
   font-weight: 400;
-  margin-top: 1rem;
+  margin-top: 1.5rem; /* Increased to account for the logo offset */
 }
 
 .sidebar_powered_by .brand_wrapper {
@@ -248,10 +260,6 @@
   font-weight: 600;
   margin-top: 1vh;
   margin-bottom: 12px;
-}
-
-.sidebar_powered_by .brand_wrapper img {
-  width: 1.8vw;
 }
 
 .sidebar_connect_btn {

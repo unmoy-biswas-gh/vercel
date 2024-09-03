@@ -216,12 +216,13 @@ function SideBar() {
         </div>
       </div>
       <div className="sidebar_powered_by">
-        <img src={ge3sLogo} className="sidebar_logo" alt="Logo" />
+        <div className="logo_wrapper">
+          <img src={ge3sLogo} className="sidebar_logo" alt="Logo" />
+        </div>
         <span className="text">Need help with data?</span>
         <div className="brand_wrapper">
           <span>Book a call with a Senior Consultant.</span>
         </div>
-
         <button className="sidebar_connect_btn">Connect With an Expert</button>
       </div>
     </div>

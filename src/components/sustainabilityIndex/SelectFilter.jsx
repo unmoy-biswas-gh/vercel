@@ -44,7 +44,7 @@ const SelectFilter = ({
           },
         },
       }}
-      IconComponent={ArrowComponent}
+      // IconComponent={ArrowComponent}
     >
       <MenuItem value="" disabled>
         {placeholder}

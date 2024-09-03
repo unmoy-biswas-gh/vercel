@@ -15,6 +15,7 @@ import {
 import AllMembers from "./AllMembers";
 import PendingMembers from "./PendingMembers";
 import AddMembers from "./AddMembers";
+import PageHeading from "../../common/PageHeading/PageHeading";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -65,12 +66,13 @@ const TeamMembers = () => {
     <>
       {/* <DashboardNav> */}
       <div className="team-members_container">
-        <div className="team-members_heading_container">
+        {/* <div className="team-members_heading_container">
           <button type="button" className="back-button">
             <img src={back} alt="Go Back" />
           </button>
           <h1>Team Members</h1>
-        </div>
+        </div> */}
+        <PageHeading onClick={() => {}} text={"Team Members"} />
 
         <div className="team-members-input_container">
           <FormControl variant="outlined">
